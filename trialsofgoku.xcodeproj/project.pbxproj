@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
+		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
+		C90F046119F8A51C00DF49CA /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F046019F8A51C00DF49CA /* GameViewController.m */; };
+		C90F046419F8A51C00DF49CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90F046219F8A51C00DF49CA /* Main.storyboard */; };
+		C90F046619F8A51C00DF49CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90F046519F8A51C00DF49CA /* Images.xcassets */; };
+		C90F046919F8A51C00DF49CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90F046719F8A51C00DF49CA /* LaunchScreen.xib */; };
+		C90F047519F8A51C00DF49CA /* TrialsOfGokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F047419F8A51C00DF49CA /* TrialsOfGokuTests.m */; };
+		C90F048C19F8A53700DF49CA /* misc.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90F048519F8A53700DF49CA /* misc.atlas */; };
+		C90F048D19F8A53700DF49CA /* ui.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90F048619F8A53700DF49CA /* ui.atlas */; };
+		C90F049219F8A56200DF49CA /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F048F19F8A56200DF49CA /* GameScene.m */; };
+		C90F049319F8A56200DF49CA /* Goku.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F049119F8A56200DF49CA /* Goku.m */; };
+		C93F59611A17EC7A00C06817 /* buu.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F59591A17EC7A00C06817 /* buu.atlas */; };
+		C93F59621A17EC7A00C06817 /* cell.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595A1A17EC7A00C06817 /* cell.atlas */; };
+		C93F59631A17EC7A00C06817 /* minions.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595B1A17EC7A00C06817 /* minions.atlas */; };
+		C93F59641A17EC7A00C06817 /* goku_norm.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595D1A17EC7A00C06817 /* goku_norm.atlas */; };
+		C93F59651A17EC7A00C06817 /* goku_ss1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595E1A17EC7A00C06817 /* goku_ss1.atlas */; };
+		C93F59661A17EC7A00C06817 /* goku_ss3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595F1A17EC7A00C06817 /* goku_ss3.atlas */; };
+		C93F59671A17EC7A00C06817 /* goku_ss4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F59601A17EC7A00C06817 /* goku_ss4.atlas */; };
+		C942095B1A16AA0D00D0979F /* SafeObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = C942095A1A16AA0D00D0979F /* SafeObstacle.m */; };
+		C942095E1A16AA3300D0979F /* EnemyBlast.m in Sources */ = {isa = PBXBuildFile; fileRef = C942095D1A16AA3300D0979F /* EnemyBlast.m */; };
+		C94A091F1A15B94000720E8C /* Buu.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A091E1A15B94000720E8C /* Buu.m */; };
+		C9A838261A183F5200EF5EE5 /* Minion.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838251A183F5200EF5EE5 /* Minion.m */; };
+		C9A8382B1A185FD500EF5EE5 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8382A1A185FD500EF5EE5 /* BaseObject.m */; };
+		C9A838311A1862A500EF5EE5 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838301A1862A500EF5EE5 /* Cell.m */; };
+		C9A838351A186D2100EF5EE5 /* FirstLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838341A186D2100EF5EE5 /* FirstLevel.m */; };
+		C9C12A491A12648D00629E0C /* PowerBall.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C12A481A12648D00629E0C /* PowerBall.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C90F046F19F8A51C00DF49CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C90F044819F8A51C00DF49CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C90F044F19F8A51C00DF49CA;
+			remoteInfo = TrialsOfGoku;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C90F045519F8A51C00DF49CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C90F045719F8A51C00DF49CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C90F045819F8A51C00DF49CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C90F045F19F8A51C00DF49CA /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		C90F046019F8A51C00DF49CA /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		C90F046319F8A51C00DF49CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C90F046519F8A51C00DF49CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C90F046819F8A51C00DF49CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C90F046E19F8A51C00DF49CA /* TrialsOfGokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrialsOfGokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90F047319F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C90F047419F8A51C00DF49CA /* TrialsOfGokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrialsOfGokuTests.m; sourceTree = "<group>"; };
+		C90F048519F8A53700DF49CA /* misc.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = misc.atlas; sourceTree = "<group>"; };
+		C90F048619F8A53700DF49CA /* ui.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ui.atlas; sourceTree = "<group>"; };
+		C90F048E19F8A56200DF49CA /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		C90F048F19F8A56200DF49CA /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		C90F049019F8A56200DF49CA /* Goku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goku.h; path = objs/Goku.h; sourceTree = "<group>"; };
+		C90F049119F8A56200DF49CA /* Goku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goku.m; path = objs/Goku.m; sourceTree = "<group>"; };
+		C93F59591A17EC7A00C06817 /* buu.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buu.atlas; sourceTree = "<group>"; };
+		C93F595A1A17EC7A00C06817 /* cell.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cell.atlas; sourceTree = "<group>"; };
+		C93F595B1A17EC7A00C06817 /* minions.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minions.atlas; sourceTree = "<group>"; };
+		C93F595D1A17EC7A00C06817 /* goku_norm.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_norm.atlas; sourceTree = "<group>"; };
+		C93F595E1A17EC7A00C06817 /* goku_ss1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_ss1.atlas; sourceTree = "<group>"; };
+		C93F595F1A17EC7A00C06817 /* goku_ss3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_ss3.atlas; sourceTree = "<group>"; };
+		C93F59601A17EC7A00C06817 /* goku_ss4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_ss4.atlas; sourceTree = "<group>"; };
+		C94209591A16AA0D00D0979F /* SafeObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SafeObstacle.h; path = objs/SafeObstacle.h; sourceTree = "<group>"; };
+		C942095A1A16AA0D00D0979F /* SafeObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SafeObstacle.m; path = objs/SafeObstacle.m; sourceTree = "<group>"; };
+		C942095C1A16AA3300D0979F /* EnemyBlast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyBlast.h; path = objs/EnemyBlast.h; sourceTree = "<group>"; };
+		C942095D1A16AA3300D0979F /* EnemyBlast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyBlast.m; path = objs/EnemyBlast.m; sourceTree = "<group>"; };
+		C94A091D1A15B94000720E8C /* Buu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buu.h; path = objs/Buu.h; sourceTree = "<group>"; };
+		C94A091E1A15B94000720E8C /* Buu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Buu.m; path = objs/Buu.m; sourceTree = "<group>"; };
+		C9A838231A1823E200EF5EE5 /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		C9A838241A183F5200EF5EE5 /* Minion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Minion.h; path = objs/Minion.h; sourceTree = "<group>"; };
+		C9A838251A183F5200EF5EE5 /* Minion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Minion.m; path = objs/Minion.m; sourceTree = "<group>"; };
+		C9A838291A185FD500EF5EE5 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseObject.h; path = objs/BaseObject.h; sourceTree = "<group>"; };
+		C9A8382A1A185FD500EF5EE5 /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseObject.m; path = objs/BaseObject.m; sourceTree = "<group>"; };
+		C9A8382F1A1862A500EF5EE5 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = objs/Cell.h; sourceTree = "<group>"; };
+		C9A838301A1862A500EF5EE5 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = objs/Cell.m; sourceTree = "<group>"; };
+		C9A838331A186D2100EF5EE5 /* FirstLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstLevel.h; path = lvls/FirstLevel.h; sourceTree = "<group>"; };
+		C9A838341A186D2100EF5EE5 /* FirstLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstLevel.m; path = lvls/FirstLevel.m; sourceTree = "<group>"; };
+		C9C12A471A12648D00629E0C /* PowerBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerBall.h; path = objs/PowerBall.h; sourceTree = "<group>"; };
+		C9C12A481A12648D00629E0C /* PowerBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerBall.m; path = objs/PowerBall.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C90F044D19F8A51C00DF49CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90F046B19F8A51C00DF49CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C90F044719F8A51C00DF49CA = {
+			isa = PBXGroup;
+			children = (
+				C90F045219F8A51C00DF49CA /* TrialsOfGoku */,
+				C90F047119F8A51C00DF49CA /* TrialsOfGokuTests */,
+				C90F045119F8A51C00DF49CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C90F045119F8A51C00DF49CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */,
+				C90F046E19F8A51C00DF49CA /* TrialsOfGokuTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C90F045219F8A51C00DF49CA /* TrialsOfGoku */ = {
+			isa = PBXGroup;
+			children = (
+				C9A838321A186CD400EF5EE5 /* Levels */,
+				C90F049519F8A56B00DF49CA /* Objects */,
+				C90F049419F8A56600DF49CA /* Scenes */,
+				C90F047E19F8A53700DF49CA /* img */,
+				C90F045719F8A51C00DF49CA /* AppDelegate.h */,
+				C90F045819F8A51C00DF49CA /* AppDelegate.m */,
+				C90F045F19F8A51C00DF49CA /* GameViewController.h */,
+				C90F046019F8A51C00DF49CA /* GameViewController.m */,
+				C90F046219F8A51C00DF49CA /* Main.storyboard */,
+				C90F046519F8A51C00DF49CA /* Images.xcassets */,
+				C90F046719F8A51C00DF49CA /* LaunchScreen.xib */,
+				C90F045319F8A51C00DF49CA /* Supporting Files */,
+				C9A838231A1823E200EF5EE5 /* Globals.h */,
+			);
+			path = TrialsOfGoku;
+			sourceTree = "<group>";
+		};
+		C90F045319F8A51C00DF49CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C90F045419F8A51C00DF49CA /* Info.plist */,
+				C90F045519F8A51C00DF49CA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C90F047119F8A51C00DF49CA /* TrialsOfGokuTests */ = {
+			isa = PBXGroup;
+			children = (
+				C90F047419F8A51C00DF49CA /* TrialsOfGokuTests.m */,
+				C90F047219F8A51C00DF49CA /* Supporting Files */,
+			);
+			path = TrialsOfGokuTests;
+			sourceTree = "<group>";
+		};
+		C90F047219F8A51C00DF49CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C90F047319F8A51C00DF49CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C90F047E19F8A53700DF49CA /* img */ = {
+			isa = PBXGroup;
+			children = (
+				C93F59581A17EC7A00C06817 /* enemies */,
+				C93F595C1A17EC7A00C06817 /* goku */,
+				C90F048519F8A53700DF49CA /* misc.atlas */,
+				C90F048619F8A53700DF49CA /* ui.atlas */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		C90F049419F8A56600DF49CA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C90F048E19F8A56200DF49CA /* GameScene.h */,
+				C90F048F19F8A56200DF49CA /* GameScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		C90F049519F8A56B00DF49CA /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				C9A838281A185FC100EF5EE5 /* base_object */,
+				C9A838271A183F8A00EF5EE5 /* goku */,
+				C94209581A16A9F900D0979F /* obstacles */,
+				C94A091C1A15B92F00720E8C /* enemies */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		C93F59581A17EC7A00C06817 /* enemies */ = {
+			isa = PBXGroup;
+			children = (
+				C93F59591A17EC7A00C06817 /* buu.atlas */,
+				C93F595A1A17EC7A00C06817 /* cell.atlas */,
+				C93F595B1A17EC7A00C06817 /* minions.atlas */,
+			);
+			path = enemies;
+			sourceTree = "<group>";
+		};
+		C93F595C1A17EC7A00C06817 /* goku */ = {
+			isa = PBXGroup;
+			children = (
+				C93F595D1A17EC7A00C06817 /* goku_norm.atlas */,
+				C93F595E1A17EC7A00C06817 /* goku_ss1.atlas */,
+				C93F595F1A17EC7A00C06817 /* goku_ss3.atlas */,
+				C93F59601A17EC7A00C06817 /* goku_ss4.atlas */,
+			);
+			path = goku;
+			sourceTree = "<group>";
+		};
+		C94209581A16A9F900D0979F /* obstacles */ = {
+			isa = PBXGroup;
+			children = (
+				C94209591A16AA0D00D0979F /* SafeObstacle.h */,
+				C942095A1A16AA0D00D0979F /* SafeObstacle.m */,
+				C942095C1A16AA3300D0979F /* EnemyBlast.h */,
+				C942095D1A16AA3300D0979F /* EnemyBlast.m */,
+			);
+			name = obstacles;
+			sourceTree = "<group>";
+		};
+		C94A091C1A15B92F00720E8C /* enemies */ = {
+			isa = PBXGroup;
+			children = (
+				C94A091D1A15B94000720E8C /* Buu.h */,
+				C94A091E1A15B94000720E8C /* Buu.m */,
+				C9A838241A183F5200EF5EE5 /* Minion.h */,
+				C9A838251A183F5200EF5EE5 /* Minion.m */,
+				C9A8382F1A1862A500EF5EE5 /* Cell.h */,
+				C9A838301A1862A500EF5EE5 /* Cell.m */,
+			);
+			name = enemies;
+			sourceTree = "<group>";
+		};
+		C9A838271A183F8A00EF5EE5 /* goku */ = {
+			isa = PBXGroup;
+			children = (
+				C90F049019F8A56200DF49CA /* Goku.h */,
+				C90F049119F8A56200DF49CA /* Goku.m */,
+				C9C12A471A12648D00629E0C /* PowerBall.h */,
+				C9C12A481A12648D00629E0C /* PowerBall.m */,
+			);
+			name = goku;
+			sourceTree = "<group>";
+		};
+		C9A838281A185FC100EF5EE5 /* base_object */ = {
+			isa = PBXGroup;
+			children = (
+				C9A838291A185FD500EF5EE5 /* BaseObject.h */,
+				C9A8382A1A185FD500EF5EE5 /* BaseObject.m */,
+			);
+			name = base_object;
+			sourceTree = "<group>";
+		};
+		C9A838321A186CD400EF5EE5 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C9A838331A186D2100EF5EE5 /* FirstLevel.h */,
+				C9A838341A186D2100EF5EE5 /* FirstLevel.m */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C90F044F19F8A51C00DF49CA /* TrialsOfGoku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C90F047819F8A51C00DF49CA /* Build configuration list for PBXNativeTarget "TrialsOfGoku" */;
+			buildPhases = (
+				C90F044C19F8A51C00DF49CA /* Sources */,
+				C90F044D19F8A51C00DF49CA /* Frameworks */,
+				C90F044E19F8A51C00DF49CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrialsOfGoku;
+			productName = TrialsOfGoku;
+			productReference = C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C90F046D19F8A51C00DF49CA /* TrialsOfGokuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C90F047B19F8A51C00DF49CA /* Build configuration list for PBXNativeTarget "TrialsOfGokuTests" */;
+			buildPhases = (
+				C90F046A19F8A51C00DF49CA /* Sources */,
+				C90F046B19F8A51C00DF49CA /* Frameworks */,
+				C90F046C19F8A51C00DF49CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C90F047019F8A51C00DF49CA /* PBXTargetDependency */,
+			);
+			name = TrialsOfGokuTests;
+			productName = TrialsOfGokuTests;
+			productReference = C90F046E19F8A51C00DF49CA /* TrialsOfGokuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C90F044819F8A51C00DF49CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Matt Myers";
+				TargetAttributes = {
+					C90F044F19F8A51C00DF49CA = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 97XJS8AAPL;
+					};
+					C90F046D19F8A51C00DF49CA = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = C90F044F19F8A51C00DF49CA;
+					};
+				};
+			};
+			buildConfigurationList = C90F044B19F8A51C00DF49CA /* Build configuration list for PBXProject "trialsofgoku" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C90F044719F8A51C00DF49CA;
+			productRefGroup = C90F045119F8A51C00DF49CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C90F044F19F8A51C00DF49CA /* TrialsOfGoku */,
+				C90F046D19F8A51C00DF49CA /* TrialsOfGokuTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C90F044E19F8A51C00DF49CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C93F59671A17EC7A00C06817 /* goku_ss4.atlas in Resources */,
+				C90F046919F8A51C00DF49CA /* LaunchScreen.xib in Resources */,
+				C90F046619F8A51C00DF49CA /* Images.xcassets in Resources */,
+				C93F59611A17EC7A00C06817 /* buu.atlas in Resources */,
+				C93F59651A17EC7A00C06817 /* goku_ss1.atlas in Resources */,
+				C90F048C19F8A53700DF49CA /* misc.atlas in Resources */,
+				C93F59621A17EC7A00C06817 /* cell.atlas in Resources */,
+				C93F59661A17EC7A00C06817 /* goku_ss3.atlas in Resources */,
+				C93F59631A17EC7A00C06817 /* minions.atlas in Resources */,
+				C90F046419F8A51C00DF49CA /* Main.storyboard in Resources */,
+				C90F048D19F8A53700DF49CA /* ui.atlas in Resources */,
+				C93F59641A17EC7A00C06817 /* goku_norm.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90F046C19F8A51C00DF49CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C90F044C19F8A51C00DF49CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C942095E1A16AA3300D0979F /* EnemyBlast.m in Sources */,
+				C9A8382B1A185FD500EF5EE5 /* BaseObject.m in Sources */,
+				C942095B1A16AA0D00D0979F /* SafeObstacle.m in Sources */,
+				C90F046119F8A51C00DF49CA /* GameViewController.m in Sources */,
+				C90F049319F8A56200DF49CA /* Goku.m in Sources */,
+				C9A838311A1862A500EF5EE5 /* Cell.m in Sources */,
+				C90F049219F8A56200DF49CA /* GameScene.m in Sources */,
+				C94A091F1A15B94000720E8C /* Buu.m in Sources */,
+				C9A838351A186D2100EF5EE5 /* FirstLevel.m in Sources */,
+				C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */,
+				C9A838261A183F5200EF5EE5 /* Minion.m in Sources */,
+				C9C12A491A12648D00629E0C /* PowerBall.m in Sources */,
+				C90F045619F8A51C00DF49CA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90F046A19F8A51C00DF49CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90F047519F8A51C00DF49CA /* TrialsOfGokuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C90F047019F8A51C00DF49CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C90F044F19F8A51C00DF49CA /* TrialsOfGoku */;
+			targetProxy = C90F046F19F8A51C00DF49CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C90F046219F8A51C00DF49CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90F046319F8A51C00DF49CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C90F046719F8A51C00DF49CA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90F046819F8A51C00DF49CA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C90F047619F8A51C00DF49CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C90F047719F8A51C00DF49CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C90F047919F8A51C00DF49CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TrialsOfGoku/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C90F047A19F8A51C00DF49CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TrialsOfGoku/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C90F047C19F8A51C00DF49CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TrialsOfGokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrialsOfGoku.app/TrialsOfGoku";
+			};
+			name = Debug;
+		};
+		C90F047D19F8A51C00DF49CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TrialsOfGokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrialsOfGoku.app/TrialsOfGoku";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C90F044B19F8A51C00DF49CA /* Build configuration list for PBXProject "trialsofgoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90F047619F8A51C00DF49CA /* Debug */,
+				C90F047719F8A51C00DF49CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C90F047819F8A51C00DF49CA /* Build configuration list for PBXNativeTarget "TrialsOfGoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90F047919F8A51C00DF49CA /* Debug */,
+				C90F047A19F8A51C00DF49CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C90F047B19F8A51C00DF49CA /* Build configuration list for PBXNativeTarget "TrialsOfGokuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90F047C19F8A51C00DF49CA /* Debug */,
+				C90F047D19F8A51C00DF49CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C90F044819F8A51C00DF49CA /* Project object */;
+}
