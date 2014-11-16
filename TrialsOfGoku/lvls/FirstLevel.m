@@ -21,9 +21,12 @@
         
         // TODO:
             // Create minion objects
+//        self.minion1 = [Minion initali];
+  //      [self.minion1 setUpMinion];
+    
             // Create obstacle objects
-            // Create boss object
         
+        // Create boss object
         self.finalBoss = [Buu spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"buu_walk_right_1"] size:CGSizeMake(50, 50)];
         [self.finalBoss setUpBuu];
     
@@ -39,6 +42,10 @@
         // Set positions for everything
         // Add childs to the scene
     
+    //self.minion.position =
+    
+    
+                                        // 700 = a little after scene 1
     self.finalBoss.position = CGPointMake(800, 40);
     [scene addChild:self.finalBoss];
     

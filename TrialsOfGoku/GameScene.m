@@ -47,7 +47,7 @@
     [self moveBall];
     [self moveEnemies];
     [firstLevel runLevelFor:self];
-    NSLog([NSString stringWithFormat:@"%f",goku.position.x]);
+    //NSLog([NSString stringWithFormat:@"%f",goku.position.x]);
 }
 
 
@@ -320,7 +320,7 @@
     }
 }
 -(void)moveEnemies{
-    if(firstLevel.finalBoss != nil){                 // BUU
+    if(firstLevel.finalBoss != nil){                 // all final bosses
         if(firstLevel.finalBoss.isActivated){
             if(!firstLevel.finalBoss.isDead){ // not dead
                 if(firstLevel.finalBoss.position.x > goku.position.x){ // buu to the right
@@ -345,24 +345,26 @@
             }
         }
     }
+    
     if(minion != nil){              // MINION
-        // if minion is actived
-        if(!minion.isDead){
-            if(minion.position.x > goku.position.x){ // minion to the right
-                if([minion.lastDirection isEqualToString:@"right"]){
-                    minion.velocity = CGPointMake(-1,minion.velocity.y);
-                    minion.lastDirection = @"left";
+        if(minion.isActivated){
+            if(!minion.isDead){
+                if(minion.position.x > goku.position.x){ // minion to the right
+                    if([minion.lastDirection isEqualToString:@"right"]){
+                        minion.velocity = CGPointMake(-1,minion.velocity.y);
+                        minion.lastDirection = @"left";
+                    }
+                }else{ // buu to the left
+                    if([minion.lastDirection isEqualToString:@"left"]){
+                        minion.velocity = CGPointMake(1,minion.velocity.y);
+                        minion.lastDirection = @"right";
+                    }
                 }
-            }else{ // buu to the left
-                if([minion.lastDirection isEqualToString:@"left"]){
-                    minion.velocity = CGPointMake(1,minion.velocity.y);
-                    minion.lastDirection = @"right";
-                }
+                if(bgisMoving)
+                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
+                else
+                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
             }
-            if(bgisMoving)
-                firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
-            else
-                firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
         }
     }
 }
