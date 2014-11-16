@@ -38,7 +38,6 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    NSLog(@"test string");
     
     // Create and configure the scene.
     GameScene * scene = [GameScene sceneWithSize:skView.bounds.size];
