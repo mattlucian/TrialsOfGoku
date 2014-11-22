@@ -60,6 +60,9 @@
     temp.physicsBody.collisionBitMask = 0;
     temp.name = @"goku";
     
+    temp.attackPower = 5;
+    temp.health = 100;
+    
     temp.jumpCount = 1;
     
     temp.position = CGPointMake(30,50);
@@ -184,6 +187,43 @@
     }
     
     return (NSArray*)workingArrayOfFrames;
+}
+
+-(void)moveGoku{
+    if(self.velocity.x > 0){ // updates position with velocity
+        if(self.position.x >  225 && [self.lastDirection isEqualToString:@"right"]){
+            self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y); //
+          //  [self moveBackground];
+        }else{
+            
+            //bgisMoving = false;
+            self.velocity = CGPointMake(self.velocity.x-.01, self.velocity.y);
+            self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+        }
+    }else if (self.velocity.x < 0){
+        if(self.position.x < 75 && [self.lastDirection isEqualToString:@"left"]){
+            self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
+        //    [self moveBackground];
+        }else{
+          //  bgisMoving = false;
+            self.velocity = CGPointMake(self.velocity.x+.01-self.halting_velocity, self.velocity.y);
+            self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+        }
+    }else{
+        self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+    }
+    // goku hits the ground here
+    if(self.position.y < 30){
+        if(self.jumpCount != 0){
+            self.jumpCount = 0; // reset jumps
+            self.velocity = CGPointMake(self.velocity.x,0); // halt his Y velocity
+            self.position = CGPointMake(self.position.x, 30);
+        }
+    }else{
+        if(self.jumpCount != 0){
+            self.velocity = CGPointMake(self.velocity.x, self.velocity.y-GRAVITY);
+        }
+    }
 }
 
 @end

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C90F044F19F8A51C00DF49CA"
                BuildableName = "TrialsOfGoku.app"
                BlueprintName = "TrialsOfGoku"
-               ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+               ReferencedContainer = "container:trialsofgoku.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "C90F046D19F8A51C00DF49CA"
                BuildableName = "TrialsOfGokuTests.xctest"
                BlueprintName = "TrialsOfGokuTests"
-               ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+               ReferencedContainer = "container:trialsofgoku.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "C90F046D19F8A51C00DF49CA"
                BuildableName = "TrialsOfGokuTests.xctest"
                BlueprintName = "TrialsOfGokuTests"
-               ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+               ReferencedContainer = "container:trialsofgoku.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,7 +59,7 @@
             BlueprintIdentifier = "C90F044F19F8A51C00DF49CA"
             BuildableName = "TrialsOfGoku.app"
             BlueprintName = "TrialsOfGoku"
-            ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+            ReferencedContainer = "container:trialsofgoku.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "C90F044F19F8A51C00DF49CA"
             BuildableName = "TrialsOfGoku.app"
             BlueprintName = "TrialsOfGoku"
-            ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+            ReferencedContainer = "container:trialsofgoku.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,7 +96,7 @@
             BlueprintIdentifier = "C90F044F19F8A51C00DF49CA"
             BuildableName = "TrialsOfGoku.app"
             BlueprintName = "TrialsOfGoku"
-            ReferencedContainer = "container:TrialsOfGoku.xcodeproj">
+            ReferencedContainer = "container:trialsofgoku.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

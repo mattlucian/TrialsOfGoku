@@ -67,29 +67,16 @@
     return frames;
 }
 
--(void)launchAtVelocity:(NSInteger)velocity
-{
-    if(velocity > 0){
-        if((velocity + self.velocity.x) >= 2.5){
-            velocity = 2.5 - self.velocity.x;
-        }
-    }else{
-        velocity = fabs(velocity);
-        float tempX = fabs(self.velocity.x);
-        if((velocity + tempX) >= 2.5){
-            velocity = 2.5 - tempX;
-        }
-        velocity = 0 - velocity;
-    }
-    self.velocity = CGPointMake(self.velocity.x+velocity, self.velocity.y);
-}
-
 -(void)performSetupFor:(float)difference atVelocity:(NSInteger)velocity inRelationTo:(Goku*)goku{
     // init variables
     NSArray* framesToRun = [[NSArray alloc] init];
     NSInteger siz = 0;
     NSInteger offset = 0;
     offset = (velocity*20);
+    if(offset > 0)
+        offset -= 20;
+    else
+        offset += 20;
     
     // create certain sized powerball
     if(difference >= .5 && difference < 1.0){

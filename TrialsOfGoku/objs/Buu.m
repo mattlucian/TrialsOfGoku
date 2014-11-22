@@ -59,6 +59,9 @@
     self.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
     self.physicsBody.collisionBitMask = 0;
     self.inputView.contentMode = UIViewContentModeCenter;
+    self.health = 200;
+    self.attackPower = 5;
+    
     self.name = @"buu";
     self.isDead = false;
     self.lastDirection = @"right"; // default because they spawn on right

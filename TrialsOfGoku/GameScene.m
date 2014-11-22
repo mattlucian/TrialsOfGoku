@@ -37,6 +37,7 @@
     NSArray *currentFrames; // animation frame holder
     NSDate *start;          // start timer
     NSTimer *pressTimer;    // tracks how long user holds down tap
+    NSTimer *enemyHitTimer; // pauses the enemy when hit
 }
 
 
@@ -76,7 +77,7 @@
         
         bg1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
         bg1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        bg2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"]];
+        bg2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
         bg2.position = CGPointMake(CGRectGetMidX(self.frame)+bg2.frame.size.width, CGRectGetMidY(self.frame)); // spawn off to side
         
         [self addChild:bg1]; // add to screen in this order..
@@ -103,11 +104,11 @@
     NSInteger ballVelocity = 0;
     if([goku.lastDirection isEqualToString:@"right"]){
         currentFrames= [goku getAnimationFrames:@"goku_norm_ball_release_right"];
-        ballVelocity = 2;
+        ballVelocity = 4;
         [goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
     }else{
         currentFrames= [goku getAnimationFrames:@"goku_norm_ball_release_left"];
-        ballVelocity = -2;
+        ballVelocity = -4;
         [goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
     }
 
@@ -140,6 +141,9 @@
                                                     userInfo:nil
                                                      repeats:NO];
     }
+}
+-(void)handleHit: (NSTimer *) timer{
+    firstLevel.finalBoss.isHit = false;
 }
 -(void)handleTimer: (NSTimer *) timer{
     // still presssed down, start charging goku
@@ -233,41 +237,6 @@
 
 
 #pragma mark Move Methods
--(void)moveGoku{
-    if(goku.velocity.x > 0){ // updates position with velocity
-        if(goku.position.x >  225 && [goku.lastDirection isEqualToString:@"right"]){
-            goku.position = CGPointMake(goku.position.x,goku.position.y+goku.velocity.y); //
-            [self moveBackground];
-        }else{
-            bgisMoving = false;
-            goku.velocity = CGPointMake(goku.velocity.x-.01, goku.velocity.y);
-            goku.position = CGPointMake(goku.position.x+goku.velocity.x,goku.position.y+goku.velocity.y);
-        }
-    }else if (goku.velocity.x < 0){
-        if(goku.position.x < 75 && [goku.lastDirection isEqualToString:@"left"]){
-            goku.position = CGPointMake(goku.position.x,goku.position.y+goku.velocity.y);
-            [self moveBackground];
-        }else{
-            bgisMoving = false;
-            goku.velocity = CGPointMake(goku.velocity.x+.01-goku.halting_velocity, goku.velocity.y);
-            goku.position = CGPointMake(goku.position.x+goku.velocity.x,goku.position.y+goku.velocity.y);
-        }
-    }else{
-        goku.position = CGPointMake(goku.position.x+goku.velocity.x,goku.position.y+goku.velocity.y);
-    }
-    // goku hits the ground here
-    if(goku.position.y < 30){
-        if(goku.jumpCount != 0){
-            goku.jumpCount = 0; // reset jumps
-            goku.velocity = CGPointMake(goku.velocity.x,0); // halt his Y velocity
-            goku.position = CGPointMake(goku.position.x, 31);
-        }
-    }else{
-        if(goku.jumpCount != 0){
-            goku.velocity = CGPointMake(goku.velocity.x, goku.velocity.y-GRAVITY);
-        }
-    }
-}
 -(void)moveBall{
     // moves power balls if they are currently on screen.
     if(ball != nil){
@@ -323,21 +292,29 @@
     if(firstLevel.finalBoss != nil){                 // all final bosses
         if(firstLevel.finalBoss.isActivated){
             if(!firstLevel.finalBoss.isDead){ // not dead
-                if(firstLevel.finalBoss.position.x > goku.position.x){ // buu to the right
-                    if([firstLevel.finalBoss.lastDirection isEqualToString:@"right"]){
-                        firstLevel.finalBoss.velocity = CGPointMake(-1,firstLevel.finalBoss.velocity.y);
-                        firstLevel.finalBoss.lastDirection = @"left";
+                if(!firstLevel.finalBoss.isHit){ // not hit
+                    if(firstLevel.finalBoss.position.x > goku.position.x){ // buu to the right
+                        if([firstLevel.finalBoss.lastDirection isEqualToString:@"right"]){
+                            firstLevel.finalBoss.velocity = CGPointMake(-1,firstLevel.finalBoss.velocity.y);
+                            firstLevel.finalBoss.lastDirection = @"left";
+                        }
+                    }else{ // buu to the left
+                        if([firstLevel.finalBoss.lastDirection isEqualToString:@"left"]){
+                            firstLevel.finalBoss.velocity = CGPointMake(1,firstLevel.finalBoss.velocity.y);
+                            firstLevel.finalBoss.lastDirection = @"right";
+                        }
                     }
-                }else{ // buu to the left
-                    if([firstLevel.finalBoss.lastDirection isEqualToString:@"left"]){
-                        firstLevel.finalBoss.velocity = CGPointMake(1,firstLevel.finalBoss.velocity.y);
-                        firstLevel.finalBoss.lastDirection = @"right";
-                    }
+                    if(bgisMoving)
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
+                    else
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
+                }else{ // is hit
+                    if(bgisMoving)
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x-goku.velocity.x,firstLevel.finalBoss.position.y);
+                    else
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x,firstLevel.finalBoss.position.y);
                 }
-                if(bgisMoving)
-                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
-                else
-                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
+                
             }else{
                 if(bgisMoving){
                     firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x - goku.velocity.x, firstLevel.finalBoss.position.y);
@@ -375,43 +352,56 @@
 
     // buu collision detection
     if(firstLevel.finalBoss != nil) {
-        if(!firstLevel.finalBoss.isDead){
-            
-            
-            NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
-            if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball1"]) {
+        if(firstLevel.finalBoss.isActivated){
+            if(!firstLevel.finalBoss.isDead){
+                NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+                if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball1"]) {
+                    
+                    switch (ball.ball_size) {
+                        case 1:
+                            firstLevel.finalBoss.health -= 10;
+                            break;
+                        case 2:
+                            firstLevel.finalBoss.health -= 20;
+                            break;
+                        case 3:
+                            firstLevel.finalBoss.health -= 30;
+                            break;
+                    }
+                    
+                    if(firstLevel.finalBoss.health < 0){
+                        firstLevel.finalBoss.isDead = true;
+                        // animate death
+                        NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
+                        [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
+                        [firstLevel.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate deaths
+                        
+                    }else{
+                        // animate a hit
+                        firstLevel.finalBoss.isHit = true;
+                        enemyHitTimer= [NSTimer scheduledTimerWithTimeInterval: 1
+                                                                      target:self
+                                                                    selector:@selector(handleHit:)
+                                                                    userInfo:nil
+                                                                     repeats:NO];
+                        
+                        NSMutableArray* hitFrame = [[NSMutableArray alloc] init];
+                        [hitFrame insertObject:[SKTexture textureWithImageNamed:@"buu_hitfrom_right_3"]  atIndex:0];
+                        [firstLevel.finalBoss runCountedAnimation:hitFrame withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"];
 
-                
-                // TODO:
-                    // switch(ball_size)
-                        // case 1:
-                            // subtract 10 health; break;
-                        // case 2:
-                            // subtract 30 health; break;
-                        // case 3:
-                            // subtract 100 health; break;
-                
-                    // if buu.health <= 0
-                        // buu.health = 0; buu.isDead = true;
-                        // animate buu's death
-                    // else
-                        // animate buu hit
-                
-                firstLevel.finalBoss.isDead = true; // kill buu
-                NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
-                [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
-                [firstLevel.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate deaths
-                
-            }else if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball2"]) {
-                
-                // handle collision
-                firstLevel.finalBoss.isDead = true;
-                
-                // change texture in some other way
-                NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
-                [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
-                [firstLevel.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"];
-                
+                    }
+                    
+                }else if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball2"]) {
+                    
+                    // handle collision
+                    firstLevel.finalBoss.isDead = true;
+                    
+                    // change texture in some other way
+                    NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
+                    [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
+                    [firstLevel.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"];
+                    
+                }
             }
         }
     }

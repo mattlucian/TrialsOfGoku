@@ -13,7 +13,6 @@
 
 @property (nonatomic) NSInteger ball_size;
 
--(void)launchAtVelocity:(NSInteger)velocity;
 -(NSArray*)setSizeAndShow:(NSInteger)newSize inDirection:(NSString*)direction;
 -(NSArray*)getFrames:(NSString*)animationKey;
 -(void)performSetupFor:(float)difference atVelocity:(NSInteger)velocity inRelationTo:(Goku*)goku;

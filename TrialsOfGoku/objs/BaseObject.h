@@ -20,6 +20,7 @@
 @property (nonatomic) NSInteger health;
 
 @property (nonatomic) BOOL isActivated;
+@property (nonatomic) BOOL isHit;
 
 @property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic) BOOL isDead;
