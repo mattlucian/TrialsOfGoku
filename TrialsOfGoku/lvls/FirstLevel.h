@@ -12,8 +12,10 @@
 #import "SafeObstacle.h"
 #import "Cell.h"
 #import "Buu.h"
+#import "Goku.h"
 
-@interface FirstLevel : NSObject
+@class Goku;
+@interface FirstLevel : NSObject <GokuDelegate>
 
 @property (nonatomic) NSInteger levelRange;
 @property (nonatomic) NSInteger currentLevelLocation;
@@ -27,9 +29,10 @@
 
 @property (nonatomic) SKSpriteNode* background1;
 @property (nonatomic) SKSpriteNode* background2;
+@property (nonatomic) BOOL bgIsMoving;
 
 @property (nonatomic) Buu* finalBoss;
-
+@property (nonatomic) Goku* goku;
 
 -(void)runLevelFor:(SKScene*)scene;
 -(void)setUpLevelForScene:(SKScene*)scene;

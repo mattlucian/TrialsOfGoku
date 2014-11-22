@@ -8,8 +8,11 @@
 
 #import "FirstLevel.h"
 
-@implementation FirstLevel
 
+
+@implementation FirstLevel
+{    
+}
 
 - (instancetype)init
 {
@@ -17,7 +20,15 @@
     if (self) {
         self.levelRange = 20;
         self.currentLevelLocation = 0;
-        self.alreadySpawned = false;
+        
+        self.background1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background1.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds]) , CGRectGetMidX([[UIScreen mainScreen] bounds]));
+        self.background2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background2.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds])+self.background2.frame.size.width , CGRectGetMidX([[UIScreen mainScreen] bounds]));
+        
+        self.goku = [[Goku alloc] init];
+        self.goku = [self.goku setUpGoku];
+        self.goku.delegate = self;
         
         // TODO:
             // Create minion objects
@@ -34,6 +45,47 @@
     return self;
 }
 
+-(void)moveBackground:(BOOL)isMoving{
+
+    if(isMoving){
+        self.bgIsMoving = YES;
+        
+        // updates bg's position if they are currently on the screen
+        if(self.background1 != nil)
+            self.background1.position = CGPointMake(self.background1.position.x-self.goku.velocity.x,self.background1.position.y);
+        
+        if(self.background2 != nil)
+            self.background2.position = CGPointMake(self.background2.position.x-self.goku.velocity.x,self.background2.position.y);
+        
+        // if goku is traveling right
+        if(self.goku.velocity.x > 0){
+            if((self.background1.position.x+(self.background1.size.width/2)) < 0){ // reset the background to the begining
+                self.background1.position = CGPointMake((self.background2.position.x+(self.background2.size.width)),self.background1.position.y);
+                self.currentLevelLocation += 1;
+                //myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
+            }
+            if((self.background2.position.x+(self.background2.size.width/2)) < 0){
+                self.background2.position = CGPointMake((self.background1.position.x+(self.background1.size.width)),self.background2.position.y);
+                self.currentLevelLocation += 1;
+                // myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
+            }
+        }else{ // else he's traveling left
+            if((self.background1.position.x-(self.background1.size.width/2)) > [[UIScreen mainScreen] bounds].size.width){
+                self.background1.position = CGPointMake((self.background2.position.x-(self.background2.size.width)),self.background1.position.y);
+                self.currentLevelLocation -= 1;
+                //myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
+            }
+            if((self.background2.position.x-(self.background2.size.width/2)) > [[UIScreen mainScreen] bounds].size.width){
+                self.background2.position = CGPointMake((self.background1.position.x-(self.background1.size.width)),self.background2.position.y);
+                self.currentLevelLocation -= 1;
+                //myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
+            }
+        }
+    }else{
+        self.bgIsMoving = NO;
+    }
+    
+}
 
 -(void)setUpLevelForScene:(SKScene *)scene{
     
@@ -73,6 +125,31 @@
         default:
             break;
     }
+    
+    
+    [self runMovement];
+    
+    
+    
+}
+-(void)runMovement{
+    
+
+    // goku move
+    [self.goku moveGoku];
+    
+    // move backgrounds
+    
+    // move minion1
+    // move minion2
+    // move minion3
+    // move minion4
+    // move minion5
+    
+    // move buu
+    
+    
+    
 }
 
 @end

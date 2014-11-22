@@ -11,10 +11,14 @@
 #import "BaseObject.h"
 #import "Globals.h"
 
+@protocol GokuDelegate;
+@class FirstLevel;
+
 
 @interface  Goku : BaseObject
 
 @end
+
 
 @interface Goku ()
 
@@ -23,11 +27,16 @@
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
 
+@property (nonatomic,strong) id <GokuDelegate> delegate;
+
+
 @property (nonatomic) BOOL stillCharging;
 @property (nonatomic) NSInteger speedLimit;
 
 // normal = 0, ss1 = 1, ss3 = 2, ss4 = 3
 @property (nonatomic) NSInteger transformationLevel;
+
+
 
 @property (nonatomic) NSInteger chi;
 
@@ -40,3 +49,9 @@
 -(void)moveGoku;
 
 @end
+
+@protocol GokuDelegate <NSObject>
+-(void)moveBackground:(BOOL)isMoving;
+@end
+
+

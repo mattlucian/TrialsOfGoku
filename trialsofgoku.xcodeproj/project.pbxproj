@@ -15,7 +15,6 @@
 		C90F046919F8A51C00DF49CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90F046719F8A51C00DF49CA /* LaunchScreen.xib */; };
 		C90F047519F8A51C00DF49CA /* TrialsOfGokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F047419F8A51C00DF49CA /* TrialsOfGokuTests.m */; };
 		C90F048C19F8A53700DF49CA /* misc.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90F048519F8A53700DF49CA /* misc.atlas */; };
-		C90F048D19F8A53700DF49CA /* ui.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C90F048619F8A53700DF49CA /* ui.atlas */; };
 		C90F049219F8A56200DF49CA /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F048F19F8A56200DF49CA /* GameScene.m */; };
 		C90F049319F8A56200DF49CA /* Goku.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F049119F8A56200DF49CA /* Goku.m */; };
 		C93F59611A17EC7A00C06817 /* buu.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F59591A17EC7A00C06817 /* buu.atlas */; };
@@ -61,7 +60,6 @@
 		C90F047319F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90F047419F8A51C00DF49CA /* TrialsOfGokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrialsOfGokuTests.m; sourceTree = "<group>"; };
 		C90F048519F8A53700DF49CA /* misc.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = misc.atlas; sourceTree = "<group>"; };
-		C90F048619F8A53700DF49CA /* ui.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ui.atlas; sourceTree = "<group>"; };
 		C90F048E19F8A56200DF49CA /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		C90F048F19F8A56200DF49CA /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		C90F049019F8A56200DF49CA /* Goku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Goku.h; path = objs/Goku.h; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				C93F59581A17EC7A00C06817 /* enemies */,
 				C93F595C1A17EC7A00C06817 /* goku */,
 				C90F048519F8A53700DF49CA /* misc.atlas */,
-				C90F048619F8A53700DF49CA /* ui.atlas */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -374,7 +371,6 @@
 				C93F59661A17EC7A00C06817 /* goku_ss3.atlas in Resources */,
 				C93F59631A17EC7A00C06817 /* minions.atlas in Resources */,
 				C90F046419F8A51C00DF49CA /* Main.storyboard in Resources */,
-				C90F048D19F8A53700DF49CA /* ui.atlas in Resources */,
 				C93F59641A17EC7A00C06817 /* goku_norm.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,6 @@
 
 #import "GameScene.h"
 #import "Globals.h"
-#import "Goku.h"
 #import "PowerBall.h"
 #import "Buu.h"
 #import "Minion.h"
@@ -17,7 +16,7 @@
 
 @implementation GameScene
 {
-    Goku * goku;            // hero object
+    //Goku * goku;            // hero object
     PowerBall* ball;        // powerball 1
     PowerBall* ball2;       // poewrball 2
     SKSpriteNode* bg1;      // background 1
@@ -25,6 +24,8 @@
     Buu* buu;               // Buu enemy
     Minion* minion;         // Minion object
                             // possibly add a second minion object
+    
+    
     FirstLevel* firstLevel;
     
     
@@ -42,7 +43,7 @@
 #pragma mark Main Update Method
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    [goku moveGoku];
+    //[goku moveGoku];
     [self moveBall];
     [self moveEnemies];
     [firstLevel runLevelFor:self];
@@ -68,22 +69,19 @@
         firstLevel = [[FirstLevel alloc] init];
         
         // create our goku object and set him up
-        goku = [[Goku alloc] init];
-        goku = [goku setUpGoku];
+       // goku = [[Goku alloc] init];
+       // goku = [goku setUpGoku];
         
-        // create our background images and set them up
+    
         
-        bg1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
-        bg1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        bg2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
-        bg2.position = CGPointMake(CGRectGetMidX(self.frame)+bg2.frame.size.width, CGRectGetMidY(self.frame)); // spawn off to side
-        
-        [self addChild:bg1]; // add to screen in this order..
-        [self addChild:bg2];
+        //[self addChild:bg1]; // add to screen in this order..
+        //[self addChild:bg2];
         
         [firstLevel setUpLevelForScene:self];
         
-        [self addChild:goku];
+        [self addChild:firstLevel.background1];
+        [self addChild:firstLevel.background2];
+        [self addChild:firstLevel.goku];
         
         // debugging
         myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -100,21 +98,21 @@
 }
 -(void)setUpPowerBalls:(float)difference{
     NSInteger ballVelocity = 0;
-    if([goku.lastDirection isEqualToString:@"right"]){
-        currentFrames= [goku getAnimationFrames:@"goku_norm_ball_release_right"];
+    if([firstLevel.goku.lastDirection isEqualToString:@"right"]){
+        currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_release_right"];
         ballVelocity = 4;
-        [goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
+        [firstLevel.goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
     }else{
-        currentFrames= [goku getAnimationFrames:@"goku_norm_ball_release_left"];
+        currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_release_left"];
         ballVelocity = -4;
-        [goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
+        [firstLevel.goku runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
     }
 
     if(ball == nil){
         ball = [[PowerBall alloc] init];
         NSArray* frames = [ball getFrames:@"powerball_small_left"]; // filler ball
         ball = [PowerBall spriteNodeWithTexture:frames[0]];
-        [ball performSetupFor:difference atVelocity:ballVelocity inRelationTo:goku];
+        [ball performSetupFor:difference atVelocity:ballVelocity inRelationTo:firstLevel.goku];
         ball.name = @"ball1";
         [self addChild:ball];
         
@@ -122,7 +120,7 @@
         ball2 = [[PowerBall alloc] init];
         NSArray* frames = [ball2 getFrames:@"powerball_small_left"]; // filler ball
         ball2 = [PowerBall spriteNodeWithTexture:frames[0]];
-        [ball2 performSetupFor:difference atVelocity:ballVelocity inRelationTo:goku];
+        [ball2 performSetupFor:difference atVelocity:ballVelocity inRelationTo:firstLevel.goku];
         ball2.name = @"ball2";
         [self addChild:ball2];
     }
@@ -146,49 +144,49 @@
 -(void)handleTimer: (NSTimer *) timer{
     // still presssed down, start charging goku
     if(ball == nil || ball2 == nil){
-        [goku haltVelocity:@"X"];
-        if([goku.lastDirection isEqualToString:@"right"]){
-            currentFrames= [goku getAnimationFrames:@"goku_norm_ball_charge_right"];
-            [goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
-        }else if([goku.lastDirection isEqualToString:@"left"]){
-            currentFrames= [goku getAnimationFrames:@"goku_norm_ball_charge_left"];
-            [goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+        [firstLevel.goku haltVelocity:@"X"];
+        if([firstLevel.goku.lastDirection isEqualToString:@"right"]){
+            currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
+            [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+        }else if([firstLevel.goku.lastDirection isEqualToString:@"left"]){
+            currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
+            [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
         }
     }
 }
 -(void)handleTapMovementAtLocation:(CGPoint)location inDirection:(NSInteger)direction{
-    if(location.x > (goku.position.x+30)){
-        [goku increaseVelocity:@"X" addVelocity:direction];
-        currentFrames = [goku getAnimationFrames:@"goku_norm_walk_right"];
+    if(location.x > (firstLevel.goku.position.x+30)){
+        [firstLevel.goku increaseVelocity:@"X" addVelocity:direction];
+        currentFrames = [firstLevel.goku getAnimationFrames:@"goku_norm_walk_right"];
     }
-    else if(location.x < (goku.position.x-30)){
-        [goku increaseVelocity:@"X" addVelocity:direction];
-        currentFrames = [goku getAnimationFrames:@"goku_norm_walk_left"];
+    else if(location.x < (firstLevel.goku.position.x-30)){
+        [firstLevel.goku increaseVelocity:@"X" addVelocity:direction];
+        currentFrames = [firstLevel.goku getAnimationFrames:@"goku_norm_walk_left"];
     }
     
-    if(goku.velocity.x > 0){
-        if([goku.lastDirection isEqualToString:@"left"]){
-            [goku haltVelocity:@"x"];
+    if(firstLevel.goku.velocity.x > 0){
+        if([firstLevel.goku.lastDirection isEqualToString:@"left"]){
+            [firstLevel.goku haltVelocity:@"x"];
         }
     }
-    else if(goku.velocity.x < 0){
-        if([goku.lastDirection isEqualToString:@"right"]){
-            [goku haltVelocity:@"x"];
+    else if(firstLevel.goku.velocity.x < 0){
+        if([firstLevel.goku.lastDirection isEqualToString:@"right"]){
+            [firstLevel.goku haltVelocity:@"x"];
         }
     }
     
     // if tap was a jump
-    if(location.y > goku.position.y+30 && goku.jumpCount < 2){
-        goku.jumpCount++;
-        goku.velocity = CGPointMake(goku.velocity.x,goku.velocity.y+6);
+    if(location.y > firstLevel.goku.position.y+30 && firstLevel.goku.jumpCount < 2){
+        firstLevel.goku.jumpCount++;
+        firstLevel.goku.velocity = CGPointMake(firstLevel.goku.velocity.x,firstLevel.goku.velocity.y+6);
         if(direction > 0){
-            currentFrames = [goku getAnimationFrames:@"goku_norm_jump_right"];
+            currentFrames = [firstLevel.goku getAnimationFrames:@"goku_norm_jump_right"];
         }else if(direction < 0){
-            currentFrames = [goku getAnimationFrames:@"goku_norm_jump_left"];
+            currentFrames = [firstLevel.goku getAnimationFrames:@"goku_norm_jump_left"];
         }
     }
     // animate whatever we decided on
-    [goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+    [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
@@ -207,11 +205,11 @@
         NSInteger direction = 0; // init direction
 
         // set direction
-        if(location.x > goku.position.x +10){
-            goku.lastDirection = @"right";
+        if(location.x > firstLevel.goku.position.x +10){
+            firstLevel.goku.lastDirection = @"right";
             direction = 1;
         }else{
-            goku.lastDirection = @"left";
+            firstLevel.goku.lastDirection = @"left";
             direction = -1;
         }
         
@@ -252,46 +250,14 @@
 }
 -(void)moveBackground{
     
-    bgisMoving = true;
-    
-    // updates bg's position if they are currently on the screen
-    if(bg1 != nil)
-        bg1.position = CGPointMake(bg1.position.x-goku.velocity.x,bg1.position.y);
-    
-    if(bg2 != nil)
-        bg2.position = CGPointMake(bg2.position.x-goku.velocity.x,bg2.position.y);
-    
-    // if goku is traveling right
-    if(goku.velocity.x > 0){
-        if((bg1.position.x+(bg1.size.width/2)) < 0){ // reset the background to the begining
-            bg1.position = CGPointMake((bg2.position.x+(bg2.size.width)),bg1.position.y);
-            firstLevel.currentLevelLocation += 1;
-            myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
-        }
-        if((bg2.position.x+(bg2.size.width/2)) < 0){
-            bg2.position = CGPointMake((bg1.position.x+(bg1.size.width)),bg2.position.y);
-            firstLevel.currentLevelLocation += 1;
-            myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
-        }
-    }else{ // else he's traveling left
-        if((bg1.position.x-(bg1.size.width/2)) > self.view.bounds.size.width){
-            bg1.position = CGPointMake((bg2.position.x-(bg2.size.width)),bg1.position.y);
-            firstLevel.currentLevelLocation -= 1;
-            myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
-        }
-        if((bg2.position.x-(bg2.size.width/2)) > self.view.bounds.size.width){
-            bg2.position = CGPointMake((bg1.position.x-(bg1.size.width)),bg2.position.y);
-            firstLevel.currentLevelLocation -= 1;
-            myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
-        }
-    }
 }
+
 -(void)moveEnemies{
     if(firstLevel.finalBoss != nil){                 // all final bosses
         if(firstLevel.finalBoss.isActivated){
             if(!firstLevel.finalBoss.isDead){ // not dead
                 if(!firstLevel.finalBoss.isHit){ // not hit
-                    if(firstLevel.finalBoss.position.x > goku.position.x){ // buu to the right
+                    if(firstLevel.finalBoss.position.x > firstLevel.goku.position.x){ // buu to the right
                         if([firstLevel.finalBoss.lastDirection isEqualToString:@"right"]){
                             firstLevel.finalBoss.velocity = CGPointMake(-1,firstLevel.finalBoss.velocity.y);
                             firstLevel.finalBoss.lastDirection = @"left";
@@ -302,20 +268,20 @@
                             firstLevel.finalBoss.lastDirection = @"right";
                         }
                     }
-                    if(bgisMoving)
-                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
+                    if(firstLevel.bgIsMoving)
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- firstLevel.goku.velocity.x,firstLevel.finalBoss.position.y);
                     else
-                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(firstLevel.goku.velocity.x/50),firstLevel.finalBoss.position.y);
                 }else{ // is hit
                     if(bgisMoving)
-                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x-goku.velocity.x,firstLevel.finalBoss.position.y);
+                        firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x-firstLevel.goku.velocity.x,firstLevel.finalBoss.position.y);
                     else
                         firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x,firstLevel.finalBoss.position.y);
                 }
                 
             }else{
                 if(bgisMoving){
-                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x - goku.velocity.x, firstLevel.finalBoss.position.y);
+                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x - firstLevel.goku.velocity.x, firstLevel.finalBoss.position.y);
                 }
             }
         }
@@ -324,7 +290,7 @@
     if(minion != nil){              // MINION
         if(minion.isActivated){
             if(!minion.isDead){
-                if(minion.position.x > goku.position.x){ // minion to the right
+                if(minion.position.x > firstLevel.goku.position.x){ // minion to the right
                     if([minion.lastDirection isEqualToString:@"right"]){
                         minion.velocity = CGPointMake(-1,minion.velocity.y);
                         minion.lastDirection = @"left";
@@ -335,10 +301,10 @@
                         minion.lastDirection = @"right";
                     }
                 }
-                if(bgisMoving)
-                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- goku.velocity.x,firstLevel.finalBoss.position.y);
+                if(firstLevel.bgIsMoving)
+                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x- firstLevel.goku.velocity.x,firstLevel.finalBoss.position.y);
                 else
-                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(goku.velocity.x/50),firstLevel.finalBoss.position.y);
+                    firstLevel.finalBoss.position = CGPointMake(firstLevel.finalBoss.position.x+firstLevel.finalBoss.velocity.x-(firstLevel.goku.velocity.x/50),firstLevel.finalBoss.position.y);
             }
         }
     }
