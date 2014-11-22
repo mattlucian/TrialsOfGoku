@@ -7,7 +7,6 @@
 //
 
 #import "Goku.h"
-#import "Globals.h"
 
 @implementation Goku
 

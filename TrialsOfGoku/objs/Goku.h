@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "BaseObject.h"
+#import "Globals.h"
+
 
 @interface  Goku : BaseObject
 
