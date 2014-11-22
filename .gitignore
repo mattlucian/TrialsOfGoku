@@ -1,0 +1,11 @@
+*.DS_Store
+
+*.xcbkptlist
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+trialsofgoku.xcodeproj/project.xcworkspace/xcuserdata/*
+project.xcworkspace/
+xcuserdata/
