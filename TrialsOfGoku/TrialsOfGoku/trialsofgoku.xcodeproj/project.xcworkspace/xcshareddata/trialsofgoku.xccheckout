@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E6D31E64-315A-4C75-A104-7CB5D3FC3CE1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>trialsofgoku</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3C8275E59AB6A4129748DB7105846BA73B45F4D4</key>
+		<string>https://github.com/mattlucian/TrialsOfGoku.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trialsofgoku.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3C8275E59AB6A4129748DB7105846BA73B45F4D4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mattlucian/TrialsOfGoku.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3C8275E59AB6A4129748DB7105846BA73B45F4D4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3C8275E59AB6A4129748DB7105846BA73B45F4D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TrialsOfGoku</string>
+		</dict>
+	</array>
+</dict>
+</plist>
