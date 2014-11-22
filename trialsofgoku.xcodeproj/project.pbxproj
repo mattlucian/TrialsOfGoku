@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C61837F1A20456400668D99 /* DamnThis in Resources */ = {isa = PBXBuildFile; fileRef = 2C61837E1A20456400668D99 /* DamnThis */; };
 		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
 		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
 		C90F046119F8A51C00DF49CA /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F046019F8A51C00DF49CA /* GameViewController.m */; };
@@ -48,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C61837E1A20456400668D99 /* DamnThis */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DamnThis; sourceTree = "<group>"; };
 		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90F045519F8A51C00DF49CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				C90F046719F8A51C00DF49CA /* LaunchScreen.xib */,
 				C90F045319F8A51C00DF49CA /* Supporting Files */,
 				C9A838231A1823E200EF5EE5 /* Globals.h */,
-				2C61837E1A20456400668D99 /* DamnThis */,
 			);
 			path = TrialsOfGoku;
 			sourceTree = "<group>";
@@ -367,7 +364,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C61837F1A20456400668D99 /* DamnThis in Resources */,
 				C93F59671A17EC7A00C06817 /* goku_ss4.atlas in Resources */,
 				C90F046919F8A51C00DF49CA /* LaunchScreen.xib in Resources */,
 				C90F046619F8A51C00DF49CA /* Images.xcassets in Resources */,
