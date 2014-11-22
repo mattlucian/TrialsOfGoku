@@ -34,7 +34,7 @@
 #pragma mark Main Update Method
 -(void)update:(CFTimeInterval)currentTime {
     
-    [self moveEnemies];
+    //[self moveEnemies];
     
     // if first level
     
@@ -47,13 +47,6 @@
 #pragma mark Set-Up Methods
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        // init variables
-        //ball = nil;
-        //ball2 = nil;
-        //buu = nil;
-        //minion = nil;
-        levelScore = 0;
-        
         self.physicsWorld.gravity = CGVectorMake(0,0); // turn off gravities
         self.physicsWorld.contactDelegate = self; // set delegate for collision detection
         
@@ -64,17 +57,7 @@
         [self addChild:firstLevel.background1];
         [self addChild:firstLevel.background2];
         [self addChild:firstLevel.goku];
-        
-        // debugging
-        myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = [NSString stringWithFormat:@"%ld",(long)firstLevel.currentLevelLocation];
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
-
+    
     }
     return self;
 }
