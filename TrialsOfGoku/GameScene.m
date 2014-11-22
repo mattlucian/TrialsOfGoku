@@ -15,8 +15,6 @@
 #import "FirstLevel.h"
 
 
-#define GRAVITY .25
-
 @implementation GameScene
 {
     Goku * goku;            // hero object
@@ -44,7 +42,7 @@
 #pragma mark Main Update Method
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    [self moveGoku];
+    [goku moveGoku];
     [self moveBall];
     [self moveEnemies];
     [firstLevel runLevelFor:self];

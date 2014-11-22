@@ -10,6 +10,9 @@
 #define trialsofgoku_Globals_h
 
 
+#define GRAVITY .25
+
+
 static const uint32_t GOKU_CATEGORY =  0x1 << 0;
 static const uint32_t POWERBALL_CATEGORY =  0x1 << 1;
 static const uint32_t ENEMY_CATEGORY =  0x1 << 2;

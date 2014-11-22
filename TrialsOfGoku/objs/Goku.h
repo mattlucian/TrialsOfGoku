@@ -37,5 +37,6 @@
 -(NSArray *)getAnimationFrames:(NSString*)gokuAnimationKey;
 -(void)performBlast:(NSTimer *)timer;
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity;
+-(void)moveGoku;
 
 @end
