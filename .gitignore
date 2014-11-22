@@ -16,6 +16,8 @@ profile
 **/.xccurrentversion
 **/Breakpoints.xcbkptlist
 *.xcbkptlist
+TrialsOfGoku.xcodeproj/xcuserdata/Matt.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
 
 # OSX
 .DS_Store

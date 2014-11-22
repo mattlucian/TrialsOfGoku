@@ -18,7 +18,6 @@
 {
     FirstLevel* firstLevel;
     
-    
     SKLabelNode *myLabel;   // debugging
     
     NSInteger levelScore;   // keeps track of level score
