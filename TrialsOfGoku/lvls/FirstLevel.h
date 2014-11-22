@@ -36,5 +36,7 @@
 
 -(void)runLevelFor:(SKScene*)scene;
 -(void)setUpLevelForScene:(SKScene*)scene;
+-(void)handleCollisionsWithContact:(SKPhysicsContact *)contact;
+
 
 @end

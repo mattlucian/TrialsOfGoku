@@ -62,7 +62,7 @@
     self.health = 200;
     self.attackPower = 5;
     
-    self.name = @"buu";
+    self.name = @"boss";
     self.isDead = false;
     self.lastDirection = @"right"; // default because they spawn on right
 }

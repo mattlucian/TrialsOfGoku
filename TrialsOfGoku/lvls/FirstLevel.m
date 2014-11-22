@@ -11,7 +11,8 @@
 
 
 @implementation FirstLevel
-{    
+{
+    NSTimer *enemyHitTimer; // pauses the enemy when hit
 }
 
 - (instancetype)init
@@ -43,6 +44,68 @@
     
     }
     return self;
+}
+
+-(void)handleCollisionsWithContact:(SKPhysicsContact *)contact
+{
+    if(self.finalBoss != nil) {
+        if(self.finalBoss.isActivated){
+            if(!self.finalBoss.isDead){
+                NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+                if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball1"]) {
+                    switch ([self.goku getBallSize:1]) {
+                        case 1:
+                            self.finalBoss.health -= 10;
+                            break;
+                        case 2:
+                            self.finalBoss.health -= 20;
+                            break;
+                        case 3:
+                            self.finalBoss.health -= 30;
+                            break;
+                    }
+                    if(self.finalBoss.health < 0){
+                        self.finalBoss.isDead = true;
+                        NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
+                        [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
+                        [self.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
+                    }else{
+                        // animate a hit
+                        self.finalBoss.isHit = true;
+                        
+                        enemyHitTimer= [NSTimer scheduledTimerWithTimeInterval: 1
+                                                                        target:self.finalBoss
+                                                                      selector:@selector(handleHit:)
+                                                                      userInfo:nil
+                                                                       repeats:NO];
+                        
+                        NSMutableArray* hitFrame = [[NSMutableArray alloc] init];
+                        [hitFrame insertObject:[SKTexture textureWithImageNamed:@"buu_hitfrom_right_3"]  atIndex:0];
+                        [self.finalBoss runCountedAnimation:hitFrame withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"];
+                        
+                    }
+                    
+                }else if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball2"]) {
+                    
+                    // handle collision
+                    self.finalBoss.isDead = true;
+                    
+                    // change texture in some other way
+                    NSMutableArray* deadFrame = [[NSMutableArray alloc] init];
+                    [deadFrame insertObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]  atIndex:0];
+                    [self.finalBoss runAnimation:deadFrame atFrequency:.2f withKey:@"final_boss_animation_key"];
+                    
+                }
+            }
+        }
+    }
+    
+    // minion collision detection
+}
+
+-(void)sendChild:(id)childNode
+{
+    
 }
 
 -(void)moveBackground:(BOOL)isMoving{
@@ -113,6 +176,7 @@
     
     switch (self.currentLevelLocation) {  // activates enemies at necessary times
         case 1:
+            // minion 2
             if(!self.finalBoss.isActivated){
                 self.finalBoss.isActivated = true;
             }
@@ -128,7 +192,7 @@
     
     
     [self runMovement];
-    
+    [self.goku moveBallAlongScene:scene];
     
     
 }
@@ -138,14 +202,12 @@
     // goku move
     [self.goku moveGoku];
     
-    // move backgrounds
+    [self.minion1 moveMinionInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    [self.minion2 moveMinionInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    [self.minion3 moveMinionInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    [self.minion4 moveMinionInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
     
-    // move minion1
-    // move minion2
-    // move minion3
-    // move minion4
-    // move minion5
-    
+//    [self.finalBoss]
     // move buu
     
     

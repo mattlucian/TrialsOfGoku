@@ -33,6 +33,7 @@
 		C9A838351A186D2100EF5EE5 /* FirstLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838341A186D2100EF5EE5 /* FirstLevel.m */; };
 		C9C12A491A12648D00629E0C /* PowerBall.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C12A481A12648D00629E0C /* PowerBall.m */; };
 		C9DB4B471A192D4100EDB976 /* SecondLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB4B461A192D4100EDB976 /* SecondLevel.m */; };
+		C9DDA5851A2105420039769D /* BaseLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA5841A2105420039769D /* BaseLevel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		C9C12A481A12648D00629E0C /* PowerBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerBall.m; path = objs/PowerBall.m; sourceTree = "<group>"; };
 		C9DB4B451A192D4100EDB976 /* SecondLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondLevel.h; path = lvls/SecondLevel.h; sourceTree = "<group>"; };
 		C9DB4B461A192D4100EDB976 /* SecondLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondLevel.m; path = lvls/SecondLevel.m; sourceTree = "<group>"; };
+		C9DDA5831A2105420039769D /* BaseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLevel.h; path = lvls/BaseLevel.h; sourceTree = "<group>"; };
+		C9DDA5841A2105420039769D /* BaseLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseLevel.m; path = lvls/BaseLevel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +279,8 @@
 				C9A838341A186D2100EF5EE5 /* FirstLevel.m */,
 				C9DB4B451A192D4100EDB976 /* SecondLevel.h */,
 				C9DB4B461A192D4100EDB976 /* SecondLevel.m */,
+				C9DDA5831A2105420039769D /* BaseLevel.h */,
+				C9DDA5841A2105420039769D /* BaseLevel.m */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				C9DB4B471A192D4100EDB976 /* SecondLevel.m in Sources */,
 				C90F049219F8A56200DF49CA /* GameScene.m in Sources */,
 				C94A091F1A15B94000720E8C /* Buu.m in Sources */,
+				C9DDA5851A2105420039769D /* BaseLevel.m in Sources */,
 				C9A838351A186D2100EF5EE5 /* FirstLevel.m in Sources */,
 				C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */,
 				C9A838261A183F5200EF5EE5 /* Minion.m in Sources */,

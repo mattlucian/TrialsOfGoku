@@ -47,11 +47,16 @@
 -(void)performBlast:(NSTimer *)timer;
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity;
 -(void)moveGoku;
+-(int)getBallSize:(int)whichBall;
+-(BOOL)oneBallIsNil;
+-(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
+-(void)moveBallAlongScene:(SKScene*)scene;
 
 @end
 
 @protocol GokuDelegate <NSObject>
 -(void)moveBackground:(BOOL)isMoving;
+-(void)sendChild:(id)childNode;
 @end
 
 

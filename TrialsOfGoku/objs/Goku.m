@@ -7,9 +7,12 @@
 //
 
 #import "Goku.h"
+#import "PowerBall.h"
 
 @implementation Goku
 {
+    PowerBall* ball;        // powerball 1
+    PowerBall* ball2;       // poewrball 2
 }
 
 
@@ -21,6 +24,99 @@
     }
     return self;
 }
+
+
+-(void)moveBallAlongScene:(SKScene*)scene{
+    // moves power balls if they are currently on screen.
+    if(ball != nil){
+        ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
+        if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
+            ball = nil; // set powerballs to nil when they go off the screen
+        }
+    }
+    if(ball2 != nil){
+        ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
+        if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
+            ball2 = nil;
+        }
+    }
+}
+
+-(BOOL)oneBallIsNil{
+    if(ball == nil || ball2 == nil)
+        return true;
+    else
+        return false;
+}
+
+-(int)getBallSize:(int)whichBall{
+    switch (whichBall) {
+        case 1:
+            if(ball != nil){
+                switch (ball.ball_size) {
+                    case 1:
+                        return 1;
+                        break;
+                    case 2:
+                        return 2;
+                        break;
+                    case 3:
+                        return 3;
+                        break;
+                }
+            }
+            break;
+            
+        case 2:
+            if(ball2 != nil){
+                switch (ball2.ball_size) {
+                    case 1:
+                        return 1;
+                        break;
+                    case 2:
+                        return 2;
+                        break;
+                    case 3:
+                        return 3;
+                        break;
+                }
+            }
+            break;
+    }
+    return -1;
+}
+
+-(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene{
+    NSArray * currentFrames;
+    NSInteger ballVelocity = 0;
+    if([self.lastDirection isEqualToString:@"right"]){
+        currentFrames= [self getAnimationFrames:@"goku_norm_ball_release_right"];
+        ballVelocity = 4;
+        [self runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
+    }else{
+        currentFrames= [self getAnimationFrames:@"goku_norm_ball_release_left"];
+        ballVelocity = -4;
+        [self runCountedAnimation:currentFrames withCount:1 atFrequency:.5f withKey:@"goku_animation_key"];
+    }
+    
+    if(ball == nil){
+        ball = [[PowerBall alloc] init];
+        NSArray* frames = [ball getFrames:@"powerball_small_left"]; // filler ball
+        ball = [PowerBall spriteNodeWithTexture:frames[0]];
+        [ball performSetupFor:difference atVelocity:ballVelocity inRelationTo:self];
+        ball.name = @"ball1";
+        [scene addChild:ball];
+        
+    }else if(ball2 == nil){
+        ball2 = [[PowerBall alloc] init];
+        NSArray* frames = [ball2 getFrames:@"powerball_small_left"]; // filler ball
+        ball2 = [PowerBall spriteNodeWithTexture:frames[0]];
+        [ball2 performSetupFor:difference atVelocity:ballVelocity inRelationTo:self];
+        ball2.name = @"ball2";
+        [scene addChild:ball2];
+    }
+}
+
 
 // single image, init with image and set frames
 -(Goku*)createAnimatedGoku:(NSString *)gokuAnimationKey{
