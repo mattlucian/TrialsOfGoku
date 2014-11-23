@@ -1,5 +1,4 @@
 # Xcode
-build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -11,7 +10,6 @@ build/*
 *.xcworkspace
 !default.xcworkspace
 xcuserdata
-profile
 *.moved-aside
 **/.xccurrentversion
 **/Breakpoints.xcbkptlist
