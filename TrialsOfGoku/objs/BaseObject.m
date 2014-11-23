@@ -12,6 +12,7 @@
 
 @implementation BaseObject
 {
+    SKSpriteNode* healthBar;
     NSTimer* hitTimer;
 }
 
