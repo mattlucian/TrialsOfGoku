@@ -49,7 +49,7 @@
 -(int)getBallSize:(int)whichBall;
 -(BOOL)oneBallIsNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
--(void)spawnAndMoveBallsAlongScene:(SKScene*)scene withSpawnFlag:(BOOL)timeToSpawn;
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene;
 
 @end
 

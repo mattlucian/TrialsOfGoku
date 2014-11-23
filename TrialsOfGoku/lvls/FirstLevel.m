@@ -38,6 +38,10 @@
         #pragma mark Set Up Minions
         self.minion1 = [[Minion alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
+        self.minion2 = nil;
+        self.minion3 = nil;
+        self.minion4 = nil;
+
         // add remaining minions
         
         #pragma mark Set Up Buu
@@ -80,16 +84,20 @@
     }
     
     
-    [self.goku spawnAndMoveBallsAlongScene:scene withSpawnFlag:ballSpawnFlag];
+    [self.goku spawnAndMoveBallsAlongScene:scene];
     [self.goku moveGoku]; // also moves background
     
     // Only 4 minions
-    [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
-    [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
-    [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
-    [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
-    
-    [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    if(self.minion1 != nil)
+        [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    if(self.minion2 != nil)
+        [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    if(self.minion3 != nil)
+        [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    if(self.minion4 != nil)
+        [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+    if(self.finalBoss != nil)
+        [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
 }
 
 -(void)handleBossCollisions:(SKPhysicsContact *)contact

@@ -26,25 +26,21 @@
 }
 
 
--(void)spawnAndMoveBallsAlongScene:(SKScene*)scene withSpawnFlag:(BOOL)timeToSpawn{
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene{
     // moves power balls if they are currently on screen.
     
-    if(timeToSpawn){
-        
-        
-        
-    }else{
-        if(ball != nil){
-            ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
-            if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
-                ball = nil; // set powerballs to nil when they go off the screen
-            }
+    if(ball != nil){
+        ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
+        if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
+            [ball removeFromParent];
+            ball = nil; // set powerballs to nil when they go off the screen
         }
-        if(ball2 != nil){
-            ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
-            if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
-                ball2 = nil;
-            }
+    }
+    if(ball2 != nil){
+        ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
+        if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
+            [ball2 removeFromParent];
+            ball2 = nil;
         }
     }
 }

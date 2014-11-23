@@ -12,7 +12,6 @@
 
 @interface Buu : BaseObject
 
--(void)animateHitOrDeath;
 -(Buu*)setUpBuu;
 
 @end

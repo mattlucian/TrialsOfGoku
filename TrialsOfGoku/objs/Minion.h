@@ -13,7 +13,6 @@
 @class Goku;
 @interface Minion : BaseObject
 
--(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency;
 -(Minion*)setUpMinionWithName:(NSString*)name;
 
 @end
