@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goku_splash_sketch.png" translatesAutoresizingMaskIntoConstraints="NO" id="xcM-qW-L2b">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-FV-jzh">
                                 <rect key="frame" x="502" y="217" width="139" height="36"/>
                                 <state key="normal" title="Start" backgroundImage="Button.png">
@@ -51,6 +48,9 @@
                                     <segue destination="ddZ-AN-axw" kind="presentation" modalTransitionStyle="flipHorizontal" id="Ddb-6s-9qo"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goku_splash_sketch.png" translatesAutoresizingMaskIntoConstraints="NO" id="xcM-qW-L2b">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
