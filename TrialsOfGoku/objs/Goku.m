@@ -26,18 +26,25 @@
 }
 
 
--(void)moveBallAlongScene:(SKScene*)scene{
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene withSpawnFlag:(BOOL)timeToSpawn{
     // moves power balls if they are currently on screen.
-    if(ball != nil){
-        ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
-        if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
-            ball = nil; // set powerballs to nil when they go off the screen
+    
+    if(timeToSpawn){
+        
+        
+        
+    }else{
+        if(ball != nil){
+            ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
+            if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
+                ball = nil; // set powerballs to nil when they go off the screen
+            }
         }
-    }
-    if(ball2 != nil){
-        ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
-        if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
-            ball2 = nil;
+        if(ball2 != nil){
+            ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
+            if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
+                ball2 = nil;
+            }
         }
     }
 }
@@ -157,6 +164,7 @@
     temp.physicsBody.contactTestBitMask = ENEMY_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.name = @"goku";
+    temp.typeOfObject = @"goku";
     
     temp.attackPower = 5;
     temp.health = 100;
@@ -287,22 +295,25 @@
 }
 
 -(void)moveGoku{
+    
+    //healthbar position = goku.position.x, goku.position.y + 30;
+    
     if(self.velocity.x > 0){ // updates position with velocity
         if(self.position.x >  225 && [self.lastDirection isEqualToString:@"right"]){
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y); //
-            [self.delegate moveBackground:YES];
+            [self.delegate moveBackground:YES inRelationTo:self];
         }else{
             
-            [self.delegate moveBackground:NO];
+            [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x-.01, self.velocity.y);
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         }
     }else if (self.velocity.x < 0){
         if(self.position.x < 75 && [self.lastDirection isEqualToString:@"left"]){
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
-            [self.delegate moveBackground:YES];
+            [self.delegate moveBackground:YES inRelationTo:self];
         }else{
-            [self.delegate moveBackground:NO];
+            [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x+.01-self.halting_velocity, self.velocity.y);
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         }

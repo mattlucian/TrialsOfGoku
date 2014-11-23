@@ -12,7 +12,7 @@
 
 @interface Buu : BaseObject
 
--(Buu*)createAnimatedBuu:(NSString *)buuAnimationKey;
--(void)setUpBuu;
+-(void)animateHitOrDeath;
+-(Buu*)setUpBuu;
 
 @end

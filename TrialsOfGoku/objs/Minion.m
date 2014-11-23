@@ -21,49 +21,29 @@
     }
     return self;
 }
--(void)setUpMinion{
-    self.position = CGPointMake(200, 175);
-    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-    self.physicsBody.categoryBitMask = ENEMY_CATEGORY;
-    self.physicsBody.affectedByGravity = NO;
-    self.physicsBody.dynamic = YES;
-    self.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
-    self.physicsBody.collisionBitMask = 0;
-    self.inputView.contentMode = UIViewContentModeCenter;
-    self.name = @"minion";
-    self.isDead = false;
-}
-
-#pragma mark Actions
--(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency{
-    
-}
-
--(void)moveMinionInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving
+-(Minion*)setUpMinionWithName:(NSString *)name
 {
-    if(self != nil){              // MINION
-        if(self.isActivated){
-            if(!self.isDead){
-                if(self.position.x > goku.position.x){ // minion to the right
-                    if([self.lastDirection isEqualToString:@"right"]){
-                        self.velocity = CGPointMake(-1,self.velocity.y);
-                        self.lastDirection = @"left";
-                    }
-                }else{ // buu to the left
-                    if([self.lastDirection isEqualToString:@"left"]){
-                        self.velocity = CGPointMake(1,self.velocity.y);
-                        self.lastDirection = @"right";
-                    }
-                }
-                if(bgIsMoving)
-                    self.position = CGPointMake(self.position.x+self.velocity.x- goku.velocity.x,self.position.y);
-                else
-                    self.position = CGPointMake(self.position.x+self.velocity.x-(goku.velocity.x/50),self.position.y);
-            }
-        }
-    }
+    Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"]];
+    temp.position = CGPointMake(-100, -100);
+    temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
+    temp.physicsBody.categoryBitMask = ENEMY_CATEGORY;
+    temp.physicsBody.affectedByGravity = NO;
+    temp.physicsBody.dynamic = YES;
+    temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
+    temp.physicsBody.collisionBitMask = 0;
+    temp.inputView.contentMode = UIViewContentModeCenter;
 
+    temp.name = name;
+    
+    temp.health = 50;
+    temp.attackPower = 5;
+    
+    temp.isDead = false;
+    temp.lastDirection = @"right";
+    temp.typeOfObject = @"minion";
+    return temp;
 }
+
 
 
 @end

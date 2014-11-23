@@ -22,19 +22,10 @@
     return self;
 }
 
--(Buu*)createAnimatedBuu:(NSString *)buuAnimationKey{
-    NSArray * frames = [[NSArray alloc] init];
-    Buu * workingBuu = [[Buu alloc] init];
-    frames = [workingBuu getAnimationFrames:buuAnimationKey];
-    workingBuu = [Buu spriteNodeWithTexture:frames[0] ];
-    return workingBuu;
-}
-
 -(NSArray *)getAnimationFrames:(NSString*)buuAnimationKey{
     NSMutableArray* workingFrames = [[NSMutableArray alloc] init];
  
     SKTextureAtlas *buuAtlas = [SKTextureAtlas atlasNamed:@"buu"];
-
     
     if([buuAnimationKey isEqualToString:@"buu_attack_right"]){
         for (int i=1; i <= 3; i++) {
@@ -46,26 +37,36 @@
         NSString *textureName = [NSString stringWithFormat:@"buu_deadfrom_right"];
         SKTexture *temp = [buuAtlas textureNamed:textureName];
         [workingFrames addObject:temp];
+    } else if([buuAnimationKey isEqualToString:@"buu_walk_right"]){
+        NSString *textureName = [NSString stringWithFormat:@"buu_walk_right_1"];
+        SKTexture *temp = [buuAtlas textureNamed:textureName];
+        [workingFrames addObject:temp];
     }
+    
     return workingFrames;
 }
 
--(void)setUpBuu{
-    self.position = CGPointMake(520, 30); // spawns off edge
-    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-    self.physicsBody.categoryBitMask = ENEMY_CATEGORY;
-    self.physicsBody.affectedByGravity = NO;
-    self.physicsBody.dynamic = YES;
-    self.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
-    self.physicsBody.collisionBitMask = 0;
-    self.inputView.contentMode = UIViewContentModeCenter;
-    self.health = 200;
-    self.attackPower = 5;
-    
-    self.name = @"boss";
-    self.isDead = false;
-    self.lastDirection = @"right"; // default because they spawn on right
+-(Buu*)setUpBuu{
+    Buu* temp = [Buu spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"buu_walk_right_1"]];
+
+    temp.position = CGPointMake(-100, -100);
+    temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
+    temp.physicsBody.categoryBitMask = ENEMY_CATEGORY;
+    temp.physicsBody.affectedByGravity = NO;
+    temp.physicsBody.dynamic = YES;
+    temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
+    temp.physicsBody.collisionBitMask = 0;
+    temp.inputView.contentMode = UIViewContentModeCenter;
+    temp.name = @"boss";
+    temp.isDead = false;
+    temp.health = 100;
+    temp.attackPower = 10;
+    temp.lastDirection = @"right";
+    temp.typeOfObject = @"buu";
+    return temp;
 }
+
+
 
 
 
