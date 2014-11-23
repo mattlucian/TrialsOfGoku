@@ -23,27 +23,39 @@
 
 -(NSArray *)getAnimationFrames:(NSString*)buuAnimationKey{
     NSMutableArray* workingFrames = [[NSMutableArray alloc] init];
- 
+    
     SKTextureAtlas *buuAtlas = [SKTextureAtlas atlasNamed:@"buu"];
     
+    
     if([buuAnimationKey isEqualToString:@"buu_attack_right"]){
-        for (int i=1; i <= 3; i++) {
-            NSString *textureName = [NSString stringWithFormat:@"buu_attack_right_%d", i];
-            SKTexture *temp = [buuAtlas textureNamed:textureName];
-            [workingFrames addObject:temp];
-        }
-    } else if([buuAnimationKey isEqualToString:@"buu_dead_right"]){
+        NSUInteger i = arc4random_uniform(3) + 1;
+        NSString *textureName = [NSString stringWithFormat:@"buu_attack_right_%lu", (unsigned long)i];
+        SKTexture *temp = [buuAtlas textureNamed:textureName];
+        [workingFrames addObject:temp];
+    }
+    if([buuAnimationKey isEqualToString:@"buu_dead_right"]){
         NSString *textureName = [NSString stringWithFormat:@"buu_deadfrom_right"];
         SKTexture *temp = [buuAtlas textureNamed:textureName];
         [workingFrames addObject:temp];
-    } else if([buuAnimationKey isEqualToString:@"buu_walk_right"]){
-        NSString *textureName = [NSString stringWithFormat:@"buu_walk_right_1"];
+    }
+    if([buuAnimationKey isEqualToString:@"buu_walk_right"]){
+        for (int i=1; i <= 3; i++) {
+            NSString *textureName = [NSString stringWithFormat:@"buu_walk_right_%d", i];
+            SKTexture *temp = [buuAtlas textureNamed:textureName];
+            [workingFrames addObject:temp];
+        }
+    }
+    if([buuAnimationKey isEqualToString:@"buu_hitfrom_right"]){
+        NSUInteger i = arc4random_uniform(3) + 1;
+        NSString *textureName = [NSString stringWithFormat:@"buu_hitfrom_right_%lu", (unsigned long)i];
         SKTexture *temp = [buuAtlas textureNamed:textureName];
         [workingFrames addObject:temp];
     }
     
+    
     return workingFrames;
 }
+
 
 -(Buu*)setUpBuu{
     Buu* temp = [Buu spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"buu_walk_right_1"]];

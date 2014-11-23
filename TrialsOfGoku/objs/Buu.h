@@ -13,5 +13,7 @@
 @interface Buu : BaseObject
 
 -(Buu*)setUpBuu;
+-(NSArray *)getAnimationFrames:(NSString*)buuAnimationKey;
+
 
 @end

@@ -11,4 +11,7 @@
 
 @interface Cell : BaseObject
 
+-(NSArray *)getAnimationFrames:(NSString*)cellAnimationKey;
+-(Cell*)setUpCell;
+
 @end

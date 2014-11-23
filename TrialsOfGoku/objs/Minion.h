@@ -14,5 +14,6 @@
 @interface Minion : BaseObject
 
 -(Minion*)setUpMinionWithName:(NSString*)name;
+-(NSArray *)getAnimationFrames:(NSString*)minionAnimationKey;
 
 @end

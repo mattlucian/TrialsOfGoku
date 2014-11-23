@@ -21,6 +21,47 @@
     }
     return self;
 }
+
+-(NSArray *)getAnimationFrames:(NSString*)minionAnimationKey
+{
+    NSMutableArray* workingArrayOfFrames = [[NSMutableArray alloc] init];
+    
+#pragma mark minion_animation
+    if([minionAnimationKey hasPrefix:@"minion"]){
+        SKTextureAtlas *minionAnimatedAtlas = [SKTextureAtlas atlasNamed:@"minions"];
+        // minion_walk_right
+        if([minionAnimationKey isEqualToString:@"minion_walk_right"]){
+            for (int i=1; i <= 3; i++) {
+                NSString *textureName = [NSString stringWithFormat:@"minion_walk_right_%d", i];
+                SKTexture *temp = [minionAnimatedAtlas textureNamed:textureName];
+                [workingArrayOfFrames addObject:temp];
+            }
+        }
+        //minion_deadfrom_right
+        if([minionAnimationKey isEqualToString:@"minion_deadfrom_right"]){
+            NSString *textureName = [NSString stringWithFormat:@"minion_deadfrom_right"];
+            SKTexture *temp = [minionAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+        }
+        //minion_hitfrom_right
+        if([minionAnimationKey isEqualToString:@"minion_hitfrom_right"]){
+            NSUInteger i = arc4random_uniform(3) + 1;
+            NSString *textureName = [NSString stringWithFormat:@"minion_hitfrom_right_%lu", (unsigned long)i];
+            SKTexture *temp = [minionAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+        }
+        //minion_attack_right
+        if([minionAnimationKey isEqualToString:@"minion_attack_right"]){
+            NSUInteger i = arc4random_uniform(3) + 1;
+            NSString *textureName = [NSString stringWithFormat:@"minion_attack_right_%lu", (unsigned long)i];
+            SKTexture *temp = [minionAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+        }
+    }
+    return (NSArray*)workingArrayOfFrames;
+}
+
+
 -(Minion*)setUpMinionWithName:(NSString *)name
 {
     Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"]];
