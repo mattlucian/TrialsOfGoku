@@ -92,7 +92,7 @@
    
     if(levelIndicator == 1){
         [firstLevel handleTapGestureWithLocation:location andDirection:direction];
-        
+        // test change
         SKNode *node = [self nodeAtPoint:location];
         // [firstLevle checkNodeTap:firstLevel.goku inRelationTo:firstLevel.goku];
         if([node isEqual:firstLevel.minion1] && abs((firstLevel.goku.position.x - firstLevel.minion1.position.x) < 10)){
