@@ -102,7 +102,7 @@
         <!--View Controller-->
         <scene sceneID="hWp-J9-SCU">
             <objects>
-                <viewController id="1ki-oD-4e5" sceneMemberID="viewController">
+                <viewController providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="1ki-oD-4e5" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k8N-LX-z5M"/>
                         <viewControllerLayoutGuide type="bottom" id="asI-ke-249"/>
@@ -110,7 +110,7 @@
                     <view key="view" contentMode="scaleToFill" id="hV1-zq-yZL">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
