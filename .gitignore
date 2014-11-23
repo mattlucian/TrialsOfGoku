@@ -9,10 +9,6 @@
 !default.perspectivev3
 *.xcworkspace
 !default.xcworkspace
-xcuserdata
-*.moved-aside
-**/.xccurrentversion
-**/Breakpoints.xcbkptlist
 *.xcbkptlist
 trialsofgoku.xcodeproj/project.xcworkspace/xcuserdata/matt.xcuserdatad/*
 trialsofgoku.xcodeproj/project.xcworkspace/xcuserdata/marcus.xcuserdatad/*
