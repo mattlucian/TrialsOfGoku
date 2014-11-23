@@ -36,6 +36,7 @@
     temp.name = name;
     
     temp.health = 50;
+    temp.totalHealth = 50;
     temp.attackPower = 5;
     
     temp.isDead = false;

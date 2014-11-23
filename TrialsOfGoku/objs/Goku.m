@@ -164,6 +164,7 @@
     
     temp.attackPower = 5;
     temp.health = 100;
+    temp.totalHealth = 100;
     
     temp.jumpCount = 1;
     temp.position = CGPointMake(30,50);
@@ -285,7 +286,7 @@
 
 -(void)moveGoku{
     
-    //healthbar position = goku.position.x, goku.position.y + 30;
+    [self moveHealthBar];
     
     if(self.velocity.x > 0){ // updates position with velocity
         if(self.position.x >  225 && [self.lastDirection isEqualToString:@"right"]){

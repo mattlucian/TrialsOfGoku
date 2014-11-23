@@ -20,6 +20,7 @@
 
 // Goku's health and chi (mana)
 @property (nonatomic) NSInteger health;
+@property (nonatomic) NSInteger totalHealth;
 
 @property (nonatomic) BOOL isActivated;
 @property (nonatomic) BOOL isHit;
@@ -29,11 +30,17 @@
 @property (nonatomic) NSString* lastDirection;
 
 @property (nonatomic) NSString* typeOfObject;
+@property (nonatomic, strong) SKSpriteNode* healthBar;
+
+
 
 -(void)haltVelocity:(NSString*)axis;
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)runCountedAnimation:(NSArray*)animationFrames withCount:(int)myCount atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
 -(void)handleCollisionWithGoku:(Goku*)goku;
+
+-(void)moveHealthBar;
+-(void)setUpHealthBar;
 
 @end

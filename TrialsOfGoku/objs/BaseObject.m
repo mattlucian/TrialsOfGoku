@@ -12,8 +12,33 @@
 
 @implementation BaseObject
 {
-    SKSpriteNode* healthBar;
     NSTimer* hitTimer;
+}
+
+-(void)updateHealthBar
+{
+    // 3 sizes
+    float ratio = (float)self.health/(float)self.totalHealth;
+    
+    if(ratio == 0){
+        [self.healthBar runAction:[SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"dead_health"]] timePerFrame:0]];
+    }else if(ratio < .34){
+        [self.healthBar runAction:[SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"low_health"]] timePerFrame:0]];
+    }else if (ratio < .67){
+        [self.healthBar runAction:[SKAction animateWithTextures:[NSArray arrayWithObject:[SKTexture textureWithImageNamed:@"medium_health"]] timePerFrame:0]];
+    }
+    
+}
+
+-(void)moveHealthBar
+{
+    if(self.healthBar != nil)
+        self.healthBar.position = CGPointMake(self.position.x, self.position.y+30);
+}
+-(void)setUpHealthBar
+{
+    self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"full_health"] size:CGSizeMake(40, 15)];
+    //self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithData:[NSData dataWithContentsOfFile:@"full_health.png"] size:CGSizeMake(40, 20)]];
 }
 
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey{
@@ -51,6 +76,9 @@
     if(self != nil){
         if(self.isActivated){
             if(!self.isDead){
+                
+                [self moveHealthBar];
+                
                 if(!self.isHit){
                     if(self.position.x > goku.position.x){ // minion to the right
                         if([self.lastDirection isEqualToString:@"right"]){
@@ -72,8 +100,15 @@
                         self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
                 }
             }else{
-                if(bgIsMoving)
+                //if(self.healthBar != nil){
+                //    [self.healthBar removeFromParent];
+                //    self.healthBar = nil;
+                //}
+                
+                if(bgIsMoving){
                     self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
+                    [self moveHealthBar];
+                }
             }
         }
     }
@@ -93,7 +128,8 @@
             self.health -= 30;
             break;
     }
-    if(self.health < 0){
+    if(self.health <= 0){
+        self.health = 0;
         self.isDead = true;
         if([self.typeOfObject isEqualToString:@"buu"]){
             [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"buu_deadfrom_right"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
@@ -122,6 +158,7 @@
             [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }
     }
+    [self updateHealthBar];
 }
 
 

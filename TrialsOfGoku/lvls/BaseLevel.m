@@ -51,7 +51,7 @@
 
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction
 {
-    NSArray* currentFrames;
+    NSArray* currentFrames = nil;
     if(location.x > (self.goku.position.x+30)){
         [self.goku increaseVelocity:@"X" addVelocity:direction];
         currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_right"];
@@ -83,13 +83,12 @@
         }
     }
     // animate whatever we decided on
-    [self.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
-    
+    if(currentFrames != nil)
+        [self.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
 }
 
 
 -(void)handleMinionCollisions:(SKPhysicsContact *)contact{
-    
     if(self.minion1 != nil) {
         if(self.minion1.isActivated){
             if(!self.minion1.isDead){
@@ -164,8 +163,6 @@
         }
     }
 }
-
-
 
 
 @end

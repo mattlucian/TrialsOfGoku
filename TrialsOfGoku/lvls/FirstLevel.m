@@ -33,20 +33,22 @@
         #pragma mark Set Up Goku
         self.goku = [[Goku alloc] init];
         self.goku = [self.goku setUpGoku];
+        [self.goku setUpHealthBar];
         self.goku.delegate = self;  // passes back move background object
         
         #pragma mark Set Up Minions
         self.minion1 = [[Minion alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
+        [self.minion1 setUpHealthBar];
         self.minion2 = nil;
         self.minion3 = nil;
         self.minion4 = nil;
-
-        // add remaining minions
+        
         
         #pragma mark Set Up Buu
         self.finalBoss = [[Buu alloc] init];
         self.finalBoss = [self.finalBoss setUpBuu];
+        [self.finalBoss setUpHealthBar];
     
     }
     return self;
@@ -56,10 +58,8 @@
 -(void)setUpLevelForScene:(SKScene *)scene{
     
     self.minion1.position = CGPointMake(700,35);
-    [scene addChild:self.minion1];
-
+    
     self.finalBoss.position = CGPointMake(1100, 40);
-    [scene addChild:self.finalBoss];
 }
 
 -(void)runLevelFor:(SKScene*)scene{
@@ -69,12 +69,16 @@
             // minion 1
             if(!self.minion1.isActivated){
                 self.minion1.isActivated = true;
+                [scene addChild:self.minion1];
+                [scene addChild:self.minion1.healthBar];
             }
             break;
         
         case 2:
             if(!self.finalBoss.isActivated){
                 self.finalBoss.isActivated = true;
+                [scene addChild:self.finalBoss];
+                [scene addChild:self.finalBoss.healthBar];
             }
             break;
      

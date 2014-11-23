@@ -17,7 +17,6 @@
     self = [super init];
     if (self) {
         self.isActivated = false;
-        NSLog(@"test");
     }
     return self;
 }
@@ -60,6 +59,7 @@
     temp.name = @"boss";
     temp.isDead = false;
     temp.health = 100;
+    temp.totalHealth = 100;
     temp.attackPower = 10;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"buu";
