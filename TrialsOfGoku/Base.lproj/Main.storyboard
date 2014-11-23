@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-FV-jzh">
-                                <rect key="frame" x="355" y="178" width="139" height="36"/>
+                                <rect key="frame" x="339" y="178" width="139" height="36"/>
                                 <state key="normal" title="Start" backgroundImage="Button.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,18 +29,8 @@
                                     <segue destination="LVB-YS-i5n" kind="show" id="Pat-tq-Wcd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DL5-g1-hdY">
-                                <rect key="frame" x="355" y="239" width="139" height="36"/>
-                                <state key="normal" title="High Scores" backgroundImage="Button.png">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ddZ-AN-axw" kind="presentation" modalTransitionStyle="flipHorizontal" id="Ddb-6s-9qo"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vub-oi-1E5">
-                                <rect key="frame" x="355" y="116" width="139" height="36"/>
+                                <rect key="frame" x="339" y="117" width="139" height="36"/>
                                 <state key="normal" title="How to Play" backgroundImage="Button.png">
                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,10 +39,19 @@
                                     <segue destination="DUz-Fe-JPv" kind="presentation" modalTransitionStyle="partialCurl" id="tga-yJ-m6k"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DL5-g1-hdY">
+                                <rect key="frame" x="339" y="239" width="139" height="36"/>
+                                <state key="normal" title="High Scores" backgroundImage="Button.png">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ddZ-AN-axw" kind="presentation" modalTransitionStyle="flipHorizontal" id="Ddb-6s-9qo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3O-Ea-dsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,20 +66,10 @@
                         <viewControllerLayoutGuide type="bottom" id="hbT-9X-qVf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j40-hW-bru">
-                        <rect key="frame" x="0.0" y="94" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pY2-fO-WbE">
-                                <rect key="frame" x="255" y="75" width="240" height="128"/>
-                            </scrollView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTQ-Wr-pje">
-                                <rect key="frame" x="22" y="70" width="515" height="422"/>
-                                <color key="backgroundColor" red="0.015686275440000001" green="0.011764707040000001" blue="0.011764707040000001" alpha="1" colorSpace="deviceRGB"/>
-                                <string key="text">How to Play:  Movement: To jump tap above Goku, double tap above him will cuase him to double jump.  To move click either left or right of Goku.  Double tap left or right to speed up.  Tap the opposite direction to stop.  Fighting:  To shoot a power ball tap and hold then release to shoot a powerball.   1 sec hold shoots small powerball. 2 sec hold shoots big fireball.</string>
-                                <color key="textColor" red="0.95294123890000004" green="0.98431378599999997" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pY2-fO-WbE"/>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qog-PL-FEH">
                                 <rect key="frame" x="22" y="14" width="139" height="36"/>
                                 <state key="normal" title="Main Menu" backgroundImage="Button.png">
@@ -91,11 +80,18 @@
                                     <segue destination="Ecd-ih-5o6" kind="presentation" modalTransitionStyle="coverVertical" id="2gH-Xg-ahz"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8GB-Ny-rVN">
+                                <rect key="frame" x="22" y="112" width="541" height="327"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">How to Play:  Movement: To jump tap above Goku, double tap above him will cuase him to double jump.  To move click either left or right of Goku.  Double tap left or right to speed up.  Tap the opposite direction to stop.  Fighting:  To shoot a power ball tap and hold then release to shoot a powerball.   1 sec hold shoots small powerball. 2 sec hold shoots big fireball.</mutableString>
+                                <color key="textColor" red="0.95294123888015747" green="0.98431378602981567" blue="0.95686280727386475" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmL-Ai-978" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
