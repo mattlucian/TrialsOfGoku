@@ -38,7 +38,8 @@
         #pragma mark Set Up Minions
         self.minion1 = [[Minion alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
-
+        // add remaining minions
+        
         #pragma mark Set Up Buu
         self.finalBoss = [[Buu alloc] init];
         self.finalBoss = [self.finalBoss setUpBuu];
@@ -73,18 +74,16 @@
             }
             break;
      
-            // big case statement to control when objects will be activated
             
         default:
             break;
     }
     
     
-    
-    
     [self.goku spawnAndMoveBallsAlongScene:scene withSpawnFlag:ballSpawnFlag];
     [self.goku moveGoku]; // also moves background
     
+    // Only 4 minions
     [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
     [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
     [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];

@@ -35,6 +35,5 @@
 -(void)runCountedAnimation:(NSArray*)animationFrames withCount:(int)myCount atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
 -(void)handleCollisionWithGoku:(Goku*)goku;
--(void)handleMinionCollisions:(Goku*)goku;
 
 @end

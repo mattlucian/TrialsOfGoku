@@ -50,21 +50,29 @@
     if(self != nil){
         if(self.isActivated){
             if(!self.isDead){
-                if(self.position.x > goku.position.x){ // minion to the right
-                    if([self.lastDirection isEqualToString:@"right"]){
-                        self.velocity = CGPointMake(-1,self.velocity.y);
-                        self.lastDirection = @"left";
+                if(!self.isHit){
+                    if(self.position.x > goku.position.x){ // minion to the right
+                        if([self.lastDirection isEqualToString:@"right"]){
+                            self.velocity = CGPointMake(-1,self.velocity.y);
+                            self.lastDirection = @"left";
+                        }
+                    }else{ // buu to the left
+                        if([self.lastDirection isEqualToString:@"left"]){
+                            self.velocity = CGPointMake(1,self.velocity.y);
+                            self.lastDirection = @"right";
+                        }
                     }
-                }else{ // buu to the left
-                    if([self.lastDirection isEqualToString:@"left"]){
-                        self.velocity = CGPointMake(1,self.velocity.y);
-                        self.lastDirection = @"right";
-                    }
+                    if(bgIsMoving)
+                        self.position = CGPointMake(self.position.x+self.velocity.x- goku.velocity.x,self.position.y);
+                    else
+                        self.position = CGPointMake(self.position.x+self.velocity.x-(goku.velocity.x/50),self.position.y);
+                }else{
+                    if(bgIsMoving)
+                        self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
                 }
+            }else{
                 if(bgIsMoving)
-                    self.position = CGPointMake(self.position.x+self.velocity.x- goku.velocity.x,self.position.y);
-                else
-                    self.position = CGPointMake(self.position.x+self.velocity.x-(goku.velocity.x/50),self.position.y);
+                    self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
             }
         }
     }
@@ -99,18 +107,18 @@
         self.isHit = true;
         
         // create
-        hitTimer = [NSTimer scheduledTimerWithTimeInterval: 1
+        hitTimer = [NSTimer scheduledTimerWithTimeInterval: .5
                                                         target:self
                                                       selector:@selector(handleHit:)
                                                       userInfo:nil
                                                        repeats:NO];
         
         if([self.typeOfObject isEqualToString:@"buu"]){
-            [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"buu_hitfrom_right_1"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
+            [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"buu_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }else if([self.typeOfObject isEqualToString:@"cell"]){
-            [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"cell_hitfrom_right_1"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
+            [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"cell_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }else if([self.typeOfObject isEqualToString:@"minion"]){
-            [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion_hitfrom_right_1"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
+            [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }
     }
 }

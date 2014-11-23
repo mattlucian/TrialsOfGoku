@@ -32,7 +32,12 @@
     temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.inputView.contentMode = UIViewContentModeCenter;
+
     temp.name = name;
+    
+    temp.health = 50;
+    temp.attackPower = 5;
+    
     temp.isDead = false;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"minion";
