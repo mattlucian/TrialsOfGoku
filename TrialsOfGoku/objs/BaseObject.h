@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+
+@class Goku;
 @interface BaseObject : SKSpriteNode
 
 // range 0 - 100 - offense points
@@ -26,9 +28,13 @@
 @property (nonatomic) BOOL isDead;
 @property (nonatomic) NSString* lastDirection;
 
+@property (nonatomic) NSString* typeOfObject;
+
 -(void)haltVelocity:(NSString*)axis;
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)runCountedAnimation:(NSArray*)animationFrames withCount:(int)myCount atFrequency:(float)frequency withKey:(NSString*)animationKey;
-
+-(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
+-(void)handleCollisionWithGoku:(Goku*)goku;
+-(void)handleMinionCollisions:(Goku*)goku;
 
 @end

@@ -12,8 +12,7 @@
 #import "Globals.h"
 
 @protocol GokuDelegate;
-@class FirstLevel;
-
+@class BaseLevel;
 
 @interface  Goku : BaseObject
 
@@ -50,13 +49,12 @@
 -(int)getBallSize:(int)whichBall;
 -(BOOL)oneBallIsNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
--(void)moveBallAlongScene:(SKScene*)scene;
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene withSpawnFlag:(BOOL)timeToSpawn;
 
 @end
 
 @protocol GokuDelegate <NSObject>
--(void)moveBackground:(BOOL)isMoving;
--(void)sendChild:(id)childNode;
+-(void)moveBackground:(BOOL)isMoving inRelationTo:(Goku*)goku;
 @end
 
 

@@ -101,6 +101,7 @@
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.contactTestBitMask = ENEMY_CATEGORY;
     self.physicsBody.collisionBitMask = 0;
+    self.typeOfObject = @"ball";
     
     // set other properties
     self.ball_size = siz;

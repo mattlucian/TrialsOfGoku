@@ -14,7 +14,6 @@
 @interface Minion : BaseObject
 
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency;
--(void)setUpMinion;
--(void)moveMinionInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
+-(Minion*)setUpMinionWithName:(NSString*)name;
 
 @end
