@@ -60,6 +60,12 @@
     self.minion1.position = CGPointMake(700,35);
     
     self.finalBoss.position = CGPointMake(1100, 40);
+    
+    [scene addChild:self.background1];
+    [scene addChild:self.background2];
+    [scene addChild:self.goku];
+    [scene addChild:self.goku.healthBar];
+
 }
 
 -(void)runLevelFor:(SKScene*)scene{
@@ -75,13 +81,27 @@
             break;
         
         case 2:
+            if(!self.minion2.isActivated && self.minion1.isDead)
+            {
+                
+            }
+            
             if(!self.finalBoss.isActivated){
                 self.finalBoss.isActivated = true;
+                self.finalBoss.position = CGPointMake(self.goku.position.x+320,35);
                 [scene addChild:self.finalBoss];
                 [scene addChild:self.finalBoss.healthBar];
             }
             break;
-     
+
+        case 3:
+            
+            if(!self.minion3.isActivated && self.minion2.isDead)
+            {
+                
+            }
+            
+            break;
             
         default:
             break;

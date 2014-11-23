@@ -31,11 +31,7 @@
         
         firstLevel = [[FirstLevel alloc] init];
         
-        [self addChild:firstLevel.background1];
-        [self addChild:firstLevel.background2];
         [firstLevel setUpLevelForScene:self];
-        [self addChild:firstLevel.goku];
-        [self addChild:firstLevel.goku.healthBar];
     }
     return self;
 }
