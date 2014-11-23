@@ -208,13 +208,6 @@
                 SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
                 [workingArrayOfFrames addObject:temp];
             }
-        // goku_norm_power_left
-        }else if([gokuAnimationKey isEqualToString:@"goku_norm_power_left"]){
-            for (int i=1; i <= 3; i++) {
-                NSString *textureName = [NSString stringWithFormat:@"goku_norm_power_left_%d", i];
-                SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
-                [workingArrayOfFrames addObject:temp];
-            }
         // goku_norm_walk_right
         }else if([gokuAnimationKey isEqualToString:@"goku_norm_walk_right"]){
             int ids[] = { 3,2,3,2,3};

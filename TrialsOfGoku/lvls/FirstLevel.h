@@ -19,7 +19,7 @@
 @interface FirstLevel : BaseLevel
 
 
-@property (nonatomic) Buu* finalBoss;
+@property (nonatomic, strong) Buu* finalBoss;
 
 -(void)handleBossCollisions:(SKPhysicsContact *)contact;
 -(void)setUpLevelForScene:(GameScene*)scene;

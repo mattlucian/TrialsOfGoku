@@ -18,7 +18,7 @@
 @property (nonatomic) NSInteger currentLevelLocation;
 @property (nonatomic) NSInteger bossSpawnNumber;
 
-@property (nonatomic) Minion* minion1;
+@property (nonatomic, strong) Minion* minion1;
 @property (nonatomic) Minion* minion2;
 @property (nonatomic) Minion* minion3;
 @property (nonatomic) Minion* minion4;
@@ -29,7 +29,7 @@
 @property (nonatomic) SKSpriteNode* background2;
 @property (nonatomic) BOOL bgIsMoving;
 
-@property (nonatomic) Goku* goku;
+@property (nonatomic, strong) Goku* goku;
 
 -(void)handleMinionCollisions:(SKPhysicsContact *)contact;
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction;

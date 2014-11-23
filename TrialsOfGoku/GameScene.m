@@ -85,7 +85,7 @@
         
         // super sayian
     }
-    
+    currentFrames = nil;
 }
 -(void)handleTapMovementAtLocation:(CGPoint)location inDirection:(NSInteger)direction{
    
