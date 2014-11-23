@@ -92,6 +92,15 @@
    
     if(levelIndicator == 1){
         [firstLevel handleTapGestureWithLocation:location andDirection:direction];
+        
+        SKNode *node = [self nodeAtPoint:location];
+        // [firstLevle checkNodeTap:firstLevel.goku inRelationTo:firstLevel.goku];
+        if([node isEqual:firstLevel.minion1] && abs((firstLevel.goku.position.x - firstLevel.minion1.position.x) < 10)){
+            [node runAction:[SKAction fadeOutWithDuration:0]];
+        }else if([node isEqual:firstLevel.finalBoss] && abs((firstLevel.goku.position.x - firstLevel.minion1.position.x) < 10)){
+            [node runAction:[SKAction fadeOutWithDuration:0]];
+        }
+        
     }else{
         // level 2
         

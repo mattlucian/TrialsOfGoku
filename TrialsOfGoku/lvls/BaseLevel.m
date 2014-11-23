@@ -85,6 +85,7 @@
     // animate whatever we decided on
     if(currentFrames != nil)
         [self.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+    
 }
 
 

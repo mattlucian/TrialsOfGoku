@@ -38,7 +38,6 @@
 -(void)setUpHealthBar
 {
     self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"full_health"] size:CGSizeMake(40, 15)];
-    //self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithData:[NSData dataWithContentsOfFile:@"full_health.png"] size:CGSizeMake(40, 20)]];
 }
 
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey{
@@ -100,11 +99,6 @@
                         self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
                 }
             }else{
-                //if(self.healthBar != nil){
-                //    [self.healthBar removeFromParent];
-                //    self.healthBar = nil;
-                //}
-                
                 if(bgIsMoving){
                     self.position = CGPointMake(self.position.x - goku.velocity.x, self.position.y);
                     [self moveHealthBar];
