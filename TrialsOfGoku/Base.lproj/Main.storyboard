@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Ra-Mq-3xM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="N5E-K2-Kpd">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goku_splash_sketch.png" translatesAutoresizingMaskIntoConstraints="NO" id="xcM-qW-L2b">
@@ -83,7 +83,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8GB-Ny-rVN">
                                 <rect key="frame" x="22" y="112" width="541" height="327"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">How to Play:  Movement: To jump tap above Goku, double tap above him will cuase him to double jump.  To move click either left or right of Goku.  Double tap left or right to speed up.  Tap the opposite direction to stop.  Fighting:  To shoot a power ball tap and hold then release to shoot a powerball.   1 sec hold shoots small powerball. 2 sec hold shoots big fireball.</mutableString>
+                                <string key="text">How to Play:  Movement: To jump tap above Goku, double tap above him will cuase him to double jump.  To move click either left or right of Goku.  Double tap left or right to speed up.  Tap the opposite direction to stop.  Fighting:  To shoot a power ball tap and hold then release to shoot a powerball.   1 sec hold shoots small powerball. 2 sec hold shoots big fireball.</string>
                                 <color key="textColor" red="0.95294123888015747" green="0.98431378602981567" blue="0.95686280727386475" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -190,6 +190,6 @@
         <image name="Goku_splash_sketch.png" width="3507" height="2550"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4Q1-94-gCf"/>
+        <segue reference="2gH-Xg-ahz"/>
     </inferredMetricsTieBreakers>
 </document>
