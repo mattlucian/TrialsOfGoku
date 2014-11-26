@@ -7,6 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1108ADD91A264C7D00CC4127 /* cell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA21A264C7D00CC4127 /* cell.mp3 */; };
+		1108ADDA1A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA31A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 */; };
+		1108ADDB1A264C7D00CC4127 /* Dragon_Ball_Dub_Step.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA41A264C7D00CC4127 /* Dragon_Ball_Dub_Step.mp3 */; };
+		1108ADDC1A264C7D00CC4127 /* dragon_ball_gt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA51A264C7D00CC4127 /* dragon_ball_gt.mp3 */; };
+		1108ADDD1A264C7D00CC4127 /* dragon_ball_opening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA61A264C7D00CC4127 /* dragon_ball_opening.mp3 */; };
+		1108ADDE1A264C7D00CC4127 /* dragon_ball_z.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA71A264C7D00CC4127 /* dragon_ball_z.mp3 */; };
+		1108ADDF1A264C7D00CC4127 /* dragon_ball_z_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA81A264C7D00CC4127 /* dragon_ball_z_theme.mp3 */; };
+		1108ADE01A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADA91A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 */; };
+		1108ADE11A264C7D00CC4127 /* perfect_cell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADAA1A264C7D00CC4127 /* perfect_cell.mp3 */; };
+		1108ADE21A264C7D00CC4127 /* perfect_cell_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADAB1A264C7D00CC4127 /* perfect_cell_theme.mp3 */; };
+		1108ADE31A264C7D00CC4127 /* RockTheDragon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADAC1A264C7D00CC4127 /* RockTheDragon.mp3 */; };
+		1108ADE41A264C7D00CC4127 /* vegeta_attack_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADAD1A264C7D00CC4127 /* vegeta_attack_theme.mp3 */; };
+		1108ADE51A264C7D00CC4127 /* ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADAE1A264C7D00CC4127 /* ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3 */; };
+		1108ADE61A264C7D00CC4127 /* aura-big.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB01A264C7D00CC4127 /* aura-big.wav */; };
+		1108ADE71A264C7D00CC4127 /* aura.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB11A264C7D00CC4127 /* aura.wav */; };
+		1108ADE81A264C7D00CC4127 /* basicbeam_charge.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB21A264C7D00CC4127 /* basicbeam_charge.wav */; };
+		1108ADE91A264C7D00CC4127 /* basicbeam_fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB31A264C7D00CC4127 /* basicbeam_fire.wav */; };
+		1108ADEA1A264C7D00CC4127 /* boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB41A264C7D00CC4127 /* boom.wav */; };
+		1108ADEB1A264C7D00CC4127 /* chainswoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB51A264C7D00CC4127 /* chainswoop.wav */; };
+		1108ADEC1A264C7D00CC4127 /* descend.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB61A264C7D00CC4127 /* descend.wav */; };
+		1108ADED1A264C7D00CC4127 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB71A264C7D00CC4127 /* explosion.wav */; };
+		1108ADEE1A264C7D00CC4127 /* explosion1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB81A264C7D00CC4127 /* explosion1.wav */; };
+		1108ADEF1A264C7D00CC4127 /* Explosion2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADB91A264C7D00CC4127 /* Explosion2.wav */; };
+		1108ADF01A264C7D00CC4127 /* finalflash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBA1A264C7D00CC4127 /* finalflash.wav */; };
+		1108ADF11A264C7D00CC4127 /* groundhit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBB1A264C7D00CC4127 /* groundhit2.wav */; };
+		1108ADF21A264C7D00CC4127 /* groundrecover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBC1A264C7D00CC4127 /* groundrecover.wav */; };
+		1108ADF31A264C7D00CC4127 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBD1A264C7D00CC4127 /* jump.wav */; };
+		1108ADF41A264C7D00CC4127 /* kame_charge.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBE1A264C7D00CC4127 /* kame_charge.wav */; };
+		1108ADF51A264C7D00CC4127 /* kamehameha_fire.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADBF1A264C7D00CC4127 /* kamehameha_fire.wav */; };
+		1108ADF61A264C7D00CC4127 /* kiplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC01A264C7D00CC4127 /* kiplosion.wav */; };
+		1108ADF71A264C7D00CC4127 /* mase_charge.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC11A264C7D00CC4127 /* mase_charge.wav */; };
+		1108ADF81A264C7D00CC4127 /* mediumkick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC21A264C7D00CC4127 /* mediumkick.wav */; };
+		1108ADF91A264C7D00CC4127 /* mediumpunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC31A264C7D00CC4127 /* mediumpunch.wav */; };
+		1108ADFA1A264C7D00CC4127 /* meleeflash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC41A264C7D00CC4127 /* meleeflash.wav */; };
+		1108ADFB1A264C7D00CC4127 /* meleehit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC51A264C7D00CC4127 /* meleehit1.wav */; };
+		1108ADFC1A264C7D00CC4127 /* meleehit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC61A264C7D00CC4127 /* meleehit2.wav */; };
+		1108ADFD1A264C7D00CC4127 /* meleemiss1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC71A264C7D00CC4127 /* meleemiss1.wav */; };
+		1108ADFE1A264C7D00CC4127 /* meleemiss2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC81A264C7D00CC4127 /* meleemiss2.wav */; };
+		1108ADFF1A264C7D00CC4127 /* meleemiss3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADC91A264C7D00CC4127 /* meleemiss3.wav */; };
+		1108AE001A264C7D00CC4127 /* meleestruggletie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCA1A264C7D00CC4127 /* meleestruggletie.wav */; };
+		1108AE011A264C7D00CC4127 /* prepunch1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCB1A264C7D00CC4127 /* prepunch1.wav */; };
+		1108AE021A264C7D00CC4127 /* presword1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCC1A264C7D00CC4127 /* presword1.wav */; };
+		1108AE031A264C7D00CC4127 /* punch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCD1A264C7D00CC4127 /* punch.wav */; };
+		1108AE041A264C7D00CC4127 /* rapid punch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCE1A264C7D00CC4127 /* rapid punch.wav */; };
+		1108AE051A264C7D00CC4127 /* strongkick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADCF1A264C7D00CC4127 /* strongkick.wav */; };
+		1108AE061A264C7D00CC4127 /* strongpunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD01A264C7D00CC4127 /* strongpunch.wav */; };
+		1108AE071A264C7D00CC4127 /* supermove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD11A264C7D00CC4127 /* supermove.wav */; };
+		1108AE081A264C7D00CC4127 /* swoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD21A264C7D00CC4127 /* swoop.wav */; };
+		1108AE091A264C7D00CC4127 /* swoophit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD31A264C7D00CC4127 /* swoophit.wav */; };
+		1108AE0A1A264C7D00CC4127 /* sword-slash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD41A264C7D00CC4127 /* sword-slash.wav */; };
+		1108AE0B1A264C7D00CC4127 /* swordhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD51A264C7D00CC4127 /* swordhit.wav */; };
+		1108AE0C1A264C7D00CC4127 /* swordkill.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD61A264C7D00CC4127 /* swordkill.wav */; };
+		1108AE0D1A264C7D00CC4127 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD71A264C7D00CC4127 /* teleport.wav */; };
+		1108AE0E1A264C7D00CC4127 /* teleport00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD81A264C7D00CC4127 /* teleport00.wav */; };
+		1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */; };
+		1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */; };
 		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
 		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
 		C90F046119F8A51C00DF49CA /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F046019F8A51C00DF49CA /* GameViewController.m */; };
@@ -51,6 +107,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1108ADA21A264C7D00CC4127 /* cell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cell.mp3; sourceTree = "<group>"; };
+		1108ADA31A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Z Dubstep BY DJ L copy.mp3"; sourceTree = "<group>"; };
+		1108ADA41A264C7D00CC4127 /* Dragon_Ball_Dub_Step.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Dragon_Ball_Dub_Step.mp3; sourceTree = "<group>"; };
+		1108ADA51A264C7D00CC4127 /* dragon_ball_gt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragon_ball_gt.mp3; sourceTree = "<group>"; };
+		1108ADA61A264C7D00CC4127 /* dragon_ball_opening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragon_ball_opening.mp3; sourceTree = "<group>"; };
+		1108ADA71A264C7D00CC4127 /* dragon_ball_z.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragon_ball_z.mp3; sourceTree = "<group>"; };
+		1108ADA81A264C7D00CC4127 /* dragon_ball_z_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragon_ball_z_theme.mp3; sourceTree = "<group>"; };
+		1108ADA91A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragon_ball_z_theme2.mp3; sourceTree = "<group>"; };
+		1108ADAA1A264C7D00CC4127 /* perfect_cell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = perfect_cell.mp3; sourceTree = "<group>"; };
+		1108ADAB1A264C7D00CC4127 /* perfect_cell_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = perfect_cell_theme.mp3; sourceTree = "<group>"; };
+		1108ADAC1A264C7D00CC4127 /* RockTheDragon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RockTheDragon.mp3; sourceTree = "<group>"; };
+		1108ADAD1A264C7D00CC4127 /* vegeta_attack_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = vegeta_attack_theme.mp3; sourceTree = "<group>"; };
+		1108ADAE1A264C7D00CC4127 /* ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3"; sourceTree = "<group>"; };
+		1108ADB01A264C7D00CC4127 /* aura-big.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "aura-big.wav"; sourceTree = "<group>"; };
+		1108ADB11A264C7D00CC4127 /* aura.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = aura.wav; sourceTree = "<group>"; };
+		1108ADB21A264C7D00CC4127 /* basicbeam_charge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = basicbeam_charge.wav; sourceTree = "<group>"; };
+		1108ADB31A264C7D00CC4127 /* basicbeam_fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = basicbeam_fire.wav; sourceTree = "<group>"; };
+		1108ADB41A264C7D00CC4127 /* boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boom.wav; sourceTree = "<group>"; };
+		1108ADB51A264C7D00CC4127 /* chainswoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chainswoop.wav; sourceTree = "<group>"; };
+		1108ADB61A264C7D00CC4127 /* descend.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = descend.wav; sourceTree = "<group>"; };
+		1108ADB71A264C7D00CC4127 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		1108ADB81A264C7D00CC4127 /* explosion1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion1.wav; sourceTree = "<group>"; };
+		1108ADB91A264C7D00CC4127 /* Explosion2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Explosion2.wav; sourceTree = "<group>"; };
+		1108ADBA1A264C7D00CC4127 /* finalflash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = finalflash.wav; sourceTree = "<group>"; };
+		1108ADBB1A264C7D00CC4127 /* groundhit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = groundhit2.wav; sourceTree = "<group>"; };
+		1108ADBC1A264C7D00CC4127 /* groundrecover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = groundrecover.wav; sourceTree = "<group>"; };
+		1108ADBD1A264C7D00CC4127 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
+		1108ADBE1A264C7D00CC4127 /* kame_charge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kame_charge.wav; sourceTree = "<group>"; };
+		1108ADBF1A264C7D00CC4127 /* kamehameha_fire.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kamehameha_fire.wav; sourceTree = "<group>"; };
+		1108ADC01A264C7D00CC4127 /* kiplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kiplosion.wav; sourceTree = "<group>"; };
+		1108ADC11A264C7D00CC4127 /* mase_charge.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mase_charge.wav; sourceTree = "<group>"; };
+		1108ADC21A264C7D00CC4127 /* mediumkick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mediumkick.wav; sourceTree = "<group>"; };
+		1108ADC31A264C7D00CC4127 /* mediumpunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mediumpunch.wav; sourceTree = "<group>"; };
+		1108ADC41A264C7D00CC4127 /* meleeflash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleeflash.wav; sourceTree = "<group>"; };
+		1108ADC51A264C7D00CC4127 /* meleehit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleehit1.wav; sourceTree = "<group>"; };
+		1108ADC61A264C7D00CC4127 /* meleehit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleehit2.wav; sourceTree = "<group>"; };
+		1108ADC71A264C7D00CC4127 /* meleemiss1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleemiss1.wav; sourceTree = "<group>"; };
+		1108ADC81A264C7D00CC4127 /* meleemiss2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleemiss2.wav; sourceTree = "<group>"; };
+		1108ADC91A264C7D00CC4127 /* meleemiss3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleemiss3.wav; sourceTree = "<group>"; };
+		1108ADCA1A264C7D00CC4127 /* meleestruggletie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meleestruggletie.wav; sourceTree = "<group>"; };
+		1108ADCB1A264C7D00CC4127 /* prepunch1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = prepunch1.wav; sourceTree = "<group>"; };
+		1108ADCC1A264C7D00CC4127 /* presword1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = presword1.wav; sourceTree = "<group>"; };
+		1108ADCD1A264C7D00CC4127 /* punch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = punch.wav; sourceTree = "<group>"; };
+		1108ADCE1A264C7D00CC4127 /* rapid punch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "rapid punch.wav"; sourceTree = "<group>"; };
+		1108ADCF1A264C7D00CC4127 /* strongkick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = strongkick.wav; sourceTree = "<group>"; };
+		1108ADD01A264C7D00CC4127 /* strongpunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = strongpunch.wav; sourceTree = "<group>"; };
+		1108ADD11A264C7D00CC4127 /* supermove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = supermove.wav; sourceTree = "<group>"; };
+		1108ADD21A264C7D00CC4127 /* swoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swoop.wav; sourceTree = "<group>"; };
+		1108ADD31A264C7D00CC4127 /* swoophit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swoophit.wav; sourceTree = "<group>"; };
+		1108ADD41A264C7D00CC4127 /* sword-slash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sword-slash.wav"; sourceTree = "<group>"; };
+		1108ADD51A264C7D00CC4127 /* swordhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swordhit.wav; sourceTree = "<group>"; };
+		1108ADD61A264C7D00CC4127 /* swordkill.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swordkill.wav; sourceTree = "<group>"; };
+		1108ADD71A264C7D00CC4127 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
+		1108ADD81A264C7D00CC4127 /* teleport00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport00.wav; sourceTree = "<group>"; };
+		1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buu_dub.mp3; sourceTree = "<group>"; };
+		1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect_Cell_Dubstep.mp3; sourceTree = "<group>"; };
 		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90F045519F8A51C00DF49CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -121,9 +233,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1108ADA01A264C7D00CC4127 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				1108ADA11A264C7D00CC4127 /* background music */,
+				1108ADAF1A264C7D00CC4127 /* DBZ sound effects! */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		1108ADA11A264C7D00CC4127 /* background music */ = {
+			isa = PBXGroup;
+			children = (
+				1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */,
+				1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */,
+				1108ADA21A264C7D00CC4127 /* cell.mp3 */,
+				1108ADA31A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 */,
+				1108ADA41A264C7D00CC4127 /* Dragon_Ball_Dub_Step.mp3 */,
+				1108ADA51A264C7D00CC4127 /* dragon_ball_gt.mp3 */,
+				1108ADA61A264C7D00CC4127 /* dragon_ball_opening.mp3 */,
+				1108ADA71A264C7D00CC4127 /* dragon_ball_z.mp3 */,
+				1108ADA81A264C7D00CC4127 /* dragon_ball_z_theme.mp3 */,
+				1108ADA91A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 */,
+				1108ADAA1A264C7D00CC4127 /* perfect_cell.mp3 */,
+				1108ADAB1A264C7D00CC4127 /* perfect_cell_theme.mp3 */,
+				1108ADAC1A264C7D00CC4127 /* RockTheDragon.mp3 */,
+				1108ADAD1A264C7D00CC4127 /* vegeta_attack_theme.mp3 */,
+				1108ADAE1A264C7D00CC4127 /* ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3 */,
+			);
+			path = "background music";
+			sourceTree = "<group>";
+		};
+		1108ADAF1A264C7D00CC4127 /* DBZ sound effects! */ = {
+			isa = PBXGroup;
+			children = (
+				1108ADB01A264C7D00CC4127 /* aura-big.wav */,
+				1108ADB11A264C7D00CC4127 /* aura.wav */,
+				1108ADB21A264C7D00CC4127 /* basicbeam_charge.wav */,
+				1108ADB31A264C7D00CC4127 /* basicbeam_fire.wav */,
+				1108ADB41A264C7D00CC4127 /* boom.wav */,
+				1108ADB51A264C7D00CC4127 /* chainswoop.wav */,
+				1108ADB61A264C7D00CC4127 /* descend.wav */,
+				1108ADB71A264C7D00CC4127 /* explosion.wav */,
+				1108ADB81A264C7D00CC4127 /* explosion1.wav */,
+				1108ADB91A264C7D00CC4127 /* Explosion2.wav */,
+				1108ADBA1A264C7D00CC4127 /* finalflash.wav */,
+				1108ADBB1A264C7D00CC4127 /* groundhit2.wav */,
+				1108ADBC1A264C7D00CC4127 /* groundrecover.wav */,
+				1108ADBD1A264C7D00CC4127 /* jump.wav */,
+				1108ADBE1A264C7D00CC4127 /* kame_charge.wav */,
+				1108ADBF1A264C7D00CC4127 /* kamehameha_fire.wav */,
+				1108ADC01A264C7D00CC4127 /* kiplosion.wav */,
+				1108ADC11A264C7D00CC4127 /* mase_charge.wav */,
+				1108ADC21A264C7D00CC4127 /* mediumkick.wav */,
+				1108ADC31A264C7D00CC4127 /* mediumpunch.wav */,
+				1108ADC41A264C7D00CC4127 /* meleeflash.wav */,
+				1108ADC51A264C7D00CC4127 /* meleehit1.wav */,
+				1108ADC61A264C7D00CC4127 /* meleehit2.wav */,
+				1108ADC71A264C7D00CC4127 /* meleemiss1.wav */,
+				1108ADC81A264C7D00CC4127 /* meleemiss2.wav */,
+				1108ADC91A264C7D00CC4127 /* meleemiss3.wav */,
+				1108ADCA1A264C7D00CC4127 /* meleestruggletie.wav */,
+				1108ADCB1A264C7D00CC4127 /* prepunch1.wav */,
+				1108ADCC1A264C7D00CC4127 /* presword1.wav */,
+				1108ADCD1A264C7D00CC4127 /* punch.wav */,
+				1108ADCE1A264C7D00CC4127 /* rapid punch.wav */,
+				1108ADCF1A264C7D00CC4127 /* strongkick.wav */,
+				1108ADD01A264C7D00CC4127 /* strongpunch.wav */,
+				1108ADD11A264C7D00CC4127 /* supermove.wav */,
+				1108ADD21A264C7D00CC4127 /* swoop.wav */,
+				1108ADD31A264C7D00CC4127 /* swoophit.wav */,
+				1108ADD41A264C7D00CC4127 /* sword-slash.wav */,
+				1108ADD51A264C7D00CC4127 /* swordhit.wav */,
+				1108ADD61A264C7D00CC4127 /* swordkill.wav */,
+				1108ADD71A264C7D00CC4127 /* teleport.wav */,
+				1108ADD81A264C7D00CC4127 /* teleport00.wav */,
+			);
+			path = "DBZ sound effects!";
+			sourceTree = "<group>";
+		};
 		C90F044719F8A51C00DF49CA = {
 			isa = PBXGroup;
 			children = (
+				1108ADA01A264C7D00CC4127 /* Audio */,
 				C90F045219F8A51C00DF49CA /* TrialsOfGoku */,
 				C90F047119F8A51C00DF49CA /* TrialsOfGokuTests */,
 				C90F045119F8A51C00DF49CA /* Products */,
@@ -378,21 +570,77 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1108ADFC1A264C7D00CC4127 /* meleehit2.wav in Resources */,
+				1108AE031A264C7D00CC4127 /* punch.wav in Resources */,
+				1108ADF81A264C7D00CC4127 /* mediumkick.wav in Resources */,
+				1108ADF11A264C7D00CC4127 /* groundhit2.wav in Resources */,
+				1108ADE31A264C7D00CC4127 /* RockTheDragon.mp3 in Resources */,
+				1108AE091A264C7D00CC4127 /* swoophit.wav in Resources */,
+				1108ADE41A264C7D00CC4127 /* vegeta_attack_theme.mp3 in Resources */,
 				C9A6CCDD1A21A11700764048 /* Game_Over.png in Resources */,
+				1108ADF71A264C7D00CC4127 /* mase_charge.wav in Resources */,
+				1108AE011A264C7D00CC4127 /* prepunch1.wav in Resources */,
+				1108ADFF1A264C7D00CC4127 /* meleemiss3.wav in Resources */,
+				1108AE041A264C7D00CC4127 /* rapid punch.wav in Resources */,
+				1108ADFD1A264C7D00CC4127 /* meleemiss1.wav in Resources */,
+				1108ADF01A264C7D00CC4127 /* finalflash.wav in Resources */,
+				1108ADF61A264C7D00CC4127 /* kiplosion.wav in Resources */,
+				1108AE021A264C7D00CC4127 /* presword1.wav in Resources */,
+				1108ADF21A264C7D00CC4127 /* groundrecover.wav in Resources */,
+				1108ADEB1A264C7D00CC4127 /* chainswoop.wav in Resources */,
+				1108AE071A264C7D00CC4127 /* supermove.wav in Resources */,
+				1108ADEA1A264C7D00CC4127 /* boom.wav in Resources */,
 				C93F59671A17EC7A00C06817 /* goku_ss4.atlas in Resources */,
 				C90F046919F8A51C00DF49CA /* LaunchScreen.xib in Resources */,
 				C90F046619F8A51C00DF49CA /* Images.xcassets in Resources */,
+				1108ADDC1A264C7D00CC4127 /* dragon_ball_gt.mp3 in Resources */,
 				C93F59611A17EC7A00C06817 /* buu.atlas in Resources */,
+				1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */,
 				C9A6CCDE1A21A11700764048 /* Goku_splash_sketch_phone.png in Resources */,
+				1108ADFB1A264C7D00CC4127 /* meleehit1.wav in Resources */,
+				1108ADFE1A264C7D00CC4127 /* meleemiss2.wav in Resources */,
+				1108ADDA1A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 in Resources */,
+				1108ADE91A264C7D00CC4127 /* basicbeam_fire.wav in Resources */,
+				1108ADEC1A264C7D00CC4127 /* descend.wav in Resources */,
+				1108ADD91A264C7D00CC4127 /* cell.mp3 in Resources */,
+				1108ADEF1A264C7D00CC4127 /* Explosion2.wav in Resources */,
+				1108ADEE1A264C7D00CC4127 /* explosion1.wav in Resources */,
 				C9A6CCDF1A21A11700764048 /* Goku_splash_sketch.png in Resources */,
+				1108AE0D1A264C7D00CC4127 /* teleport.wav in Resources */,
 				C93F59651A17EC7A00C06817 /* goku_ss1.atlas in Resources */,
+				1108ADDB1A264C7D00CC4127 /* Dragon_Ball_Dub_Step.mp3 in Resources */,
+				1108ADED1A264C7D00CC4127 /* explosion.wav in Resources */,
+				1108ADF41A264C7D00CC4127 /* kame_charge.wav in Resources */,
+				1108ADF31A264C7D00CC4127 /* jump.wav in Resources */,
 				C9A6CCDC1A21A11700764048 /* Button.png in Resources */,
+				1108ADE71A264C7D00CC4127 /* aura.wav in Resources */,
 				C90F048C19F8A53700DF49CA /* misc.atlas in Resources */,
+				1108AE051A264C7D00CC4127 /* strongkick.wav in Resources */,
 				C93F59621A17EC7A00C06817 /* cell.atlas in Resources */,
+				1108ADF51A264C7D00CC4127 /* kamehameha_fire.wav in Resources */,
 				C93F59661A17EC7A00C06817 /* goku_ss3.atlas in Resources */,
+				1108AE081A264C7D00CC4127 /* swoop.wav in Resources */,
+				1108ADE61A264C7D00CC4127 /* aura-big.wav in Resources */,
+				1108ADE81A264C7D00CC4127 /* basicbeam_charge.wav in Resources */,
+				1108ADE01A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 in Resources */,
+				1108ADE21A264C7D00CC4127 /* perfect_cell_theme.mp3 in Resources */,
+				1108AE0B1A264C7D00CC4127 /* swordhit.wav in Resources */,
 				C93F59631A17EC7A00C06817 /* minions.atlas in Resources */,
+				1108AE061A264C7D00CC4127 /* strongpunch.wav in Resources */,
+				1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */,
+				1108ADDD1A264C7D00CC4127 /* dragon_ball_opening.mp3 in Resources */,
+				1108ADE51A264C7D00CC4127 /* ZMiX_-_Dragon_Ball_Z_Rock_The_Dragon_(Dubs copy.mp3 in Resources */,
+				1108ADFA1A264C7D00CC4127 /* meleeflash.wav in Resources */,
+				1108ADF91A264C7D00CC4127 /* mediumpunch.wav in Resources */,
 				C90F046419F8A51C00DF49CA /* Main.storyboard in Resources */,
+				1108AE0A1A264C7D00CC4127 /* sword-slash.wav in Resources */,
+				1108ADDF1A264C7D00CC4127 /* dragon_ball_z_theme.mp3 in Resources */,
 				C93F59641A17EC7A00C06817 /* goku_norm.atlas in Resources */,
+				1108ADE11A264C7D00CC4127 /* perfect_cell.mp3 in Resources */,
+				1108AE001A264C7D00CC4127 /* meleestruggletie.wav in Resources */,
+				1108ADDE1A264C7D00CC4127 /* dragon_ball_z.mp3 in Resources */,
+				1108AE0E1A264C7D00CC4127 /* teleport00.wav in Resources */,
+				1108AE0C1A264C7D00CC4127 /* swordkill.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

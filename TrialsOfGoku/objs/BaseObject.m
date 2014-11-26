@@ -82,16 +82,12 @@
                     if(self.position.x > goku.position.x){ // minion to the right
                         if([self.lastDirection isEqualToString:@"right"]){
                             self.velocity = CGPointMake(-1,self.velocity.y);
-                            
-                            // self.xScale = -1;
-                            
+                            self.xScale = -1;
                             self.lastDirection = @"left";
                         }
                     }else{ // buu to the left
                         if([self.lastDirection isEqualToString:@"left"]){
-
-                            // self.xScale = 1;
-                            
+                            self.xScale = 1;
                             self.velocity = CGPointMake(1,self.velocity.y);
                             self.lastDirection = @"right";
                         }

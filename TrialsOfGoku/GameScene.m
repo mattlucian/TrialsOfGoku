@@ -28,12 +28,12 @@
         self.physicsWorld.gravity = CGVectorMake(0,0); // turn off gravities
         self.physicsWorld.contactDelegate = self; // set delegate for collision detection
         
-        levelIndicator = 1;
+        levelIndicator = 2;
         
         firstLevel = [[FirstLevel alloc] init];
         
         [firstLevel setUpLevelForScene:self];
-    }
+           }
     return self;
 }
 
@@ -45,6 +45,7 @@
         [firstLevel runLevelFor:self];
     }else{
         if(firstLevel != nil){
+            [firstLevel killFirstLevel];
             firstLevel = nil;
             secondLevel = [[SecondLevel alloc] init];
             [secondLevel setUpLevelForScene:self];
@@ -93,10 +94,10 @@
         if([secondLevel.goku oneBallIsNil]){
             [secondLevel.goku haltVelocity:@"X"];
             if([secondLevel.goku.lastDirection isEqualToString:@"right"]){
-                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_right"];
+                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
                 [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }else if([secondLevel.goku.lastDirection isEqualToString:@"left"]){
-                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_left"];
+                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
                 [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }
         }

@@ -14,10 +14,12 @@
 #import "Buu.h"
 #import "BaseLevel.h"
 #import "GameScene.h"
+@import AVFoundation;
 
 @interface SecondLevel : BaseLevel
 
 @property (nonatomic, strong) Buu* finalBoss;
+@property (strong, nonatomic) AVAudioPlayer* backgroundMusicPlayer;
 
 -(void)handleBossCollisions:(SKPhysicsContact *)contact;
 -(void)setUpLevelForScene:(GameScene*)scene;

@@ -65,6 +65,8 @@
 -(Minion*)setUpMinionWithName:(NSString *)name
 {
     Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"]];
+    NSArray *animation = [temp getAnimationFrames:@"minion_walk_right"];
+    [temp runAnimation: animation atFrequency:.5 withKey:@"minion_walk_right"];
     temp.position = CGPointMake(-100, -100);
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = ENEMY_CATEGORY;
@@ -73,6 +75,7 @@
     temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.inputView.contentMode = UIViewContentModeCenter;
+    temp.xScale = -1.0;
 
     temp.name = name;
     

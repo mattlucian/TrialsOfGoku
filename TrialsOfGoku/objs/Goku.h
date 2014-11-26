@@ -10,7 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "BaseObject.h"
 #import "Globals.h"
-
+@import AVFoundation;
 @protocol GokuDelegate;
 @class BaseLevel;
 
@@ -37,7 +37,7 @@
 // normal = 0, ss1 = 1, ss3 = 2, ss4 = 3
 @property (nonatomic) NSInteger transformationLevel;
 
-
+@property (strong, nonatomic) AVAudioPlayer* kamehaBlast;
 
 @property (nonatomic) NSInteger chi;
 

@@ -59,6 +59,8 @@
 
 -(Buu*)setUpBuu{
     Buu* temp = [Buu spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"buu_walk_right_1"]];
+    NSArray *animation = [temp getAnimationFrames:@"buu_walk_right"];
+    [temp runAnimation: animation atFrequency:.5 withKey:@"buu_walk_right"];
 
     temp.position = CGPointMake(-100, -100);
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
@@ -75,6 +77,7 @@
     temp.attackPower = 10;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"buu";
+    temp.xScale = -1;
     return temp;
 }
 

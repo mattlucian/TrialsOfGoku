@@ -7,6 +7,7 @@
 //
 
 #import "SecondLevel.h"
+@import AVFoundation;
 
 @implementation SecondLevel
 {
@@ -39,16 +40,23 @@
         self.minion1 = [[Minion alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
         [self.minion1 setUpHealthBar];
-        self.minion2 = nil;
-        self.minion3 = nil;
-        self.minion4 = nil;
+        self.minion2 = [[Minion alloc] init];
+        self.minion2 = [self.minion2 setUpMinionWithName:@"minion2"];
+        [self.minion2 setUpHealthBar];
+        self.minion3 = [[Minion alloc] init];
+        self.minion3 = [self.minion3 setUpMinionWithName:@"minion3"];
+        [self.minion3 setUpHealthBar];
+        self.minion4 = [[Minion alloc] init];
+        self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
+        [self.minion4 setUpHealthBar];
         self.beginningOfLevel = YES;
         
 #pragma mark Set Up Buu
         self.finalBoss = [[Buu alloc] init];
         self.finalBoss = [self.finalBoss setUpBuu];
         [self.finalBoss setUpHealthBar];
-        
+#pragma setupMusic
+        [self setupMusic];
     }
     return self;
 }
@@ -57,8 +65,11 @@
 -(void)setUpLevelForScene:(SKScene *)scene{
     
     self.minion1.position = CGPointMake(700,35);
+    self.minion2.position = CGPointMake(1000,35);
+    self.minion3.position = CGPointMake(1600,35);
+    self.minion4.position = CGPointMake(2000,35);
     
-    self.finalBoss.position = CGPointMake(1100, 40);
+    self.finalBoss.position = CGPointMake(self.goku.position.x + 2000, 40);
     
     [scene addChild:self.background1];
     [scene addChild:self.background2];
@@ -92,39 +103,51 @@
                 if(self.goku.leftLock)
                     self.goku.leftLock = NO;
             }
-            break;
-            
-        case 1:
-            // minion 1
-            if(self.goku.leftLock)
-                self.goku.leftLock = NO;
-            
-            if(!self.minion1.isActivated){
-                self.minion1.isActivated = true;
+            //minion 1
+            if (!self.minion1.isActivated) {
+                self.minion1.isActivated=true;
                 [scene addChild:self.minion1];
                 [scene addChild:self.minion1.healthBar];
             }
             break;
             
-        case 2:
-            if(!self.minion2.isActivated && self.minion1.isDead)
+        case 1:
+            //minion 2
+            if(self.goku.leftLock)
+                self.goku.leftLock = NO;
+            
+            if(!self.minion2.isActivated){
+                self.minion2.isActivated = true;
+                [scene addChild:self.minion2];
+                [scene addChild:self.minion2.healthBar];
+            }
+            //minion 3
+            if(!self.minion3.isActivated)
             {
-                
+                self.minion3.isActivated = true;
+                [scene addChild:self.minion3];
+                [scene addChild:self.minion3.healthBar];
+            }
+
+            break;
+            
+        case 2:
+            //minion4
+            if(!self.minion4.isActivated){
+                self.minion4.isActivated = true;
+                [scene addChild:self.minion4];
+                [scene addChild:self.minion4.healthBar];
             }
             
-            if(!self.finalBoss.isActivated){
-                self.finalBoss.isActivated = true;
-                self.finalBoss.position = CGPointMake(self.goku.position.x+320,35);
-                [scene addChild:self.finalBoss];
-                [scene addChild:self.finalBoss.healthBar];
-            }
             break;
             
         case 3:
             
-            if(!self.minion3.isActivated && self.minion2.isDead)
-            {
-                
+            if(!self.finalBoss.isActivated && (self.minion1.isDead && self.minion2.isDead && self.minion3.isDead && self.minion4.isDead)){
+                self.finalBoss.isActivated = true;
+                self.finalBoss.position = CGPointMake(self.goku.position.x+320,35);
+                [scene addChild:self.finalBoss];
+                [scene addChild:self.finalBoss.healthBar];
             }
             if(self.goku.rightLock)
                 self.goku.rightLock = NO;
@@ -193,5 +216,16 @@
     [self handleMinionCollisions:contact];
     
 }
+- (void) setupMusic
+{
+    NSString *musicPath = [[NSBundle mainBundle]
+                           pathForResource:@"buu_dub" ofType:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
+                                  initWithContentsOfURL:[NSURL fileURLWithPath:musicPath] error:NULL];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    self.backgroundMusicPlayer.volume = .2;
+    [self.backgroundMusicPlayer play];
+}
+
 
 @end

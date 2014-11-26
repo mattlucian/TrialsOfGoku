@@ -60,19 +60,28 @@
 
 
 -(Cell*)setUpCell{
-    Cell* temp = [[Cell alloc] init];
-    temp.position = CGPointMake(520, 30); // spawns off edge
-    temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    Cell* temp = [Cell spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"cell_walk_right_1"]];
+    NSArray *animation = [temp getAnimationFrames:@"cell_walk_right"];
+    [temp runAnimation: animation atFrequency:.5 withKey:@"cell_walk_right"];
+    
+    temp.position = CGPointMake(-100, -100);
+    temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = ENEMY_CATEGORY;
     temp.physicsBody.affectedByGravity = NO;
     temp.physicsBody.dynamic = YES;
     temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.inputView.contentMode = UIViewContentModeCenter;
-    temp.name = @"cell";
+    temp.name = @"boss";
     temp.isDead = false;
-    temp.lastDirection = @"right"; // default because they spawn on right
+    temp.health = 100;
+    temp.totalHealth = 100;
+    temp.attackPower = 10;
+    temp.lastDirection = @"right";
+    temp.typeOfObject = @"cell";
+    temp.xScale = -1;
     return temp;
+
 }
 
 
