@@ -10,8 +10,6 @@ TrialsOfGoku TODO List:
   - Work with Marcus to create presentation
   - Work with Marcus to create Poster Board
 
-~~Test done~~
-
 <h3>Matt</h3>
   - Create obstacle objects with collision detection
 
