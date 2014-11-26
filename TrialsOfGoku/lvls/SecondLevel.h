@@ -12,27 +12,15 @@
 #import "SafeObstacle.h"
 #import "Cell.h"
 #import "Buu.h"
+#import "BaseLevel.h"
+#import "GameScene.h"
 
-@interface SecondLevel : NSObject
+@interface SecondLevel : BaseLevel
 
-@property (nonatomic) NSInteger levelRange;
-@property (nonatomic) NSInteger currentLevelLocation;
-@property (nonatomic) NSInteger bossSpawnNumber;
-@property (nonatomic) BOOL alreadySpawned;
+@property (nonatomic, strong) Buu* finalBoss;
 
-@property (nonatomic) Minion* minion1;
-@property (nonatomic) Minion* minion2;
-@property (nonatomic) Minion* minion3;
-@property (nonatomic) Minion* minion4;
-
-@property (nonatomic) SKSpriteNode* background1;
-@property (nonatomic) SKSpriteNode* background2;
-
-@property (nonatomic) Buu* finalBoss;
-
-
--(void)runLevelFor:(SKScene*)scene;
--(void)setUpLevelForScene:(SKScene*)scene;
-
+-(void)handleBossCollisions:(SKPhysicsContact *)contact;
+-(void)setUpLevelForScene:(GameScene*)scene;
+-(void)runLevelFor:(GameScene*)scene;
 
 @end

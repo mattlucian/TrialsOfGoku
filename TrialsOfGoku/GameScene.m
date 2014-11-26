@@ -9,12 +9,13 @@
 #import "GameScene.h"
 #import "Globals.h"
 #import "FirstLevel.h"
-
+#import "SecondLevel.h"
 
 @implementation GameScene
 {
     NSInteger levelIndicator;
     FirstLevel* firstLevel;
+    SecondLevel* secondLevel;
     
     NSDate *start;          // start timer
     NSTimer *pressTimer;    // tracks how long user holds down tap
@@ -43,7 +44,12 @@
     if(levelIndicator == 1){
         [firstLevel runLevelFor:self];
     }else{
-        // level 2
+        if(firstLevel != nil){
+            firstLevel = nil;
+            secondLevel = [[SecondLevel alloc] init];
+            [secondLevel setUpLevelForScene:self];
+        }
+        [secondLevel runLevelFor:self];
     }
 }
 
@@ -59,7 +65,13 @@
                                                          repeats:NO];
         }
     }else{
-        // level 2
+        if([secondLevel.goku oneBallIsNil]){
+            pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
+                                                          target:self
+                                                        selector:@selector(handleTimer:)
+                                                        userInfo:nil
+                                                         repeats:NO];
+        }
     }
 }
 
@@ -78,9 +90,16 @@
             }
         }
     }else{
-        // level 2
-        
-        // super sayian
+        if([secondLevel.goku oneBallIsNil]){
+            [secondLevel.goku haltVelocity:@"X"];
+            if([secondLevel.goku.lastDirection isEqualToString:@"right"]){
+                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_right"];
+                [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+            }else if([secondLevel.goku.lastDirection isEqualToString:@"left"]){
+                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_left"];
+                [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+            }
+        }
     }
     currentFrames = nil;
 }
@@ -90,7 +109,7 @@
         [firstLevel handleTapGestureWithLocation:location andDirection:direction];
         // test change
         SKNode *node = [self nodeAtPoint:location];
-        // [firstLevle checkNodeTap:firstLevel.goku inRelationTo:firstLevel.goku];
+        // [firstLevel checkNodeTap:firstLevel.goku inRelationTo:firstLevel.goku];
         if([node isEqual:firstLevel.minion1] && abs((firstLevel.goku.position.x - firstLevel.minion1.position.x) < 10)){
             [node runAction:[SKAction fadeOutWithDuration:0]];
         }else if([node isEqual:firstLevel.finalBoss] && abs((firstLevel.goku.position.x - firstLevel.minion1.position.x) < 10)){
@@ -98,12 +117,18 @@
         }
         
     }else{
-        // level 2
-        
-        
+        [secondLevel handleTapGestureWithLocation:location andDirection:direction];
+        // test change
+        SKNode *node = [self nodeAtPoint:location];
+        // [secondLevel checkNodeTap:firstLevel.goku inRelationTo:secondLevel.goku];
+        if([node isEqual:secondLevel.minion1] && abs((secondLevel.goku.position.x - secondLevel.minion1.position.x) < 10)){
+            [node runAction:[SKAction fadeOutWithDuration:0]];
+        }else if([node isEqual:secondLevel.finalBoss] && abs((secondLevel.goku.position.x - secondLevel.minion1.position.x) < 10)){
+            [node runAction:[SKAction fadeOutWithDuration:0]];
+        }
     }
-    
 }
+
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
     NSDate *end = [NSDate date];
@@ -129,7 +154,13 @@
                 direction = -1;
             }
         }else{
-            // level 2
+            if(location.x > secondLevel.goku.position.x +10){
+                secondLevel.goku.lastDirection = @"right";
+                direction = 1;
+            }else{
+                secondLevel.goku.lastDirection = @"left";
+                direction = -1;
+            }
             
         }
 
@@ -137,13 +168,12 @@
             [self handleTapMovementAtLocation:location inDirection:direction];
           
             // eventually add an attack if location = on enemy
-          
             
         }else if (difference >= .5){ // not a tap
             if(levelIndicator == 1){
                 [firstLevel.goku setUpPowerBalls:difference onScene:self];
             }else{
-                // level 2
+                [secondLevel.goku setUpPowerBalls:difference onScene:self];
                 
             }
         }
@@ -157,8 +187,7 @@
     if(levelIndicator == 1){
         [firstLevel handleBossCollisions:contact];
     }else{
-        // level 2
-        
+        [secondLevel handleBossCollisions:contact];
     }
     
 }
