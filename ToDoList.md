@@ -5,21 +5,26 @@ TrialsOfGoku TODO List:
 
 ~~Design first level (dependent on deaths)~~
 
-  - Design second level (not dependent on deaths)
+~~Link enemy animations and make them modified on direction~~
+
+~~Design second level (not dependent on deaths)~~
+
+  - Implement all remaining goku animations (SS1 and SS3)
   - Obstacles on level 2 only for now
   - Work with Marcus to create presentation
   - Work with Marcus to create Poster Board
 
 <h3>Matt</h3>
-  - Create obstacle objects with collision detection
 
 ~~Create beginning / End for level~~
 
-  - Link enemy animations and make them modified on direction 
-
 ~~Add second level to GameScene and create structure~~
 
+  - Create obstacle objects with collision detection
+  - Look into disappearing goku
+  - change animations on goku depending on contact (when he hits the ground)
   - Hand to hand combat
+  - enemy blasts 
   - Code in Clouds
 
 
@@ -27,3 +32,6 @@ TrialsOfGoku TODO List:
   - Work with Steve to create presentation
   - Work with Steve to create Poster Board
   - Create persistent data storage for high score
+
+<h4>Optional Tasks</h4>
+  - Transformations (holding down to transform)
