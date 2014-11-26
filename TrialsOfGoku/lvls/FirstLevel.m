@@ -70,12 +70,13 @@
 -(void)runLevelFor:(SKScene*)scene{
     
     switch (self.currentLevelLocation) {  // activates enemies at necessary times
+        // very beginning of level, dont add anything here
         case -1:
             if(!self.goku.leftLock)
                 self.goku.leftLock = YES;
             break;
+            
         case 0:
-            NSLog(@"0\n");
             if(((self.background1.position.x >= ((scene.view.bounds.size.width/2))) &&
                 (self.background1.position.x < scene.view.bounds.size.width))       ||
                ((self.background2.position.x >= (scene.view.bounds.size.width/2))   &&
@@ -130,9 +131,8 @@
             
             break;
             
+ 
         case 4:
-            NSLog(@"Background 1: %f", self.background1.position.x);
-            NSLog(@"Background 2: %f", self.background2.position.x);
             if(((self.background1.position.x <= ((scene.view.bounds.size.width/2))) &&
                 (self.background1.position.x > scene.view.bounds.size.width))       ||
                ((self.background2.position.x <= (scene.view.bounds.size.width/2))   &&
@@ -146,6 +146,7 @@
             }
             break;
             
+            // very end of level, dont add anything here
         case 5:
             if(!self.goku.rightLock)
                 self.goku.rightLock = YES;
