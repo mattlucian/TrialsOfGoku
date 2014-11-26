@@ -23,6 +23,8 @@
 
 // provides more realistic movement by tracking velocity
 @property (nonatomic) NSInteger halting_velocity;
+@property (nonatomic) BOOL rightLock;
+@property (nonatomic) BOOL leftLock;
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
 

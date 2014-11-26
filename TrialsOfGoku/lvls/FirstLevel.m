@@ -21,7 +21,6 @@
 
         #pragma mark Initial Set Up
         ballSpawnFlag = NO;
-        self.levelRange = 20;
         self.currentLevelLocation = 0;
         
         #pragma mark Set Up Background
@@ -32,7 +31,7 @@
         
         #pragma mark Set Up Goku
         self.goku = [[Goku alloc] init];
-        self.goku = [self.goku setUpGoku];
+        self.goku = [self.goku setUpGoku]; self.goku.leftLock = NO; self.goku.rightLock = NO;
         [self.goku setUpHealthBar];
         self.goku.delegate = self;  // passes back move background object
         
@@ -43,7 +42,7 @@
         self.minion2 = nil;
         self.minion3 = nil;
         self.minion4 = nil;
-        
+        self.beginningOfLevel = YES;
         
         #pragma mark Set Up Buu
         self.finalBoss = [[Buu alloc] init];
@@ -71,8 +70,34 @@
 -(void)runLevelFor:(SKScene*)scene{
     
     switch (self.currentLevelLocation) {  // activates enemies at necessary times
+        case -1:
+            if(!self.goku.leftLock)
+                self.goku.leftLock = YES;
+            break;
+        case 0:
+            NSLog(@"0\n");
+            if(((self.background1.position.x >= ((scene.view.bounds.size.width/2))) &&
+                (self.background1.position.x < scene.view.bounds.size.width))       ||
+               ((self.background2.position.x >= (scene.view.bounds.size.width/2))   &&
+                (self.background2.position.x < scene.view.bounds.size.width)))
+            {
+                if(!self.goku.leftLock)
+                    self.goku.leftLock = YES;
+            }else if(((self.background1.position.x < ((scene.view.bounds.size.width/2))) &&
+                      (self.background1.position.x < scene.view.bounds.size.width))       ||
+                     ((self.background2.position.x < (scene.view.bounds.size.width/2))   &&
+                      ((self.background2.position.x < scene.view.bounds.size.width)&&(self.background2.position.x > 0))))
+            {
+                if(self.goku.leftLock)
+                    self.goku.leftLock = NO;
+            }
+            break;
+            
         case 1:
             // minion 1
+            if(self.goku.leftLock)
+                self.goku.leftLock = NO;
+
             if(!self.minion1.isActivated){
                 self.minion1.isActivated = true;
                 [scene addChild:self.minion1];
@@ -100,9 +125,32 @@
             {
                 
             }
+            if(self.goku.rightLock)
+                self.goku.rightLock = NO;
             
             break;
             
+        case 4:
+            NSLog(@"Background 1: %f", self.background1.position.x);
+            NSLog(@"Background 2: %f", self.background2.position.x);
+            if(((self.background1.position.x <= ((scene.view.bounds.size.width/2))) &&
+                (self.background1.position.x > scene.view.bounds.size.width))       ||
+               ((self.background2.position.x <= (scene.view.bounds.size.width/2))   &&
+                (self.background2.position.x > scene.view.bounds.size.width)))
+            {
+                if(!self.goku.rightLock)
+                    self.goku.rightLock = YES;
+            }else if(self.background1.position.x > ((scene.view.bounds.size.width/2))){
+                if(self.goku.rightLock)
+                    self.goku.rightLock = NO;
+            }
+            break;
+            
+        case 5:
+            if(!self.goku.rightLock)
+                self.goku.rightLock = YES;
+            break;
+        
         default:
             break;
     }

@@ -289,19 +289,29 @@
     [self moveHealthBar];
     
     if(self.velocity.x > 0){ // updates position with velocity
-        if(self.position.x >  225 && [self.lastDirection isEqualToString:@"right"]){
-            self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y); //
-            [self.delegate moveBackground:YES inRelationTo:self];
-        }else{
-            
+        if(self.position.x >  300 && [self.lastDirection isEqualToString:@"right"]){
+            if(self.rightLock){
+                if(self.position.x > 440){
+                    self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
+                }else{
+                    self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+                }
+            }else{
+                self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
+                [self.delegate moveBackground:YES inRelationTo:self];
+            }
+        }else {
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x-.01, self.velocity.y);
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         }
+        
     }else if (self.velocity.x < 0){
         if(self.position.x < 75 && [self.lastDirection isEqualToString:@"left"]){
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
-            [self.delegate moveBackground:YES inRelationTo:self];
+            if(!self.leftLock){
+                [self.delegate moveBackground:YES inRelationTo:self];
+            }
         }else{
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x+.01-self.halting_velocity, self.velocity.y);

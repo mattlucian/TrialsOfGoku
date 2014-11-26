@@ -14,7 +14,9 @@
 @interface BaseLevel : NSObject <GokuDelegate>
 
 @property (nonatomic) NSInteger levelScore;
-@property (nonatomic) NSInteger levelRange;
+@property (nonatomic) NSInteger finalLevelPoint;
+@property (nonatomic) BOOL beginningOfLevel;
+@property (nonatomic) BOOL endOfLevel;
 @property (nonatomic) NSInteger currentLevelLocation;
 @property (nonatomic) NSInteger bossSpawnNumber;
 
