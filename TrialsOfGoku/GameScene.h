@@ -10,5 +10,7 @@
 
 @interface GameScene : SKScene <SKPhysicsContactDelegate>
 
+@property (nonatomic) NSInteger levelIndicator;
+
 
 @end

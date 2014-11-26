@@ -13,7 +13,6 @@
 
 @implementation GameScene
 {
-    NSInteger levelIndicator;
     FirstLevel* firstLevel;
     SecondLevel* secondLevel;
     
@@ -28,7 +27,7 @@
         self.physicsWorld.gravity = CGVectorMake(0,0); // turn off gravities
         self.physicsWorld.contactDelegate = self; // set delegate for collision detection
         
-        levelIndicator = 2;
+        self.levelIndicator = 1;
         
         firstLevel = [[FirstLevel alloc] init];
         
@@ -41,7 +40,7 @@
 #pragma mark Main Update Method
 -(void)update:(CFTimeInterval)currentTime {
     
-    if(levelIndicator == 1){
+    if(self.levelIndicator == 1){
         [firstLevel runLevelFor:self];
     }else{
         if(firstLevel != nil){
@@ -57,7 +56,7 @@
 #pragma mark Touch Handlers & Related Methods
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     start = [NSDate date];
-    if(levelIndicator == 1){
+    if(self.levelIndicator == 1){
         if([firstLevel.goku oneBallIsNil]){
             pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
                                                           target:self
@@ -79,7 +78,7 @@
 -(void)handleTimer: (NSTimer *) timer{
     // still presssed down, start charging goku
     NSArray* currentFrames;
-    if(levelIndicator == 1){
+    if(self.levelIndicator == 1){
         if([firstLevel.goku oneBallIsNil]){
             [firstLevel.goku haltVelocity:@"X"];
             if([firstLevel.goku.lastDirection isEqualToString:@"right"]){
@@ -106,7 +105,7 @@
 }
 -(void)handleTapMovementAtLocation:(CGPoint)location inDirection:(NSInteger)direction{
    
-    if(levelIndicator == 1){
+    if(self.levelIndicator == 1){
         [firstLevel handleTapGestureWithLocation:location andDirection:direction];
         // test change
         SKNode *node = [self nodeAtPoint:location];
@@ -146,7 +145,7 @@
         CGPoint location = [touch locationInNode:self]; // get location
         NSInteger direction = 0; // init direction
         
-        if(levelIndicator == 1){
+        if(self.levelIndicator == 1){
             if(location.x > firstLevel.goku.position.x +10){
                 firstLevel.goku.lastDirection = @"right";
                 direction = 1;
@@ -171,7 +170,7 @@
             // eventually add an attack if location = on enemy
             
         }else if (difference >= .5){ // not a tap
-            if(levelIndicator == 1){
+            if(self.levelIndicator == 1){
                 [firstLevel.goku setUpPowerBalls:difference onScene:self];
             }else{
                 [secondLevel.goku setUpPowerBalls:difference onScene:self];
@@ -185,7 +184,7 @@
 #pragma mark Collision Detection
 - (void)didBeginContact:(SKPhysicsContact *)contact{
     
-    if(levelIndicator == 1){
+    if(self.levelIndicator == 1){
         [firstLevel handleBossCollisions:contact];
     }else{
         [secondLevel handleBossCollisions:contact];

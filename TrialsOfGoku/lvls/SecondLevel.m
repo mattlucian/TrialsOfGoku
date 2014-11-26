@@ -25,9 +25,9 @@
         self.currentLevelLocation = 0;
         
 #pragma mark Set Up Background
-        self.background1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg2"] size:[[UIScreen mainScreen] bounds].size];
         self.background1.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds]) , CGRectGetMidY([[UIScreen mainScreen] bounds]));
-        self.background2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg2"] size:[[UIScreen mainScreen] bounds].size];
         self.background2.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds])+self.background2.frame.size.width , CGRectGetMidY([[UIScreen mainScreen] bounds]));
         
 #pragma mark Set Up Goku
@@ -64,12 +64,12 @@
 
 -(void)setUpLevelForScene:(SKScene *)scene{
     
-    self.minion1.position = CGPointMake(700,60);
-    self.minion2.position = CGPointMake(1000,60);
-    self.minion3.position = CGPointMake(1600,60);
-    self.minion4.position = CGPointMake(2000,60);
+    self.minion1.position = CGPointMake(1000,60);
+    self.minion2.position = CGPointMake(1600,60);
+    self.minion3.position = CGPointMake(2000,60);
+    self.minion4.position = CGPointMake(2600,60);
     
-    self.finalBoss.position = CGPointMake(self.goku.position.x + 2000, 60);
+    self.finalBoss.position = CGPointMake(self.goku.position.x + 3000, 60);
     
     [scene addChild:self.background1];
     [scene addChild:self.background2];

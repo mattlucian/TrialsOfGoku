@@ -64,9 +64,6 @@
 
 -(void)setUpLevelForScene:(SKScene *)scene{
     
-    self.minion1.position = CGPointMake(700,60);
-
-    self.minion4.position = CGPointMake(self.goku.position.x + 700,60);
     
     self.finalBoss.position = CGPointMake(self.goku.position.x + 1000, 60);
     
@@ -77,15 +74,63 @@
 
 }
 
--(void)runLevelFor:(SKScene*)scene{
+-(void)runLevelFor:(GameScene*)scene{
     
-    switch (self.currentLevelLocation) {  // activates enemies at necessary times
-        // very beginning of level, dont add anything here
+    // minion 1
+    if (!self.minion1.isActivated) {
+        self.minion1.position = CGPointMake(self.goku.position.x + 1000, 60);
+        self.minion1.isActivated=true;
+        [scene addChild:self.minion1];
+        [scene addChild:self.minion1.healthBar];
+    }
+
+    // minion 2
+    if(!self.minion2.isActivated && self.minion1.isDead){
+        self.minion2.position = CGPointMake(self.goku.position.x + 1000,60);
+        self.minion2.isActivated = true;
+        [scene addChild:self.minion2];
+        [scene addChild:self.minion2.healthBar];
+    }
+    
+    // minion 3
+    if(!self.minion3.isActivated && self.minion2.isDead)
+    {
+        self.minion3.position = CGPointMake(self.goku.position.x + 1000,60);
+        self.minion3.isActivated = true;
+        [scene addChild:self.minion3];
+        [scene addChild:self.minion3.healthBar];
+    }
+
+    //minion 4
+    if(!self.minion4.isActivated && self.minion3.isDead){
+        self.minion4.position = CGPointMake(self.goku.position.x + 1000, 60);
+        self.minion4.isActivated = true;
+        [scene addChild:self.minion4];
+        [scene addChild:self.minion4.healthBar];
+    }
+    
+    // final boss
+    if(!self.finalBoss.isActivated && self.minion4.isDead){
+        self.finalBoss.isActivated = true;
+        self.finalBoss.position = CGPointMake(self.goku.position.x+720,60);
+        [scene addChild:self.finalBoss];
+        [scene addChild:self.finalBoss.healthBar];
+    }
+    
+    // boss is dead, move to level 2
+    if(self.finalBoss.isDead){
+        scene.levelIndicator = 2;
+    }
+
+    
+    switch (self.currentLevelLocation) {
+        // very beginning of level
         case -1:
             if(!self.goku.leftLock)
                 self.goku.leftLock = YES;
             break;
             
+        // beginning of level approaching
         case 0:
             if(((self.background1.position.x >= ((scene.view.bounds.size.width/2))) &&
                 (self.background1.position.x < scene.view.bounds.size.width))       ||
@@ -102,66 +147,25 @@
                 if(self.goku.leftLock)
                     self.goku.leftLock = NO;
             }
-            // minion 1
-            if (!self.minion1.isActivated) {
-                self.minion1.isActivated=true;
-                [scene addChild:self.minion1];
-                [scene addChild:self.minion1.healthBar];
-            }
 
             break;
-            
+
+        // not beginning of level anymore
         case 1:
-            // minion 2
             if(self.goku.leftLock)
                 self.goku.leftLock = NO;
 
-            if(!self.minion2.isActivated && self.minion1.isDead){
-                self.minion2.position = CGPointMake(self.goku.position.x + 600,60);
-                self.minion2.isActivated = true;
-                [scene addChild:self.minion2];
-                [scene addChild:self.minion2.healthBar];
-            }
-            if(!self.minion3.isActivated && self.minion2.isDead)
-            {
-                //minion 3
-                self.minion3.position = CGPointMake(self.goku.position.x + 600,60);
-                self.minion3.isActivated = true;
-                [scene addChild:self.minion3];
-                [scene addChild:self.minion3.healthBar];
-            }
-            
-
             break;
         
-        case 2:
-            //minion 4
-            if(!self.minion4.isActivated && self.minion3.isDead){
-                self.minion4.isActivated = true;
-                [scene addChild:self.minion4];
-                [scene addChild:self.minion4.healthBar];
-            }
-            
-            if(!self.finalBoss.isActivated && self.minion4.isDead){
-                self.finalBoss.isActivated = true;
-                self.finalBoss.position = CGPointMake(self.goku.position.x+720,60);
-                [scene addChild:self.finalBoss];
-                [scene addChild:self.finalBoss.healthBar];
-            }
-            break;
-
+        // not end of level anymore
         case 3:
             
-            if(!self.minion3.isActivated && self.minion2.isDead)
-            {
-                
-            }
             if(self.goku.rightLock)
                 self.goku.rightLock = NO;
             
             break;
             
- 
+        // end of level approaching
         case 4:
             if(((self.background1.position.x <= ((scene.view.bounds.size.width/2))) &&
                 (self.background1.position.x > scene.view.bounds.size.width))       ||
@@ -176,7 +180,7 @@
             }
             break;
             
-            // very end of level, dont add anything here
+        // very end of level
         case 5:
             if(!self.goku.rightLock)
                 self.goku.rightLock = YES;
@@ -185,6 +189,7 @@
         default:
             break;
     }
+    
     
     
     [self.goku spawnAndMoveBallsAlongScene:scene];
