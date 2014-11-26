@@ -2,7 +2,7 @@ TrialsOfGoku TODO List:
 ==========
 
 <h3>Steve</h3>
-  - Design first level (dependent on deaths)
+~~  - Design first level (dependent on deaths)~~
   - Design second level (not dependent on deaths)
   - Obstacles on level 2 only for now
   - Work with Marcus to create presentation
