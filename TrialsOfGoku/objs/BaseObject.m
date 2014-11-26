@@ -33,11 +33,11 @@
 -(void)moveHealthBar
 {
     if(self.healthBar != nil)
-        self.healthBar.position = CGPointMake(self.position.x, self.position.y+30);
+        self.healthBar.position = CGPointMake(self.position.x, self.position.y+60);
 }
 -(void)setUpHealthBar
 {
-    self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"full_health"] size:CGSizeMake(40, 15)];
+    self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"full_health"] size:CGSizeMake(60, 25)];
 }
 
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey{
@@ -81,14 +81,14 @@
                 if(!self.isHit){
                     if(self.position.x > goku.position.x){ // minion to the right
                         if([self.lastDirection isEqualToString:@"right"]){
-                            self.velocity = CGPointMake(-1,self.velocity.y);
+                            self.velocity = CGPointMake(-2,self.velocity.y);
                             self.xScale = -1;
                             self.lastDirection = @"left";
                         }
                     }else{ // buu to the left
                         if([self.lastDirection isEqualToString:@"left"]){
                             self.xScale = 1;
-                            self.velocity = CGPointMake(1,self.velocity.y);
+                            self.velocity = CGPointMake(2,self.velocity.y);
                             self.lastDirection = @"right";
                         }
                     }

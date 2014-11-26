@@ -64,9 +64,9 @@
 
 -(Minion*)setUpMinionWithName:(NSString *)name
 {
-    Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"]];
+    Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"] size:CGSizeMake(80, 100)];
     NSArray *animation = [temp getAnimationFrames:@"minion_walk_right"];
-    [temp runAnimation: animation atFrequency:.5 withKey:@"minion_walk_right"];
+    [temp runAnimation: animation atFrequency:.3 withKey:@"minion_walk_right"];
     temp.position = CGPointMake(-100, -100);
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = ENEMY_CATEGORY;

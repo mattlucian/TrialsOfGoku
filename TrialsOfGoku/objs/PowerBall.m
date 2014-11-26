@@ -80,15 +80,15 @@
     
     // create certain sized powerball
     if(difference >= .5 && difference < 1.0){
-        self.size = CGSizeMake(34, 28);
-        framesToRun = [self setSizeAndShow:1 inDirection:goku.lastDirection];
+        self.size = CGSizeMake(50, 40);
+        framesToRun = [self setSizeAndShow:3 inDirection:goku.lastDirection];
         siz = 1;
     }else if (difference >= 1.0 && difference < 1.5){
-        self.size = CGSizeMake(60, 56);
+        self.size = CGSizeMake(80, 75);
         framesToRun = [self setSizeAndShow:2 inDirection:goku.lastDirection];
         siz = 2;
     }else if(difference >= 1.5){
-        self.size = CGSizeMake(72, 56);
+        self.size = CGSizeMake(100, 90);
         framesToRun = [self setSizeAndShow:3 inDirection:goku.lastDirection];
         siz = 3;
     }

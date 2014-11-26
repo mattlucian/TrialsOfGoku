@@ -127,21 +127,21 @@
     self.currentAnimationFrames = [[NSMutableArray alloc] init];
     Goku * workingObjectGoku = [[Goku alloc] init];
     self.currentAnimationFrames = [workingObjectGoku getAnimationFrames:gokuAnimationKey];
-    workingObjectGoku = [Goku spriteNodeWithTexture:self.currentAnimationFrames[0] ];
+    workingObjectGoku = [Goku spriteNodeWithTexture:self.currentAnimationFrames[0] size:CGSizeMake(80,100)];
     return workingObjectGoku;
 }
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity
 {
     if([[axis uppercaseString] isEqualToString:@"X"]){
         if(additionToVelocity > 0){
-            if((additionToVelocity + self.velocity.x) >= 2.5){
-                additionToVelocity = 2.5 - self.velocity.x;
+            if((additionToVelocity + self.velocity.x) >= 5){
+                additionToVelocity = 5 - self.velocity.x;
             }
         }else{
             additionToVelocity = fabs(additionToVelocity);
             float tempX = fabs(self.velocity.x);
-            if((additionToVelocity + tempX) >= 2.5){
-                additionToVelocity = 2.5 - tempX;
+            if((additionToVelocity + tempX) >= 5){
+                additionToVelocity = 5 - tempX;
             }
             additionToVelocity = 0 - additionToVelocity;
         }
@@ -303,7 +303,7 @@
             }
         }else {
             [self.delegate moveBackground:NO inRelationTo:self];
-            self.velocity = CGPointMake(self.velocity.x-.01, self.velocity.y);
+            self.velocity = CGPointMake(self.velocity.x-.03, self.velocity.y);
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         }
         
@@ -315,7 +315,7 @@
             }
         }else{
             [self.delegate moveBackground:NO inRelationTo:self];
-            self.velocity = CGPointMake(self.velocity.x+.01-self.halting_velocity, self.velocity.y);
+            self.velocity = CGPointMake(self.velocity.x+.03-self.halting_velocity, self.velocity.y);
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         }
     }else{
@@ -323,11 +323,11 @@
     }
 
     // goku hits the ground here
-    if(self.position.y < 30){
+    if(self.position.y < 60){
         if(self.jumpCount != 0){
             self.jumpCount = 0; // reset jumps
             self.velocity = CGPointMake(self.velocity.x,0); // halt his Y velocity
-            self.position = CGPointMake(self.position.x, 30);
+            self.position = CGPointMake(self.position.x, 60);
         }
     }else{
         if(self.jumpCount != 0){

@@ -64,11 +64,11 @@
 
 -(void)setUpLevelForScene:(SKScene *)scene{
     
-    self.minion1.position = CGPointMake(700,35);
+    self.minion1.position = CGPointMake(700,60);
 
-    self.minion4.position = CGPointMake(self.goku.position.x + 700,35);
+    self.minion4.position = CGPointMake(self.goku.position.x + 700,60);
     
-    self.finalBoss.position = CGPointMake(self.goku.position.x + 1000, 40);
+    self.finalBoss.position = CGPointMake(self.goku.position.x + 1000, 60);
     
     [scene addChild:self.background1];
     [scene addChild:self.background2];
@@ -117,7 +117,7 @@
                 self.goku.leftLock = NO;
 
             if(!self.minion2.isActivated && self.minion1.isDead){
-                self.minion2.position = CGPointMake(self.goku.position.x + 600,35);
+                self.minion2.position = CGPointMake(self.goku.position.x + 600,60);
                 self.minion2.isActivated = true;
                 [scene addChild:self.minion2];
                 [scene addChild:self.minion2.healthBar];
@@ -125,7 +125,7 @@
             if(!self.minion3.isActivated && self.minion2.isDead)
             {
                 //minion 3
-                self.minion3.position = CGPointMake(self.goku.position.x + 600,35);
+                self.minion3.position = CGPointMake(self.goku.position.x + 600,60);
                 self.minion3.isActivated = true;
                 [scene addChild:self.minion3];
                 [scene addChild:self.minion3.healthBar];
@@ -144,7 +144,7 @@
             
             if(!self.finalBoss.isActivated && self.minion4.isDead){
                 self.finalBoss.isActivated = true;
-                self.finalBoss.position = CGPointMake(self.goku.position.x+720,35);
+                self.finalBoss.position = CGPointMake(self.goku.position.x+720,60);
                 [scene addChild:self.finalBoss];
                 [scene addChild:self.finalBoss.healthBar];
             }

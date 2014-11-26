@@ -53,11 +53,11 @@
 {
     NSArray* currentFrames = nil;
     if(location.x > (self.goku.position.x+30)){
-        [self.goku increaseVelocity:@"X" addVelocity:direction];
+        [self.goku increaseVelocity:@"X" addVelocity:(direction*3)];
         currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_right"];
     }
     else if(location.x < (self.goku.position.x-30)){
-        [self.goku increaseVelocity:@"X" addVelocity:direction];
+        [self.goku increaseVelocity:@"X" addVelocity:(direction*3)];
         currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_left"];
     }
     
@@ -73,9 +73,9 @@
     }
     
     // if tap was a jump
-    if(location.y > self.goku.position.y+30 && self.goku.jumpCount < 2){
+    if(location.y > self.goku.position.y+60 && self.goku.jumpCount < 2){
         self.goku.jumpCount++;
-        self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+6);
+        self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+8);
         if(direction > 0){
             currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
         }else if(direction < 0){
