@@ -20,7 +20,8 @@ TrialsOfGoku TODO List:
 
 ~~Add second level to GameScene and create structure~~
 
-  - Create obstacle objects with collision detection
+~~Create obstacle objects with collision detection~~
+
   - Look into disappearing goku
   - change animations on goku depending on contact (when he hits the ground)
   - Hand to hand combat
