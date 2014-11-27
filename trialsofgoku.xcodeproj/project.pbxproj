@@ -91,6 +91,7 @@
 		C9A8382B1A185FD500EF5EE5 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8382A1A185FD500EF5EE5 /* BaseObject.m */; };
 		C9A838311A1862A500EF5EE5 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838301A1862A500EF5EE5 /* Cell.m */; };
 		C9A838351A186D2100EF5EE5 /* FirstLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838341A186D2100EF5EE5 /* FirstLevel.m */; };
+		C9ADA3201A2788560034A4DF /* obstacles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C9ADA31F1A2788560034A4DF /* obstacles.atlas */; };
 		C9C12A491A12648D00629E0C /* PowerBall.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C12A481A12648D00629E0C /* PowerBall.m */; };
 		C9DB4B471A192D4100EDB976 /* SecondLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB4B461A192D4100EDB976 /* SecondLevel.m */; };
 		C9DDA5851A2105420039769D /* BaseLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA5841A2105420039769D /* BaseLevel.m */; };
@@ -207,6 +208,7 @@
 		C9A838301A1862A500EF5EE5 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = objs/Cell.m; sourceTree = "<group>"; };
 		C9A838331A186D2100EF5EE5 /* FirstLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstLevel.h; path = lvls/FirstLevel.h; sourceTree = "<group>"; };
 		C9A838341A186D2100EF5EE5 /* FirstLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstLevel.m; path = lvls/FirstLevel.m; sourceTree = "<group>"; };
+		C9ADA31F1A2788560034A4DF /* obstacles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = obstacles.atlas; sourceTree = "<group>"; };
 		C9C12A471A12648D00629E0C /* PowerBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerBall.h; path = objs/PowerBall.h; sourceTree = "<group>"; };
 		C9C12A481A12648D00629E0C /* PowerBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerBall.m; path = objs/PowerBall.m; sourceTree = "<group>"; };
 		C9DB4B451A192D4100EDB976 /* SecondLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondLevel.h; path = lvls/SecondLevel.h; sourceTree = "<group>"; };
@@ -336,7 +338,7 @@
 			children = (
 				C9A838321A186CD400EF5EE5 /* Levels */,
 				C90F049519F8A56B00DF49CA /* Objects */,
-				C90F049419F8A56600DF49CA /* Scenes */,
+				C90F049419F8A56600DF49CA /* Scene */,
 				C90F047E19F8A53700DF49CA /* img */,
 				C90F045719F8A51C00DF49CA /* AppDelegate.h */,
 				C90F045819F8A51C00DF49CA /* AppDelegate.m */,
@@ -380,6 +382,7 @@
 		C90F047E19F8A53700DF49CA /* img */ = {
 			isa = PBXGroup;
 			children = (
+				C9ADA31F1A2788560034A4DF /* obstacles.atlas */,
 				C9A6CCD81A21A11700764048 /* Button.png */,
 				C9A6CCD91A21A11700764048 /* Game_Over.png */,
 				C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */,
@@ -391,13 +394,13 @@
 			path = img;
 			sourceTree = "<group>";
 		};
-		C90F049419F8A56600DF49CA /* Scenes */ = {
+		C90F049419F8A56600DF49CA /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				C90F048E19F8A56200DF49CA /* GameScene.h */,
 				C90F048F19F8A56200DF49CA /* GameScene.m */,
 			);
-			name = Scenes;
+			name = Scene;
 			sourceTree = "<group>";
 		};
 		C90F049519F8A56B00DF49CA /* Objects */ = {
@@ -479,14 +482,38 @@
 		C9A838321A186CD400EF5EE5 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				C9A838331A186D2100EF5EE5 /* FirstLevel.h */,
-				C9A838341A186D2100EF5EE5 /* FirstLevel.m */,
-				C9DB4B451A192D4100EDB976 /* SecondLevel.h */,
-				C9DB4B461A192D4100EDB976 /* SecondLevel.m */,
+				C9ADA3211A2792440034A4DF /* base_level */,
+				C9ADA3221A2792510034A4DF /* level_1 */,
+				C9ADA3231A2792560034A4DF /* level_2 */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		C9ADA3211A2792440034A4DF /* base_level */ = {
+			isa = PBXGroup;
+			children = (
 				C9DDA5831A2105420039769D /* BaseLevel.h */,
 				C9DDA5841A2105420039769D /* BaseLevel.m */,
 			);
-			name = Levels;
+			name = base_level;
+			sourceTree = "<group>";
+		};
+		C9ADA3221A2792510034A4DF /* level_1 */ = {
+			isa = PBXGroup;
+			children = (
+				C9A838331A186D2100EF5EE5 /* FirstLevel.h */,
+				C9A838341A186D2100EF5EE5 /* FirstLevel.m */,
+			);
+			name = level_1;
+			sourceTree = "<group>";
+		};
+		C9ADA3231A2792560034A4DF /* level_2 */ = {
+			isa = PBXGroup;
+			children = (
+				C9DB4B451A192D4100EDB976 /* SecondLevel.h */,
+				C9DB4B461A192D4100EDB976 /* SecondLevel.m */,
+			);
+			name = level_2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,6 +631,7 @@
 				1108ADEC1A264C7D00CC4127 /* descend.wav in Resources */,
 				1108ADD91A264C7D00CC4127 /* cell.mp3 in Resources */,
 				1108ADEF1A264C7D00CC4127 /* Explosion2.wav in Resources */,
+				C9ADA3201A2788560034A4DF /* obstacles.atlas in Resources */,
 				1108ADEE1A264C7D00CC4127 /* explosion1.wav in Resources */,
 				C9A6CCDF1A21A11700764048 /* Goku_splash_sketch.png in Resources */,
 				1108AE0D1A264C7D00CC4127 /* teleport.wav in Resources */,

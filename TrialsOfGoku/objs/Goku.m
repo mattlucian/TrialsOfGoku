@@ -15,12 +15,11 @@
     PowerBall* ball2;       // poewrball 2
 }
 
-
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        
+
     }
     return self;
 }
@@ -92,7 +91,7 @@
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene{
     NSArray * currentFrames;
     NSInteger ballVelocity = 0;
-    [self setUpSoundBlast];
+    
     if([self.lastDirection isEqualToString:@"right"]){
         currentFrames= [self getAnimationFrames:@"goku_norm_ball_release_right"];
         ballVelocity = 4;
@@ -109,27 +108,21 @@
         ball = [PowerBall spriteNodeWithTexture:frames[0]];
         [ball performSetupFor:difference atVelocity:ballVelocity inRelationTo:self];
         ball.name = @"ball1";
+        [self setUpSoundBlast];
         [scene addChild:ball];
-        
     }else if(ball2 == nil){
         ball2 = [[PowerBall alloc] init];
         NSArray* frames = [ball2 getFrames:@"powerball_small_left"]; // filler ball
         ball2 = [PowerBall spriteNodeWithTexture:frames[0]];
         [ball2 performSetupFor:difference atVelocity:ballVelocity inRelationTo:self];
         ball2.name = @"ball2";
+        [self setUpSoundBlast];
         [scene addChild:ball2];
     }
 }
 
 
 // single image, init with image and set frames
--(Goku*)createAnimatedGoku:(NSString *)gokuAnimationKey{
-    self.currentAnimationFrames = [[NSMutableArray alloc] init];
-    Goku * workingObjectGoku = [[Goku alloc] init];
-    self.currentAnimationFrames = [workingObjectGoku getAnimationFrames:gokuAnimationKey];
-    workingObjectGoku = [Goku spriteNodeWithTexture:self.currentAnimationFrames[0] size:CGSizeMake(80,100)];
-    return workingObjectGoku;
-}
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity
 {
     if([[axis uppercaseString] isEqualToString:@"X"]){
@@ -147,22 +140,23 @@
         }
         self.velocity = CGPointMake(self.velocity.x+additionToVelocity, self.velocity.y);
     }else if([[axis uppercaseString] isEqualToString:@"Y"]){
-        if(self.jumpCount < 2)
+        if(self.jumpCount < 2){
             self.velocity = CGPointMake(self.velocity.x, self.velocity.y+additionToVelocity);
+            self.fallingLock = NO;
+        }
     }
 }
--(Goku*)setUpGoku{
-    Goku* temp = [self createAnimatedGoku:@"goku_norm_stance_right"];
-    
+-(Goku*)setUpGokuForLevel:(NSInteger)levelIndicator{
+    Goku* temp = [Goku spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"goku_norm_stance_right"] size:CGSizeMake(80, 100)];
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = GOKU_CATEGORY;
     temp.physicsBody.dynamic = YES;
     temp.physicsBody.affectedByGravity = NO;
-    temp.physicsBody.contactTestBitMask = ENEMY_CATEGORY;
+    temp.physicsBody.contactTestBitMask = ENEMY_CATEGORY | SAFE_OBSTACLE_CATEGORY | ENEMY_BLAST_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.name = @"goku";
     temp.typeOfObject = @"goku";
-    
+    temp.isCollidingWithObstacle = NO;
     temp.attackPower = 5;
     temp.health = 100;
     temp.totalHealth = 100;
@@ -172,16 +166,6 @@
     return temp;
 }
 
--(void)performBlast:(NSTimer *)timer{
-    switch([(NSString*)[timer userInfo] integerValue]){
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-    }
-}
 
 -(NSArray *)getAnimationFrames:(NSString*)gokuAnimationKey{
     NSMutableArray* workingArrayOfFrames = [[NSMutableArray alloc] init];
@@ -292,23 +276,30 @@
     if(self.velocity.x > 0){ // updates position with velocity
         if(self.position.x >  300 && [self.lastDirection isEqualToString:@"right"]){
             if(self.rightLock){
-                if(self.position.x > 440){
+                if(self.position.x > 980){
                     self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
                 }else{
-                    self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+                    if(!self.isCollidingWithObstacle)
+                        self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+                    else
+                        self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
                 }
             }else{
                 self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
-                [self.delegate moveBackground:YES inRelationTo:self];
+                if(!self.isCollidingWithObstacle)
+                    [self.delegate moveBackground:YES inRelationTo:self];
             }
         }else {
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x-.03, self.velocity.y);
-            self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+            if(!self.isCollidingWithObstacle)
+                self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+            else
+                self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
         }
         
     }else if (self.velocity.x < 0){
-        if(self.position.x < 75 && [self.lastDirection isEqualToString:@"left"]){
+        if(self.position.x < 300 && [self.lastDirection isEqualToString:@"left"]){
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
             if(!self.leftLock){
                 [self.delegate moveBackground:YES inRelationTo:self];
@@ -316,10 +307,16 @@
         }else{
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x+.03-self.halting_velocity, self.velocity.y);
-            self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+            if(!self.isCollidingWithObstacle)
+                self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+            else
+                self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
         }
     }else{
-        self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+        if(!self.isCollidingWithObstacle)
+            self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
+        else
+            self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
     }
 
     // goku hits the ground here
@@ -331,7 +328,12 @@
         }
     }else{
         if(self.jumpCount != 0){
-            self.velocity = CGPointMake(self.velocity.x, self.velocity.y-GRAVITY);
+            if(!self.fallingLock)
+                self.velocity = CGPointMake(self.velocity.x, self.velocity.y-GRAVITY);
+            else{
+                self.velocity = CGPointMake(self.velocity.x, 0);
+                self.jumpCount = 0;
+            }
         }
     }
 }
@@ -341,7 +343,7 @@
                            pathForResource:@"aura-big" ofType:@"wav"];
     self.kamehaBlast = [[AVAudioPlayer alloc]
                         initWithContentsOfURL:[NSURL fileURLWithPath:musicPath] error:NULL];
-    //self.kamehaBlast.duration = ;
+
     self.kamehaBlast.volume = .75;
     [self.kamehaBlast play];
 }

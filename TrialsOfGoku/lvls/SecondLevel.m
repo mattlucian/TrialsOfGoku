@@ -32,7 +32,7 @@
         
 #pragma mark Set Up Goku
         self.goku = [[Goku alloc] init];
-        self.goku = [self.goku setUpGoku]; self.goku.leftLock = NO; self.goku.rightLock = NO;
+        self.goku = [self.goku setUpGokuForLevel:2]; self.goku.leftLock = NO; self.goku.rightLock = NO;
         [self.goku setUpHealthBar];
         self.goku.delegate = self;  // passes back move background object
         
@@ -207,9 +207,9 @@
             if(!self.finalBoss.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku];
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku];
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }

@@ -8,7 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Globals.h"
+#import "BaseObject.h"
+#import "Goku.h"
 
 @interface SafeObstacle : SKSpriteNode
+
+@property (nonatomic) BOOL isActivated;
+
+-(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point;
+-(void)moveInRelationTo:(Goku *)goku;
 
 @end

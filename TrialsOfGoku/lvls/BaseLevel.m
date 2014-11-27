@@ -16,6 +16,8 @@
     if(isMoving){
         self.bgIsMoving = YES;
         
+        [self moveObstacles];
+        
         if(self.background1 != nil)
             self.background1.position = CGPointMake(self.background1.position.x-goku.velocity.x,self.background1.position.y);
         
@@ -49,6 +51,25 @@
 }
 
 
+
+
+-(void)moveObstacles
+{
+    if(self.obstacle1 != nil)
+        [self.obstacle1 moveInRelationTo:self.goku];
+    if(self.obstacle2 != nil)
+        [self.obstacle2 moveInRelationTo:self.goku];
+    if(self.obstacle3 != nil)
+        [self.obstacle3 moveInRelationTo:self.goku];
+    if(self.obstacle4 != nil)
+        [self.obstacle4 moveInRelationTo:self.goku];
+    if(self.obstacle5 != nil)
+        [self.obstacle5 moveInRelationTo:self.goku];
+    if(self.obstacle6 != nil)
+        [self.obstacle6 moveInRelationTo:self.goku];
+    
+}
+
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction
 {
     NSArray* currentFrames = nil;
@@ -75,7 +96,7 @@
     // if tap was a jump
     if(location.y > self.goku.position.y+60 && self.goku.jumpCount < 2){
         self.goku.jumpCount++;
-        self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+8);
+        [self.goku increaseVelocity:@"Y" addVelocity:8];
         if(direction > 0){
             currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
         }else if(direction < 0){
@@ -95,9 +116,9 @@
             if(!self.minion1.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion1"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion1 handleCollisionWithGoku:self.goku];
+                    [self.minion1 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion1"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion1 handleCollisionWithGoku:self.goku];
+                    [self.minion1 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -107,9 +128,9 @@
             if(!self.minion2.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion2"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion2 handleCollisionWithGoku:self.goku];
+                    [self.minion2 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion2"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion2 handleCollisionWithGoku:self.goku];
+                    [self.minion2 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -119,9 +140,9 @@
             if(!self.minion3.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion3"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion3 handleCollisionWithGoku:self.goku];
+                    [self.minion3 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion3"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion3 handleCollisionWithGoku:self.goku];
+                    [self.minion3 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -132,9 +153,9 @@
             if(!self.minion4.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion4"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion4 handleCollisionWithGoku:self.goku];
+                    [self.minion4 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion4"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion4 handleCollisionWithGoku:self.goku];
+                    [self.minion4 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -144,9 +165,9 @@
             if(!self.minion5.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion5"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion5 handleCollisionWithGoku:self.goku];
+                    [self.minion5 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion5"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion5 handleCollisionWithGoku:self.goku];
+                    [self.minion5 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -156,14 +177,42 @@
             if(!self.minion6.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"minion6"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.minion6 handleCollisionWithGoku:self.goku];
+                    [self.minion6 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"minion6"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.minion6 handleCollisionWithGoku:self.goku];
+                    [self.minion6 handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
     }
 }
 
+-(void)handleCollisionEnd:(SKPhysicsContact *)contact
+{
+    if(self.obstacle1 != nil){
+       // if(self.obstacle1.isActivated){
+            NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+            if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
+                self.goku.isCollidingWithObstacle = NO;
+                self.goku.fallingLock = NO;
+            }
+       // }
+    }
+    
+}
+-(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
+    if(self.obstacle1 != nil){
+        //if(self.obstacle1.isActivated){
+            NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+            if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
+                if(!self.goku.isCollidingWithObstacle){
+                    if(abs(contact.bodyA.node.position.x - contact.bodyB.node.position.x) < 50){
+                        self.goku.fallingLock = YES;
+                    }
+                    self.goku.isCollidingWithObstacle = YES;
+                }
+            }
+       // }
+    }
+}
 
 @end

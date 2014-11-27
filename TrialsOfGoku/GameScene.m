@@ -180,6 +180,14 @@
     }
 }
 
+-(void)didEndContact:(SKPhysicsContact *)contact
+{
+    if(self.levelIndicator == 1){
+        [firstLevel handleCollisionEnd:contact];
+    }else{
+        [secondLevel handleCollisionEnd:contact];
+    }
+}
 
 #pragma mark Collision Detection
 - (void)didBeginContact:(SKPhysicsContact *)contact{

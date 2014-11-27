@@ -25,6 +25,7 @@
 @property (nonatomic) NSInteger halting_velocity;
 @property (nonatomic) BOOL rightLock;
 @property (nonatomic) BOOL leftLock;
+@property (nonatomic) BOOL fallingLock;
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
 
@@ -39,15 +40,12 @@
 
 @property (strong, nonatomic) AVAudioPlayer* kamehaBlast;
 
-@property (nonatomic) NSInteger chi;
-
-@property (nonatomic) NSArray* currentAnimationFrames;
-
--(Goku*)setUpGoku;
+-(Goku*)setUpGokuForLevel:(NSInteger)levelIndicator;
 -(NSArray *)getAnimationFrames:(NSString*)gokuAnimationKey;
--(void)performBlast:(NSTimer *)timer;
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity;
 -(void)moveGoku;
+
+// power balls
 -(int)getBallSize:(int)whichBall;
 -(BOOL)oneBallIsNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;

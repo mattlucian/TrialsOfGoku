@@ -109,7 +109,6 @@
     self.velocity = CGPointMake( velocity ,self.velocity.y);
 }
 
-
 -(void)animateExplosion
 {
     

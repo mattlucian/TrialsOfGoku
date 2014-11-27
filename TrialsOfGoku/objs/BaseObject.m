@@ -35,6 +35,7 @@
     if(self.healthBar != nil)
         self.healthBar.position = CGPointMake(self.position.x, self.position.y+60);
 }
+
 -(void)setUpHealthBar
 {
     self.healthBar = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"full_health"] size:CGSizeMake(60, 25)];
@@ -119,19 +120,26 @@
 }
 
 
--(void)handleCollisionWithGoku:(Goku*)goku 
-{    
-    switch ([goku getBallSize:1]) {
-        case 1:
-            self.health -= 10;
-            break;
-        case 2:
-            self.health -= 20;
-            break;
-        case 3:
-            self.health -= 30;
-            break;
+-(void)handleCollisionWithGoku:(Goku*)goku attackTypeIsPowerBall:(BOOL)isPowerBall
+{
+    if(isPowerBall){
+        switch ([goku getBallSize:1]) {
+            case 1:
+                self.health -= goku.attackPower*2;
+                break;
+            case 2:
+                self.health -= goku.attackPower*4;
+                break;
+            case 3:
+                self.health -= goku.attackPower*6;
+                break;
+        }
+    }else{
+        // standard attack
+        self.health -= goku.attackPower;
+        
     }
+    
     if(self.health <= 0){
         self.health = 0;
         self.isDead = true;

@@ -24,6 +24,7 @@
 
 @property (nonatomic) BOOL isActivated;
 @property (nonatomic) BOOL isHit;
+@property (nonatomic) BOOL isCollidingWithObstacle;
 
 @property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic) BOOL isDead;
@@ -38,7 +39,7 @@
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)runCountedAnimation:(NSArray*)animationFrames withCount:(int)myCount atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
--(void)handleCollisionWithGoku:(Goku*)goku;
+-(void)handleCollisionWithGoku:(Goku*)goku attackTypeIsPowerBall:(BOOL)isPowerBall;
 
 -(void)moveHealthBar;
 -(void)setUpHealthBar;

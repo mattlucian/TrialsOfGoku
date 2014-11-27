@@ -31,7 +31,7 @@
         
         #pragma mark Set Up Goku
         self.goku = [[Goku alloc] init];
-        self.goku = [self.goku setUpGoku]; self.goku.leftLock = NO; self.goku.rightLock = NO;
+        self.goku = [self.goku setUpGokuForLevel:1]; self.goku.leftLock = NO; self.goku.rightLock = NO;
         [self.goku setUpHealthBar];
         self.goku.delegate = self;  // passes back move background object
         
@@ -49,6 +49,10 @@
         self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
         [self.minion4 setUpHealthBar];
         self.beginningOfLevel = YES;
+    
+
+        self.obstacle1 = [[SafeObstacle alloc] init];
+        self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(700, 60)];
         
         #pragma mark Set Up Cell
         self.finalBoss = [[Cell alloc] init];
@@ -69,6 +73,7 @@
     
     [scene addChild:self.background1];
     [scene addChild:self.background2];
+    [scene addChild:self.obstacle1];
     [scene addChild:self.goku];
     [scene addChild:self.goku.healthBar];
 
@@ -167,14 +172,16 @@
             
         // end of level approaching
         case 4:
-            if(((self.background1.position.x <= ((scene.view.bounds.size.width/2))) &&
-                (self.background1.position.x > scene.view.bounds.size.width))       ||
-               ((self.background2.position.x <= (scene.view.bounds.size.width/2))   &&
-                (self.background2.position.x > scene.view.bounds.size.width)))
+            // if background1.x
+            if(((self.background1.position.x <= (scene.view.bounds.size.width/2)) && (self.background1.position.x > scene.view.bounds.size.width))
+            || ((self.background2.position.x <= (scene.view.bounds.size.width/2)) && (self.background2.position.x > scene.view.bounds.size.width)))
             {
                 if(!self.goku.rightLock)
                     self.goku.rightLock = YES;
-            }else if(self.background1.position.x > ((scene.view.bounds.size.width/2))){
+                
+            }else if(((self.background1.position.x > (scene.view.bounds.size.width/2)) && (self.background1.position.x < scene.view.bounds.size.width)) ||
+                     ((self.background2.position.x > (scene.view.bounds.size.width/2)) && (self.background2.position.x < scene.view.bounds.size.width)))
+            {
                 if(self.goku.rightLock)
                     self.goku.rightLock = NO;
             }
@@ -189,7 +196,6 @@
         default:
             break;
     }
-    
     
     
     [self.goku spawnAndMoveBallsAlongScene:scene];
@@ -216,9 +222,9 @@
             if(!self.finalBoss.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku];
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }else if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku];
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -226,6 +232,9 @@
     
     // minion collisions
     [self handleMinionCollisions:contact];
+    
+    // obstacle collisions
+    [self handleObstacleCollisions:contact];
   
 }
 - (void) setupMusic

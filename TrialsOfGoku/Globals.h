@@ -16,7 +16,7 @@
 static const uint32_t GOKU_CATEGORY =  0x1 << 0;
 static const uint32_t POWERBALL_CATEGORY =  0x1 << 1;
 static const uint32_t ENEMY_CATEGORY =  0x1 << 2;
-static const uint32_t HARMLESS_OBSTACLE_CATEGORY =  0x1 << 3;
-static const uint32_t HARMFUL_OBSTACLE_CATEGORY =  0x1 << 4;
+static const uint32_t SAFE_OBSTACLE_CATEGORY =  0x1 << 3;
+static const uint32_t ENEMY_BLAST_CATEGORY =  0x1 << 4;
 
 #endif

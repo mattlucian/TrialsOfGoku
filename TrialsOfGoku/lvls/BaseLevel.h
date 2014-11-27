@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "Goku.h"
 #import "Minion.h"
+#import "SafeObstacle.h"
 
 @interface BaseLevel : NSObject <GokuDelegate>
 
@@ -20,8 +21,16 @@
 @property (nonatomic) NSInteger currentLevelLocation;
 @property (nonatomic) NSInteger bossSpawnNumber;
 
+
+@property (nonatomic, strong) SafeObstacle* obstacle1;
+@property (nonatomic, strong) SafeObstacle* obstacle2;
+@property (nonatomic, strong) SafeObstacle* obstacle3;
+@property (nonatomic, strong) SafeObstacle* obstacle4;
+@property (nonatomic, strong) SafeObstacle* obstacle5;
+@property (nonatomic, strong) SafeObstacle* obstacle6;
+
 @property (nonatomic, strong) Minion* minion1;
-@property (nonatomic) Minion* minion2;
+@property (nonatomic, strong) Minion* minion2;
 @property (nonatomic) Minion* minion3;
 @property (nonatomic) Minion* minion4;
 @property (nonatomic) Minion* minion5;
@@ -35,6 +44,8 @@
 
 -(void)handleMinionCollisions:(SKPhysicsContact *)contact;
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction;
-
+-(void)moveObstacles;
+-(void)handleObstacleCollisions:(SKPhysicsContact *) contact;
+-(void)handleCollisionEnd:(SKPhysicsContact *) contact;
 
 @end
