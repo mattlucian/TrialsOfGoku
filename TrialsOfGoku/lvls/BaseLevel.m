@@ -75,11 +75,25 @@
     NSArray* currentFrames = nil;
     if(location.x > (self.goku.position.x+30)){
         [self.goku increaseVelocity:@"X" addVelocity:(direction*3)];
-        currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_right"];
+        
+        if(self.goku.transformationLevel == 0)
+            currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_right"];
+        else if(self.goku.transformationLevel == 1)
+            currentFrames = [self.goku getAnimationFrames:@"goku_ss1_walk_right"];
+        else if(self.goku.transformationLevel == 3)
+            currentFrames = [self.goku getAnimationFrames:@"goku_ss3_walk_right"];
+
     }
     else if(location.x < (self.goku.position.x-30)){
         [self.goku increaseVelocity:@"X" addVelocity:(direction*3)];
-        currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_left"];
+
+        if(self.goku.transformationLevel == 0)
+            currentFrames = [self.goku getAnimationFrames:@"goku_norm_walk_left"];
+        else if(self.goku.transformationLevel == 1)
+            currentFrames = [self.goku getAnimationFrames:@"goku_ss1_walk_left"];
+        else if(self.goku.transformationLevel == 3)
+            currentFrames = [self.goku getAnimationFrames:@"goku_ss3_walk_left"];
+
     }
     
     if(self.goku.velocity.x > 0){
@@ -99,9 +113,20 @@
         self.goku.fallingLock = NO;
         self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+8);
         if(direction > 0){
-            currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
+            if(self.goku.transformationLevel == 0)
+                currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
+            else if(self.goku.transformationLevel == 1)
+                currentFrames = [self.goku getAnimationFrames:@"goku_ss1_jump_right"];
+            else if(self.goku.transformationLevel == 3)
+                currentFrames = [self.goku getAnimationFrames:@"goku_ss3_jump_right"];
+            
         }else if(direction < 0){
-            currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_left"];
+            if(self.goku.transformationLevel == 0)
+                currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_left"];
+            else if(self.goku.transformationLevel == 1)
+                currentFrames = [self.goku getAnimationFrames:@"goku_ss1_jump_left"];
+            else if(self.goku.transformationLevel == 3)
+                currentFrames = [self.goku getAnimationFrames:@"goku_ss3_jump_left"];
         }
     }
     // animate whatever we decided on

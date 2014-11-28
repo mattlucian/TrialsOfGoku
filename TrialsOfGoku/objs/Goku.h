@@ -27,8 +27,10 @@
 @property (nonatomic) BOOL leftLock;
 @property (nonatomic) BOOL obstacleRightLock;
 @property (nonatomic) BOOL obstacleLeftLock;
-
 @property (nonatomic) BOOL fallingLock;
+
+
+@property (nonatomic) BOOL hasTransformed;
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
 
@@ -47,12 +49,15 @@
 -(NSArray *)getAnimationFrames:(NSString*)gokuAnimationKey;
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity;
 -(void)moveGoku;
+-(void)transformToSuperSaiyan:(NSNumber*)ssLevel;
 
 // power balls
 -(int)getBallSize:(int)whichBall;
 -(BOOL)oneBallIsNil;
+-(BOOL)bothBallsAreNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
 -(void)spawnAndMoveBallsAlongScene:(SKScene*)scene;
+-(void)reachedTransformation:(NSTimer*)timer;
 
 @end
 

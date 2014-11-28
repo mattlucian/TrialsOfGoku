@@ -56,21 +56,36 @@
 #pragma mark Touch Handlers & Related Methods
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     start = [NSDate date];
-    if(self.levelIndicator == 1){
-        if([firstLevel.goku oneBallIsNil]){
-            pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
-                                                          target:self
-                                                        selector:@selector(handleTimer:)
-                                                        userInfo:nil
-                                                         repeats:NO];
-        }
-    }else{
-        if([secondLevel.goku oneBallIsNil]){
-            pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
-                                                          target:self
-                                                        selector:@selector(handleTimer:)
-                                                        userInfo:nil
-                                                         repeats:NO];
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self]; // get location
+        
+        if(self.levelIndicator == 1){
+            
+            if(((abs(location.x - firstLevel.goku.position.x) < 30)&&(location.y > firstLevel.goku.position.y))&&(!firstLevel.goku.hasTransformed)){
+                [firstLevel.goku transformToSuperSaiyan:[[NSNumber alloc] initWithInt:1]];
+            }else{
+                if([firstLevel.goku oneBallIsNil]){
+                    pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
+                                                                  target:self
+                                                                selector:@selector(handleTimer:)
+                                                                userInfo:nil
+                                                                 repeats:NO];
+                }
+            }
+        }else{
+            
+            if(((abs(location.x - secondLevel.goku.position.x) < 30)&&(location.y > secondLevel.goku.position.y))&&(!secondLevel.goku.hasTransformed)){
+                [secondLevel.goku transformToSuperSaiyan:[[NSNumber alloc] initWithInt:1]];
+            }else{
+                if([secondLevel.goku oneBallIsNil]){
+                    pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
+                                                                  target:self
+                                                                selector:@selector(handleTimer:)
+                                                                userInfo:nil
+                                                                 repeats:NO];
+                }
+            }
         }
     }
 }
@@ -82,10 +97,23 @@
         if([firstLevel.goku oneBallIsNil]){
             [firstLevel.goku haltVelocity:@"X"];
             if([firstLevel.goku.lastDirection isEqualToString:@"right"]){
-                currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
+                if(firstLevel.goku.transformationLevel == 0)
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
+                else if(firstLevel.goku.transformationLevel == 1)
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_right"];
+                else
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_ss3_ball_charge_right"];
+                
                 [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }else if([firstLevel.goku.lastDirection isEqualToString:@"left"]){
-                currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
+              
+                if(firstLevel.goku.transformationLevel == 0)
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
+                else if(firstLevel.goku.transformationLevel == 1)
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_left"];
+                else
+                    currentFrames= [firstLevel.goku getAnimationFrames:@"goku_ss3_ball_charge_left"];
+
                 [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }
         }
@@ -93,10 +121,23 @@
         if([secondLevel.goku oneBallIsNil]){
             [secondLevel.goku haltVelocity:@"X"];
             if([secondLevel.goku.lastDirection isEqualToString:@"right"]){
-                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
+                if(secondLevel.goku.transformationLevel == 0)
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_right"];
+                else if(secondLevel.goku.transformationLevel == 1)
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_right"];
+                else
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss3_ball_charge_right"];
+
                 [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
+                
             }else if([secondLevel.goku.lastDirection isEqualToString:@"left"]){
-                currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
+                if(secondLevel.goku.transformationLevel == 0)
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_norm_ball_charge_left"];
+                else if(secondLevel.goku.transformationLevel == 1)
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss1_ball_charge_left"];
+                else
+                    currentFrames= [secondLevel.goku getAnimationFrames:@"goku_ss3_ball_charge_left"];
+                
                 [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }
         }
