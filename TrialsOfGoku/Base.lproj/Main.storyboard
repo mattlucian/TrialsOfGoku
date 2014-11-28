@@ -85,7 +85,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg4-Y3-XdG">
                                 <rect key="frame" x="50" y="168" width="908" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Controls:
+                                <string key="text">Controls:
  - Jumping
   -- To jump tap above Goku.
   -- To double jump tap above twice.
@@ -101,7 +101,7 @@
 
 Objective:
  - Survive and complete the level
- - Defeat the final bosses to progress  - Unlock Goku's Potential</mutableString>
+ - Defeat the final bosses to progress  - Unlock Goku's Potential</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
