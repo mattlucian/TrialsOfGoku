@@ -96,7 +96,8 @@
     // if tap was a jump
     if(location.y > self.goku.position.y+60 && self.goku.jumpCount < 2){
         self.goku.jumpCount++;
-        [self.goku increaseVelocity:@"Y" addVelocity:8];
+        self.goku.fallingLock = NO;
+        self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+8);
         if(direction > 0){
             currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
         }else if(direction < 0){
@@ -189,29 +190,47 @@
 -(void)handleCollisionEnd:(SKPhysicsContact *)contact
 {
     if(self.obstacle1 != nil){
-       // if(self.obstacle1.isActivated){
+        if(self.obstacle1.isActivated){
             NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
             if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
+                self.goku.obstacleRightLock = NO;
+                self.goku.obstacleLeftLock = NO;
                 self.goku.isCollidingWithObstacle = NO;
                 self.goku.fallingLock = NO;
+                self.goku.jumpCount++;
             }
-       // }
+        }
     }
     
 }
 -(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
     if(self.obstacle1 != nil){
-        //if(self.obstacle1.isActivated){
+        if(self.obstacle1.isActivated){
             NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
             if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
                 if(!self.goku.isCollidingWithObstacle){
-                    if(abs(contact.bodyA.node.position.x - contact.bodyB.node.position.x) < 50){
-                        self.goku.fallingLock = YES;
+                    float difference = contact.bodyA.node.position.x - contact.bodyB.node.position.x;
+                    if([contact.bodyA.node.name isEqualToString:@"goku"]){
+                        // node A == Goku
+                        if(difference > 40 )
+                            self.goku.obstacleLeftLock = YES;
+                        
+                        else if(difference < 40)
+                            self.goku.obstacleRightLock = YES;
+                    }else{
+                        if(difference > 40 )
+                            self.goku.obstacleRightLock = YES;
+                        else if(difference < 40)
+                            self.goku.obstacleLeftLock = YES;
+                        
                     }
+                    if(abs(contact.bodyA.node.position.y - contact.bodyB.node.position.y) > 30)
+                        self.goku.fallingLock = YES;
                     self.goku.isCollidingWithObstacle = YES;
+                    [self.goku.delegate moveBackground:NO inRelationTo:self.goku];
                 }
             }
-       // }
+        }
     }
 }
 
