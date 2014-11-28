@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Matt Myers. All rights reserved.
 //
 
+// Level 1
+// - Supports 4 minions
+// - Supports 5 Obstacles
+
 #import "FirstLevel.h"
 
 @implementation FirstLevel
@@ -75,8 +79,7 @@
 
 }
 
--(void)runLevelFor:(GameScene*)scene{
-    
+-(void)activateMinions:(GameScene*)scene{
     // minion 1
     if (!self.minion1.isActivated) {
         self.minion1.position = CGPointMake(self.goku.position.x + 1000, 60);
@@ -84,7 +87,7 @@
         [scene addChild:self.minion1];
         [scene addChild:self.minion1.healthBar];
     }
-
+    
     // minion 2
     if(!self.minion2.isActivated && self.minion1.isDead){
         self.minion2.position = CGPointMake(self.goku.position.x + 1000,60);
@@ -101,7 +104,7 @@
         [scene addChild:self.minion3];
         [scene addChild:self.minion3.healthBar];
     }
-
+    
     //minion 4
     if(!self.minion4.isActivated && self.minion3.isDead){
         self.minion4.position = CGPointMake(self.goku.position.x + 1000, 60);
@@ -117,53 +120,50 @@
         [scene addChild:self.finalBoss];
         [scene addChild:self.finalBoss.healthBar];
     }
-    
-    
-    // boss is dead, move to level 2
-    if(self.finalBoss.isDead){
-        scene.levelIndicator = 2;
-    }
 
-    
+}
+
+-(void)spawnObstaclesAndCheckLevelBoundaries:(GameScene*)scene
+{
     switch (self.currentLevelLocation) {
-        // very beginning of level
+            // very beginning of level
         case -1:
             if(!self.goku.leftLock)
                 self.goku.leftLock = YES;
             break;
             
-        // beginning of level approaching
+            // beginning of level approaching
         case 0:
             if(((self.background1.position.x < (scene.view.bounds.size.width/2))
-             &&((self.background1.position.x < scene.view.bounds.size.width)&&(self.background1.position.x > 0)))
-             ||((self.background2.position.x < (scene.view.bounds.size.width/2))
-             &&((self.background2.position.x < scene.view.bounds.size.width)&&(self.background2.position.x > 0))))
+                &&((self.background1.position.x < scene.view.bounds.size.width)&&(self.background1.position.x > 0)))
+               ||((self.background2.position.x < (scene.view.bounds.size.width/2))
+                  &&((self.background2.position.x < scene.view.bounds.size.width)&&(self.background2.position.x > 0))))
             {
                 if(self.goku.leftLock)
                     self.goku.leftLock = NO;
             }
-
+            
             if(!self.obstacle1.isActivated){
                 self.obstacle1 = [[SafeObstacle alloc] init];
                 self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(900, 60)];
                 [scene addChild:self.obstacle1];
             }
-
+            
             break;
-
-        // not beginning of level anymore
+            
+            // not beginning of level anymore
         case 1:
             if(self.goku.leftLock)
                 self.goku.leftLock = NO;
-
+            
             if(!self.obstacle2.isActivated){
                 self.obstacle2 = [[SafeObstacle alloc] init];
                 self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(900, 60)];
                 [scene addChild:self.obstacle2];
             }
             break;
-        
-        // not end of level anymore
+            
+            // not end of level anymore
         case 3:
             
             if(self.goku.rightLock)
@@ -176,10 +176,10 @@
             }
             break;
             
-        // end of level approaching
+            // end of level approaching
         case 4:
             if(((self.background1.position.x > (scene.view.bounds.size.width/2)) && (self.background1.position.x < scene.view.bounds.size.width)) ||
-                     ((self.background2.position.x > (scene.view.bounds.size.width/2)) && (self.background2.position.x < scene.view.bounds.size.width)))
+               ((self.background2.position.x > (scene.view.bounds.size.width/2)) && (self.background2.position.x < scene.view.bounds.size.width)))
             {
                 if(self.goku.rightLock){
                     self.goku.rightLock = NO;
@@ -187,17 +187,31 @@
             }
             break;
             
-        // very end of level
+            // very end of level
         case 5:
             if(!self.goku.rightLock)
                 self.goku.rightLock = YES;
             break;
-        
+            
         default:
             break;
     }
+}
+
+-(void)runLevelFor:(GameScene*)scene{
     
+    // activates mininos
+    [self activateMinions:scene];
     
+    // boss is dead, move to level 2
+    if(self.finalBoss.isDead){
+        scene.levelIndicator = 2;
+    }
+
+    // spawns obstacles at proper times
+    [self spawnObstaclesAndCheckLevelBoundaries:scene];
+    
+    // if balls exist, spawn and move them
     [self.goku spawnAndMoveBallsAlongScene:scene];
     [self.goku moveGoku]; // also moves background
     
@@ -249,22 +263,60 @@
 }
 -(void)killFirstLevel
 {
-    [self.minion1 removeFromParent];
-    self.minion1 = nil;
-    [self.minion2 removeFromParent];
-    self.minion2 = nil;
-    [self.minion3 removeFromParent];
-    self.minion3 = nil;
-    [self.minion4 removeFromParent];
-    self.minion4 = nil;
-    [self.finalBoss removeFromParent];
-    self.finalBoss = nil;
-    [self.background1 removeFromParent];
-    self.background1 = nil;
-    [self.background2 removeFromParent];
-    self.background2 = nil;
-    [self.backgroundMusicPlayer stop];
-    self.backgroundMusicPlayer = nil;
+    if(self.minion1 != nil){
+        [self.minion1 removeFromParent];
+        self.minion1 = nil;
+    }
+    if(self.minion2 != nil){
+        [self.minion2 removeFromParent];
+        self.minion2 = nil;
+    }
+    
+    if(self.minion3 != nil){
+        [self.minion3 removeFromParent];
+        self.minion3 = nil;
+    }
+    if(self.minion4 != nil){
+        [self.minion4 removeFromParent];
+        self.minion4 = nil;
+    }
+    if(self.obstacle1 != nil){
+        [self.obstacle1 removeFromParent];
+        self.obstacle1 = nil;
+    }
+    if(self.obstacle2 != nil){
+        [self.obstacle2 removeFromParent];
+        self.obstacle2 = nil;
+    }
+    if(self.obstacle3 != nil){
+        [self.obstacle3 removeFromParent];
+        self.obstacle3 = nil;
+    }
+    if(self.obstacle4 != nil){
+        [self.obstacle4 removeFromParent];
+        self.obstacle4 = nil;
+    }
+    if(self.obstacle5 != nil){
+        [self.obstacle5 removeFromParent];
+        self.obstacle5 = nil;
+    }
+    if(self.finalBoss != nil){
+        [self.finalBoss removeFromParent];
+        self.finalBoss = nil;
+    }
+    if(self.background1 != nil){
+        [self.background1 removeFromParent];
+        self.background1 = nil;
+    }
+    if(self.background2 != nil){
+        [self.background2 removeFromParent];
+        self.background2 = nil;
+    }
+    
+    if(self.backgroundMusicPlayer != nil){
+        [self.backgroundMusicPlayer stop];
+        self.backgroundMusicPlayer = nil;
+    }
     
 }
 

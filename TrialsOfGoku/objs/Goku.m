@@ -13,13 +13,16 @@
 {
     PowerBall* ball;        // powerball 1
     PowerBall* ball2;       // poewrball 2
+    NSTimer* transformTimer;
+    NSInteger xScale;
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-
+        xScale = 1;
+       // seed48(time(NULL));
     }
     return self;
 }
@@ -46,6 +49,13 @@
 
 -(BOOL)oneBallIsNil{
     if(ball == nil || ball2 == nil)
+        return true;
+    else
+        return false;
+}
+
+-(BOOL)bothBallsAreNil{
+    if(ball == nil && ball2 == nil)
         return true;
     else
         return false;
@@ -121,7 +131,6 @@
     }
 }
 
-
 // single image, init with image and set frames
 -(void)increaseVelocity:(NSString*)axis addVelocity:(NSInteger)additionToVelocity
 {
@@ -147,7 +156,15 @@
     }
 }
 -(Goku*)setUpGokuForLevel:(NSInteger)levelIndicator{
+   
     Goku* temp = [Goku spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"goku_norm_stance_right"] size:CGSizeMake(80, 100)];
+    
+    if(levelIndicator == 1){
+        temp.transformationLevel = 0;
+    }else if (levelIndicator == 2){
+        temp.transformationLevel = 1;
+    }
+    
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = GOKU_CATEGORY;
     temp.physicsBody.dynamic = YES;
@@ -160,10 +177,31 @@
     temp.attackPower = 5;
     temp.health = 100;
     temp.totalHealth = 100;
-    
     temp.jumpCount = 1;
     temp.position = CGPointMake(30,50);
     return temp;
+}
+
+-(void)transformToSuperSaiyan:(NSNumber*)ssLevel
+{
+    NSArray* frames = [self getAnimationFrames:@"goku_norm_power_right"];
+    [self runCountedAnimation:frames withCount:1 atFrequency:.3f withKey:@"goku_transformation"];
+    
+    transformTimer = [NSTimer scheduledTimerWithTimeInterval: 1
+                                                target:self
+                                              selector:@selector(reachedTransformation:)
+                                              userInfo:ssLevel
+                                               repeats:NO];
+}
+
+-(void)reachedTransformation:(NSTimer*)timer
+{
+    if([[timer userInfo] integerValue] == 1){
+        self.transformationLevel = 1;
+    }else if([[timer userInfo] integerValue] == 3){
+        self.transformationLevel = 3;
+    }
+    self.hasTransformed = YES;
 }
 
 
@@ -189,11 +227,22 @@
             }
         // goku_norm_power_right
         }else if([gokuAnimationKey isEqualToString:@"goku_norm_power_right"]){
-            for (int i=1; i <= 3; i++) {
-                NSString *textureName = [NSString stringWithFormat:@"goku_norm_power_right_%d", i];
+            int ids[] = { 1,2,3 ,3,2,1 ,1,2,3 ,3,2,1 };
+            for (int i=1; i <=  12 ; i++) {
+                NSString *textureName = [NSString stringWithFormat:@"goku_norm_power_right_%d", ids[i]];
                 SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
                 [workingArrayOfFrames addObject:temp];
             }
+            int count = 0;
+            while(count < 3){
+                SKTexture *t1 = [gokuAnimatedAtlas textureNamed:@"goku_norm_power_right_0"];
+                [workingArrayOfFrames addObject:t1];
+
+                SKTexture *t2 = [SKTexture textureWithImageNamed:@"goku_ss1_power_right_0"];
+                [workingArrayOfFrames addObject:t2];
+                count++;
+            }
+            
         // goku_norm_walk_right
         }else if([gokuAnimationKey isEqualToString:@"goku_norm_walk_right"]){
             int ids[] = { 3,2,3,2,3};
@@ -257,16 +306,120 @@
 
     #pragma mark Super Saiyan 1 Goku
     }else if([gokuAnimationKey hasPrefix:@"goku_ss1"]){
-
-    #pragma mark Super Saiyan 3 Goku
-    }else if([gokuAnimationKey hasPrefix:@"goku_ss2"]){
+        SKTextureAtlas *gokuAnimatedAtlas = [SKTextureAtlas atlasNamed:@"goku_ss1"];
         
-    #pragma mark Super Saiyan 4 Goku
+        // goku ss1 attack right
+        if([gokuAnimationKey isEqualToString:@"goku_ss1_attack_right"]){
+            int random = (rand() % 5)+1;
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_attack_right_%d", random];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+
+            xScale = 1;
+
+        // goku_ss1_attack_left
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_attack_left"]){
+            int random = (rand() % 5)+1;
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_attack_right_%d", random];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            
+            xScale = -1;
+
+        // goku_ss1_power_right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_power_right"]){
+            for (int i=1; i <= 3; i++) {
+                NSString *textureName = [NSString stringWithFormat:@"goku_ss1_power_right_%d", i];
+                SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+                [workingArrayOfFrames addObject:temp];
+                xScale = 1;
+            }
+        
+        // goku_ss1_walk_right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_walk_right"]){
+            int ids[] = { 3,2,3,2,3};
+            for (int i=1; i < 5; i++) {
+                int index = ids[i];
+                NSString *textureName = [NSString stringWithFormat:@"goku_ss1_walk_right_%d", index];
+                SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+                [workingArrayOfFrames addObject:temp];
+                xScale = 1;
+            }
+        
+        // goku ss1 walk left
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_walk_left"]){
+            int ids[] = { 3,2,3,2,3};
+            for (int i=1; i < 5; i++) {
+                int index = ids[i];
+                NSString *textureName = [NSString stringWithFormat:@"goku_ss1_walk_right_%d", index];
+                SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+                [workingArrayOfFrames addObject:temp];
+                xScale = -1;
+            }
+          
+        // goku ss1 stance right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_stance_right"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_stance_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = 1;
+        
+        // goku ss1 jump right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_jump_right"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_jump_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = 1;
+        
+            // goku ss1 jump left
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_jump_left"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_jump_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = -1;
+            
+        // goku ss1 ball charge left
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_ball_charge_left"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_ball_charge_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = -1;
+            
+        // goku ss1 ball charge right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_ball_charge_right"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_ball_charge_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = 1;
+
+        // goku ss1 ball release right
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_ball_release_right"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_ball_release_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = 1;
+
+        // goku ss1 ball release left
+        }else if([gokuAnimationKey isEqualToString:@"goku_ss1_ball_release_left"]){
+            NSString *textureName = [NSString stringWithFormat:@"goku_ss1_ball_release_right"];
+            SKTexture *temp = [gokuAnimatedAtlas textureNamed:textureName];
+            [workingArrayOfFrames addObject:temp];
+            xScale = -1;
+        }
+        
+        
+    #pragma mark Super Saiyan 3 Goku
     }else if([gokuAnimationKey hasPrefix:@"goku_ss3"]){
         
+    #pragma mark Super Saiyan 4 Goku
+    }else if([gokuAnimationKey hasPrefix:@"goku_ss4"]){
+        
     }
-    
-    return (NSArray*)workingArrayOfFrames;
+    if(workingArrayOfFrames != nil){
+        return (NSArray*)workingArrayOfFrames;
+    }else{
+        return [[NSArray alloc] initWithObjects:[SKTexture textureWithImageNamed:@"goku_norm_stance_right"], nil];
+    }
 }
 
 -(void)moveGoku{
