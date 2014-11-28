@@ -12,12 +12,19 @@
 {
     CGPoint velocity;
 }
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 
 -(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point;
 {
     SafeObstacle* temp = [SafeObstacle spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"rock1"] size:CGSizeMake(70, 100)];
-    
+    temp.isActivated = YES;
     temp.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:temp.size];
     temp.physicsBody.categoryBitMask = SAFE_OBSTACLE_CATEGORY;
     temp.physicsBody.dynamic = YES;

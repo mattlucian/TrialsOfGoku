@@ -94,12 +94,6 @@
                         }
                     }
                     if(bgIsMoving){
-                        float whichSide = self.position.x - goku.position.x;
-                        if(whichSide > 0){
-                            // xscale = something
-                        }else{
-                            // xscale = something else
-                        }
                         self.position = CGPointMake(self.position.x+self.velocity.x- goku.velocity.x,self.position.y);
                         
                     }

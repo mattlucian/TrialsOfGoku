@@ -50,9 +50,6 @@
         [self.minion4 setUpHealthBar];
         self.beginningOfLevel = YES;
     
-
-        self.obstacle1 = [[SafeObstacle alloc] init];
-        self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(700, 60)];
         
         #pragma mark Set Up Cell
         self.finalBoss = [[Cell alloc] init];
@@ -73,7 +70,6 @@
     
     [scene addChild:self.background1];
     [scene addChild:self.background2];
-    [scene addChild:self.obstacle1];
     [scene addChild:self.goku];
     [scene addChild:self.goku.healthBar];
 
@@ -122,6 +118,7 @@
         [scene addChild:self.finalBoss.healthBar];
     }
     
+    
     // boss is dead, move to level 2
     if(self.finalBoss.isDead){
         scene.levelIndicator = 2;
@@ -137,20 +134,19 @@
             
         // beginning of level approaching
         case 0:
-            if(((self.background1.position.x >= ((scene.view.bounds.size.width/2))) &&
-                (self.background1.position.x < scene.view.bounds.size.width))       ||
-               ((self.background2.position.x >= (scene.view.bounds.size.width/2))   &&
-                (self.background2.position.x < scene.view.bounds.size.width)))
-            {
-                if(!self.goku.leftLock)
-                    self.goku.leftLock = YES;
-            }else if(((self.background1.position.x < ((scene.view.bounds.size.width/2))) &&
-                      (self.background1.position.x < scene.view.bounds.size.width))       ||
-                     ((self.background2.position.x < (scene.view.bounds.size.width/2))   &&
-                      ((self.background2.position.x < scene.view.bounds.size.width)&&(self.background2.position.x > 0))))
+            if(((self.background1.position.x < (scene.view.bounds.size.width/2))
+             &&((self.background1.position.x < scene.view.bounds.size.width)&&(self.background1.position.x > 0)))
+             ||((self.background2.position.x < (scene.view.bounds.size.width/2))
+             &&((self.background2.position.x < scene.view.bounds.size.width)&&(self.background2.position.x > 0))))
             {
                 if(self.goku.leftLock)
                     self.goku.leftLock = NO;
+            }
+
+            if(!self.obstacle1.isActivated){
+                self.obstacle1 = [[SafeObstacle alloc] init];
+                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(900, 60)];
+                [scene addChild:self.obstacle1];
             }
 
             break;
@@ -160,6 +156,11 @@
             if(self.goku.leftLock)
                 self.goku.leftLock = NO;
 
+            if(!self.obstacle2.isActivated){
+                self.obstacle2 = [[SafeObstacle alloc] init];
+                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(900, 60)];
+                [scene addChild:self.obstacle2];
+            }
             break;
         
         // not end of level anymore
@@ -168,22 +169,21 @@
             if(self.goku.rightLock)
                 self.goku.rightLock = NO;
             
+            if(!self.obstacle3.isActivated){
+                self.obstacle3 = [[SafeObstacle alloc] init];
+                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(900, 60)];
+                [scene addChild:self.obstacle3];
+            }
             break;
             
         // end of level approaching
         case 4:
-            // if background1.x
-            if(((self.background1.position.x <= (scene.view.bounds.size.width/2)) && (self.background1.position.x > scene.view.bounds.size.width))
-            || ((self.background2.position.x <= (scene.view.bounds.size.width/2)) && (self.background2.position.x > scene.view.bounds.size.width)))
-            {
-                if(!self.goku.rightLock)
-                    self.goku.rightLock = YES;
-                
-            }else if(((self.background1.position.x > (scene.view.bounds.size.width/2)) && (self.background1.position.x < scene.view.bounds.size.width)) ||
+            if(((self.background1.position.x > (scene.view.bounds.size.width/2)) && (self.background1.position.x < scene.view.bounds.size.width)) ||
                      ((self.background2.position.x > (scene.view.bounds.size.width/2)) && (self.background2.position.x < scene.view.bounds.size.width)))
             {
-                if(self.goku.rightLock)
+                if(self.goku.rightLock){
                     self.goku.rightLock = NO;
+                }
             }
             break;
             

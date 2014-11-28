@@ -273,13 +273,18 @@
     
     [self moveHealthBar];
     
+    if(self.fallingLock){
+        self.obstacleLeftLock = NO;
+        self.obstacleRightLock = NO;
+    }
+    
     if(self.velocity.x > 0){ // updates position with velocity
-        if(self.position.x >  300 && [self.lastDirection isEqualToString:@"right"]){
+        if(self.position.x >  500 && [self.lastDirection isEqualToString:@"right"]){
             if(self.rightLock){
                 if(self.position.x > 980){
                     self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
                 }else{
-                    if(!self.isCollidingWithObstacle)
+                    if(!self.obstacleRightLock)
                         self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
                     else
                         self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
@@ -292,28 +297,28 @@
         }else {
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x-.03, self.velocity.y);
-            if(!self.isCollidingWithObstacle)
+            if(!self.obstacleRightLock)
                 self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
             else
                 self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
         }
         
     }else if (self.velocity.x < 0){
-        if(self.position.x < 300 && [self.lastDirection isEqualToString:@"left"]){
+        if(self.position.x < 200 && [self.lastDirection isEqualToString:@"left"]){
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
-            if(!self.leftLock){
+            if(!self.leftLock && !self.obstacleLeftLock){
                 [self.delegate moveBackground:YES inRelationTo:self];
             }
         }else{
             [self.delegate moveBackground:NO inRelationTo:self];
             self.velocity = CGPointMake(self.velocity.x+.03-self.halting_velocity, self.velocity.y);
-            if(!self.isCollidingWithObstacle)
+            if(!self.obstacleLeftLock)
                 self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
             else
                 self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);
         }
     }else{
-        if(!self.isCollidingWithObstacle)
+        if(!self.obstacleLeftLock)
             self.position = CGPointMake(self.position.x+self.velocity.x,self.position.y+self.velocity.y);
         else
             self.position = CGPointMake(self.position.x,self.position.y+self.velocity.y);

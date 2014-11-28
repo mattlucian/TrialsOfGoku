@@ -25,6 +25,9 @@
 @property (nonatomic) NSInteger halting_velocity;
 @property (nonatomic) BOOL rightLock;
 @property (nonatomic) BOOL leftLock;
+@property (nonatomic) BOOL obstacleRightLock;
+@property (nonatomic) BOOL obstacleLeftLock;
+
 @property (nonatomic) BOOL fallingLock;
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
