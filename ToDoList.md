@@ -36,6 +36,7 @@ TrialsOfGoku TODO List:
 
   - Report
   - SS3 Animations in Goku.m file
+  - Different type of minion
 
 <h4>Optional Tasks</h4>
   - Enemy Blasts
