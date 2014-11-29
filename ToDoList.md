@@ -33,8 +33,7 @@ TrialsOfGoku TODO List:
 <h3>Marcus</h3>
 ~~Create Poster Board~~
 
-  - Work with Steve to create Poster Board
-  - Create persistent data storage for high score
+  - Work with Steve to create Presentation
 
 <h4>Optional Tasks</h4>
   - Enemy Blasts
