@@ -67,6 +67,14 @@
         [self.obstacle5 moveInRelationTo:self.goku];
     if(self.obstacle6 != nil)
         [self.obstacle6 moveInRelationTo:self.goku];
+    if(self.obstacle6 != nil)
+        [self.obstacle7 moveInRelationTo:self.goku];
+    if(self.obstacle6 != nil)
+        [self.obstacle8 moveInRelationTo:self.goku];
+    if(self.obstacle6 != nil)
+        [self.obstacle9 moveInRelationTo:self.goku];
+    if(self.obstacle6 != nil)
+        [self.obstacle10 moveInRelationTo:self.goku];
     
 }
 

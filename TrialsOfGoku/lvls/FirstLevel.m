@@ -145,7 +145,7 @@
             
             if(!self.obstacle1.isActivated){
                 self.obstacle1 = [[SafeObstacle alloc] init];
-                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(900, 60)];
+                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(1200, 60)];
                 [scene addChild:self.obstacle1];
             }
             
@@ -158,10 +158,22 @@
             
             if(!self.obstacle2.isActivated){
                 self.obstacle2 = [[SafeObstacle alloc] init];
-                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(900, 60)];
+                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(1200, 60)];
                 [scene addChild:self.obstacle2];
             }
             break;
+            
+        case 2:
+            if(self.goku.leftLock)
+                self.goku.leftLock = NO;
+            
+            if(!self.obstacle3.isActivated){
+                self.obstacle3 = [[SafeObstacle alloc] init];
+                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle3];
+            }
+            break;
+
             
             // not end of level anymore
         case 3:
@@ -169,11 +181,17 @@
             if(self.goku.rightLock)
                 self.goku.rightLock = NO;
             
-            if(!self.obstacle3.isActivated){
-                self.obstacle3 = [[SafeObstacle alloc] init];
-                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(900, 60)];
-                [scene addChild:self.obstacle3];
+            if(!self.obstacle4.isActivated){
+                self.obstacle4 = [[SafeObstacle alloc] init];
+                self.obstacle4 = [self.obstacle4 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle4];
             }
+            if(!self.obstacle5.isActivated){
+                self.obstacle5 = [[SafeObstacle alloc] init];
+                self.obstacle5 = [self.obstacle5 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle5];
+            }
+
             break;
             
             // end of level approaching

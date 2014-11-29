@@ -28,6 +28,10 @@
 @property (nonatomic, strong) SafeObstacle* obstacle4;
 @property (nonatomic, strong) SafeObstacle* obstacle5;
 @property (nonatomic, strong) SafeObstacle* obstacle6;
+@property (nonatomic, strong) SafeObstacle* obstacle7;
+@property (nonatomic, strong) SafeObstacle* obstacle8;
+@property (nonatomic, strong) SafeObstacle* obstacle9;
+@property (nonatomic, strong) SafeObstacle* obstacle10;
 
 @property (nonatomic, strong) Minion* minion1;
 @property (nonatomic, strong) Minion* minion2;
