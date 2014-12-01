@@ -51,6 +51,7 @@
         // stop animations
         if(self.levelIndicator == 1){
             [firstLevel unpauseAnimations];
+            [mainMenu removeFromParent];
         }else{
             // second level unpause
         }
@@ -59,6 +60,12 @@
         pauseButton.texture = [SKTexture textureWithImageNamed:@"play"];
         if(self.levelIndicator == 1){
             [firstLevel pauseAnimations];
+            mainMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_button"] color:[[UIColor alloc] init] size:CGSizeMake(150,100)];
+            mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
+            
+            [self addChild:mainMenu];
+
+            
         }else{
             // first level pause
         }
@@ -76,7 +83,7 @@
                 gameOver.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
                 [pauseButton removeFromParent];
                 
-                mainMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_button"] color:[[UIColor alloc] init] size:CGSizeMake(80,100)];
+                mainMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_button"] color:[[UIColor alloc] init] size:CGSizeMake(150,100)];
                 mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
                 
                 
