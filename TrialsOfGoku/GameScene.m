@@ -52,6 +52,7 @@
         if(self.levelIndicator == 1){
             [firstLevel unpauseAnimations];
             [mainMenu removeFromParent];
+            [firstLevel.backgroundMusicPlayer play];
         }else{
             // second level unpause
         }
@@ -64,6 +65,7 @@
             mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
             
             [self addChild:mainMenu];
+            [firstLevel.backgroundMusicPlayer pause];
 
             
         }else{
