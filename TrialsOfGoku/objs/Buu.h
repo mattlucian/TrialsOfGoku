@@ -14,6 +14,7 @@
 
 -(Buu*)setUpBuu;
 -(NSArray *)getAnimationFrames:(NSString*)buuAnimationKey;
+-(void)checkEligibilityForAttackWith:(Goku *)goku;
 
 
 @end
