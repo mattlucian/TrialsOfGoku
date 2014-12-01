@@ -651,6 +651,8 @@
 }
 
 -(void)animateAttack{
+    SKAction *musicAction = [SKAction playSoundFileNamed:@"punch.wav" waitForCompletion:NO];
+    [self runAction:musicAction];
     switch (self.transformationLevel) {
         case 0:
             if([self.lastDirection isEqualToString:@"right"]){
