@@ -38,7 +38,7 @@
         
 #pragma mark Set Up Minions
         self.minion1 = [[Minion2 alloc] init];
-        self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
+        self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"]; //new minions
         [self.minion1 setUpHealthBar];
         self.minion2 = [[Minion2 alloc] init];
         self.minion2 = [self.minion2 setUpMinionWithName:@"minion2"];
