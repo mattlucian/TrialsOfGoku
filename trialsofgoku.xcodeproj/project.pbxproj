@@ -63,8 +63,9 @@
 		1108AE0E1A264C7D00CC4127 /* teleport00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD81A264C7D00CC4127 /* teleport00.wav */; };
 		1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */; };
 		1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */; };
+		2C94F0561A2C321900D943B7 /* minions.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2C94F0551A2C321900D943B7 /* minions.atlas */; };
+		2C94F0581A2C356100D943B7 /* minion2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2C94F0571A2C356100D943B7 /* minion2.atlas */; };
 		2CF2CA341A2C12AF0068B186 /* Minion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF2CA331A2C12AF0068B186 /* Minion2.m */; };
-		2CF2CA361A2C1F540068B186 /* minion2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2CF2CA351A2C1F540068B186 /* minion2.atlas */; };
 		C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C905E89B1A2BE78C00B0D8AA /* menu_button.png */; };
 		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
 		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
@@ -78,7 +79,6 @@
 		C90F049319F8A56200DF49CA /* Goku.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F049119F8A56200DF49CA /* Goku.m */; };
 		C93F59611A17EC7A00C06817 /* buu.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F59591A17EC7A00C06817 /* buu.atlas */; };
 		C93F59621A17EC7A00C06817 /* cell.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595A1A17EC7A00C06817 /* cell.atlas */; };
-		C93F59631A17EC7A00C06817 /* minions.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595B1A17EC7A00C06817 /* minions.atlas */; };
 		C93F59641A17EC7A00C06817 /* goku_norm.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595D1A17EC7A00C06817 /* goku_norm.atlas */; };
 		C93F59651A17EC7A00C06817 /* goku_ss1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595E1A17EC7A00C06817 /* goku_ss1.atlas */; };
 		C93F59661A17EC7A00C06817 /* goku_ss3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C93F595F1A17EC7A00C06817 /* goku_ss3.atlas */; };
@@ -166,9 +166,10 @@
 		1108ADD81A264C7D00CC4127 /* teleport00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport00.wav; sourceTree = "<group>"; };
 		1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buu_dub.mp3; sourceTree = "<group>"; };
 		1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect_Cell_Dubstep.mp3; sourceTree = "<group>"; };
+		2C94F0551A2C321900D943B7 /* minions.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minions.atlas; sourceTree = "<group>"; };
+		2C94F0571A2C356100D943B7 /* minion2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minion2.atlas; sourceTree = "<group>"; };
 		2CF2CA321A2C12AF0068B186 /* Minion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minion2.h; sourceTree = "<group>"; };
 		2CF2CA331A2C12AF0068B186 /* Minion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minion2.m; sourceTree = "<group>"; };
-		2CF2CA351A2C1F540068B186 /* minion2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minion2.atlas; sourceTree = "<group>"; };
 		C905E89B1A2BE78C00B0D8AA /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		C90F049119F8A56200DF49CA /* Goku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Goku.m; path = objs/Goku.m; sourceTree = "<group>"; };
 		C93F59591A17EC7A00C06817 /* buu.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buu.atlas; sourceTree = "<group>"; };
 		C93F595A1A17EC7A00C06817 /* cell.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cell.atlas; sourceTree = "<group>"; };
-		C93F595B1A17EC7A00C06817 /* minions.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minions.atlas; sourceTree = "<group>"; };
 		C93F595D1A17EC7A00C06817 /* goku_norm.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_norm.atlas; sourceTree = "<group>"; };
 		C93F595E1A17EC7A00C06817 /* goku_ss1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_ss1.atlas; sourceTree = "<group>"; };
 		C93F595F1A17EC7A00C06817 /* goku_ss3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goku_ss3.atlas; sourceTree = "<group>"; };
@@ -422,10 +422,10 @@
 		C93F59581A17EC7A00C06817 /* enemies */ = {
 			isa = PBXGroup;
 			children = (
-				2CF2CA351A2C1F540068B186 /* minion2.atlas */,
+				2C94F0571A2C356100D943B7 /* minion2.atlas */,
+				2C94F0551A2C321900D943B7 /* minions.atlas */,
 				C93F59591A17EC7A00C06817 /* buu.atlas */,
 				C93F595A1A17EC7A00C06817 /* cell.atlas */,
-				C93F595B1A17EC7A00C06817 /* minions.atlas */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -634,10 +634,11 @@
 				C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */,
 				1108ADFB1A264C7D00CC4127 /* meleehit1.wav in Resources */,
 				1108ADFE1A264C7D00CC4127 /* meleemiss2.wav in Resources */,
-				2CF2CA361A2C1F540068B186 /* minion2.atlas in Resources */,
+				2C94F0581A2C356100D943B7 /* minion2.atlas in Resources */,
 				1108ADDA1A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 in Resources */,
 				1108ADE91A264C7D00CC4127 /* basicbeam_fire.wav in Resources */,
 				1108ADEC1A264C7D00CC4127 /* descend.wav in Resources */,
+				2C94F0561A2C321900D943B7 /* minions.atlas in Resources */,
 				1108ADD91A264C7D00CC4127 /* cell.mp3 in Resources */,
 				1108ADEF1A264C7D00CC4127 /* Explosion2.wav in Resources */,
 				C9ADA3201A2788560034A4DF /* obstacles.atlas in Resources */,
@@ -662,7 +663,6 @@
 				1108ADE01A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 in Resources */,
 				1108ADE21A264C7D00CC4127 /* perfect_cell_theme.mp3 in Resources */,
 				1108AE0B1A264C7D00CC4127 /* swordhit.wav in Resources */,
-				C93F59631A17EC7A00C06817 /* minions.atlas in Resources */,
 				1108AE061A264C7D00CC4127 /* strongpunch.wav in Resources */,
 				1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */,
 				1108ADDD1A264C7D00CC4127 /* dragon_ball_opening.mp3 in Resources */,
