@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "Goku.h"
 #import "Minion.h"
+#import "Minion2.h"
 #import "SafeObstacle.h"
 
 @interface BaseLevel : NSObject <GokuDelegate>
@@ -33,12 +34,12 @@
 @property (nonatomic, strong) SafeObstacle* obstacle9;
 @property (nonatomic, strong) SafeObstacle* obstacle10;
 
-@property (nonatomic, strong) Minion* minion1;
-@property (nonatomic, strong) Minion* minion2;
-@property (nonatomic) Minion* minion3;
-@property (nonatomic) Minion* minion4;
-@property (nonatomic) Minion* minion5;
-@property (nonatomic) Minion* minion6;
+@property (nonatomic, strong) BaseObject* minion1;
+@property (nonatomic, strong) BaseObject* minion2;
+@property (nonatomic) BaseObject* minion3;
+@property (nonatomic) BaseObject* minion4;
+@property (nonatomic) BaseObject* minion5;
+@property (nonatomic) BaseObject* minion6;
 
 @property (nonatomic) BaseObject* finalBoss;
 

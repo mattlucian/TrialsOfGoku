@@ -33,7 +33,8 @@
 @property (nonatomic) NSString* typeOfObject;
 @property (nonatomic, strong) SKSpriteNode* healthBar;
 
-
+-(BaseObject*)setUpMinionWithName:(NSString *)name;
+//-(Minion2*)setUpMinion2WithName:(NSString *)name;
 
 -(void)haltVelocity:(NSString*)axis;
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey;
