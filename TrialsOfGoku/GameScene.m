@@ -95,9 +95,8 @@
                 
                 
             }
-            
             [firstLevel runLevelFor:self];
-
+            
         }else{
             if(firstLevel != nil){
                 [firstLevel killFirstLevel];
@@ -138,7 +137,9 @@
         }else{
             if(!secondLevel.goku.isDead){
                 if(((abs(location.x - secondLevel.goku.position.x) < 30)&&(location.y > secondLevel.goku.position.y))&&(!secondLevel.goku.hasTransformed)){
+                    
                     [secondLevel.goku transformToSuperSaiyan:[[NSNumber alloc] initWithInt:1]];
+                    secondLevel.goku.performingAnAction = YES;
                 }else{
                     if([secondLevel.goku oneBallIsNil] && !secondLevel.goku.isTransforming){
                         pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
@@ -147,6 +148,7 @@
                                                                     userInfo:nil
                                                                      repeats:NO];
                     }
+                    secondLevel.goku.performingAnAction = YES;
                 }
             }
         }
@@ -211,14 +213,16 @@
 }
 -(void)handleTapMovementAtLocation:(CGPoint)location inDirection:(NSInteger)direction{
    
+    SKNode *node = [self nodeAtPoint:location];
+    if([node isEqual:pauseButton]){
+        [self handlePauseButtonPress];
+    }else if([node isEqual:mainMenu]){
+        [self.delegate mySceneDidFinish:self];
+    }
+    
     if(self.levelIndicator == 1){
         
-        SKNode *node = [self nodeAtPoint:location];
-        if([node isEqual:pauseButton]){
-            [self handlePauseButtonPress];
-        }else if([node isEqual:mainMenu]){
-            [self.delegate mySceneDidFinish:self];
-        }else if([node isEqual:firstLevel.minion1]){
+        if([node isEqual:firstLevel.minion1]){
             firstLevel.goku.isAttacking = YES;
             if([(Minion*)firstLevel.minion1 checkEligibilityForAttackWith:firstLevel.goku])
             {
@@ -259,14 +263,43 @@
         }
         
     }else{
-        [secondLevel handleTapGestureWithLocation:location andDirection:direction];
-        // test change
-        SKNode *node = [self nodeAtPoint:location];
-        // [secondLevel checkNodeTap:firstLevel.goku inRelationTo:secondLevel.goku];
-        if([node isEqual:secondLevel.minion1] && abs((secondLevel.goku.position.x - secondLevel.minion1.position.x) < 10)){
-            [node runAction:[SKAction fadeOutWithDuration:0]];
-        }else if([node isEqual:secondLevel.finalBoss] && abs((secondLevel.goku.position.x - secondLevel.minion1.position.x) < 10)){
-            [node runAction:[SKAction fadeOutWithDuration:0]];
+        
+        if([node isEqual:secondLevel.minion1]){
+            secondLevel.goku.isAttacking = YES;
+            if([(Minion2*)secondLevel.minion1 checkEligibilityForAttackWith:secondLevel.goku])
+            {
+                secondLevel.goku.performingAnAction = YES;
+                secondLevel.goku.isAttacking = YES;
+                [secondLevel.goku animateAttack];
+            }
+        }else if([node isEqual:secondLevel.minion2]){
+            if([(Minion2*)secondLevel.minion2 checkEligibilityForAttackWith:secondLevel.goku])
+            {
+                secondLevel.goku.isAttacking = YES;
+                [secondLevel.goku animateAttack];
+            }
+        }else if([node isEqual:secondLevel.minion3]){
+            [(Minion2*)secondLevel.minion3 checkEligibilityForAttackWith:secondLevel.goku];
+            secondLevel.goku.isAttacking = YES;
+            [secondLevel.goku animateAttack];
+        }else if([node isEqual:secondLevel.minion4]){
+            [(Minion2*)secondLevel.minion4 checkEligibilityForAttackWith:secondLevel.goku];
+            secondLevel.goku.isAttacking = YES;
+            [secondLevel.goku animateAttack];
+        }else if([node isEqual:secondLevel.minion5]){
+            [(Minion2*)secondLevel.minion5 checkEligibilityForAttackWith:secondLevel.goku];
+            secondLevel.goku.isAttacking = YES;
+            [secondLevel.goku animateAttack];
+        }else if([node isEqual:firstLevel.minion6]){
+            [(Minion2*)secondLevel.minion6 checkEligibilityForAttackWith:secondLevel.goku];
+            secondLevel.goku.isAttacking = YES;
+            [secondLevel.goku animateAttack];
+        }else if ([node isEqual:firstLevel.finalBoss]){
+            [secondLevel.finalBoss checkEligibilityForAttackWith:secondLevel.goku];
+            secondLevel.goku.isAttacking = YES;
+            [secondLevel.goku animateAttack];
+        }else{
+            [secondLevel handleTapGestureWithLocation:location andDirection:direction];
         }
     }
 }
@@ -276,9 +309,9 @@
         if(![firstLevel.goku.releaseTimer isValid])
             firstLevel.goku.performingAnAction = NO;
     }else{
-    //    secondLevel.goku.performingAnAction = NO;
+        if(![secondLevel.goku.releaseTimer isValid])
+            secondLevel.goku.performingAnAction = NO;
     }
-    //[timer invalidate];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

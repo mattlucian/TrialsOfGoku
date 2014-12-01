@@ -18,8 +18,7 @@
     BOOL ballSpawnFlag;
 }
 
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     if (self) {
 
@@ -65,7 +64,6 @@
     }
     return self;
 }
-
 
 -(void)setUpLevelForScene:(SKScene *)scene{
     
@@ -123,8 +121,7 @@
 
 }
 
--(void)spawnObstaclesAndCheckLevelBoundaries:(GameScene*)scene
-{
+-(void)spawnObstaclesAndCheckLevelBoundaries:(GameScene*)scene{
     switch (self.currentLevelLocation) {
             // very beginning of level
         case -1:
@@ -143,7 +140,7 @@
                     self.goku.leftLock = NO;
             }
             
-            if(!self.obstacle1.isActivated){
+            if(self.obstacle1 == nil){
                 self.obstacle1 = [[SafeObstacle alloc] init];
                 self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(1200, 60)];
                 [scene addChild:self.obstacle1];
@@ -246,8 +243,7 @@
         [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
 }
 
--(void)handleBossCollisions:(SKPhysicsContact *)contact
-{
+-(void)handleBossCollisions:(SKPhysicsContact *)contact{
     // final boss collisions
     if(self.finalBoss != nil) {
         if(self.finalBoss.isActivated){
@@ -272,7 +268,8 @@
     [self handleGokuCollision:contact];
   
 }
-- (void) setupMusic{
+
+-(void)setupMusic{
     NSString *musicPath = [[NSBundle mainBundle]
                            pathForResource:@"RockTheDragon" ofType:@"mp3"];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
@@ -301,10 +298,13 @@
         self.minion4 = nil;
     }
     if(self.obstacle1 != nil){
+        self.obstacle1.physicsBody = nil;
+        self.obstacle1.position = CGPointMake(500, -200);
         [self.obstacle1 removeFromParent];
         self.obstacle1 = nil;
     }
     if(self.obstacle2 != nil){
+        self.obstacle2.position = CGPointMake(500, -200);
         [self.obstacle2 removeFromParent];
         self.obstacle2 = nil;
     }
