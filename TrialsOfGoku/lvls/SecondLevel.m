@@ -37,16 +37,16 @@
         self.goku.delegate = self;  // passes back move background object
         
 #pragma mark Set Up Minions
-        self.minion1 = [[Minion alloc] init];
+        self.minion1 = [[Minion2 alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
         [self.minion1 setUpHealthBar];
-        self.minion2 = [[Minion alloc] init];
+        self.minion2 = [[Minion2 alloc] init];
         self.minion2 = [self.minion2 setUpMinionWithName:@"minion2"];
         [self.minion2 setUpHealthBar];
-        self.minion3 = [[Minion alloc] init];
+        self.minion3 = [[Minion2 alloc] init];
         self.minion3 = [self.minion3 setUpMinionWithName:@"minion3"];
         [self.minion3 setUpHealthBar];
-        self.minion4 = [[Minion alloc] init];
+        self.minion4 = [[Minion2 alloc] init];
         self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
         [self.minion4 setUpHealthBar];
         self.beginningOfLevel = YES;

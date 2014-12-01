@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Minion.h"
+#import "Minion2.h"
 #import "Globals.h"
 #import "SafeObstacle.h"
 #import "Cell.h"

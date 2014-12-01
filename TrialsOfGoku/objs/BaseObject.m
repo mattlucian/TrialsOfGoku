@@ -143,6 +143,8 @@
             [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"cell_deadfrom_right"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
         }else if([self.typeOfObject isEqualToString:@"minion"]){
             [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion_deadfrom_right"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
+        }else if([ self.typeOfObject isEqualToString:@"minion2"]){
+            [self runAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion2_deadfrom_right"]] atFrequency:.2f withKey:@"final_boss_animation_key"]; // animate death
         }
         
         
@@ -162,6 +164,8 @@
             [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"cell_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }else if([self.typeOfObject isEqualToString:@"minion"]){
             [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
+        }else if ([self.typeOfObject isEqualToString:@"minion2"]){
+            [self runCountedAnimation:[NSMutableArray arrayWithObject:[SKTexture textureWithImageNamed:@"minion2_hitfrom_right_1"]] withCount:1 atFrequency:.5f withKey:@"final_boss_animation_key"]; // animate hit
         }
     }
     [self updateHealthBar];

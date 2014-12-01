@@ -63,6 +63,8 @@
 		1108AE0E1A264C7D00CC4127 /* teleport00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD81A264C7D00CC4127 /* teleport00.wav */; };
 		1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */; };
 		1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */; };
+		2CF2CA341A2C12AF0068B186 /* Minion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF2CA331A2C12AF0068B186 /* Minion2.m */; };
+		2CF2CA361A2C1F540068B186 /* minion2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2CF2CA351A2C1F540068B186 /* minion2.atlas */; };
 		C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C905E89B1A2BE78C00B0D8AA /* menu_button.png */; };
 		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
 		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
@@ -164,6 +166,9 @@
 		1108ADD81A264C7D00CC4127 /* teleport00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport00.wav; sourceTree = "<group>"; };
 		1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buu_dub.mp3; sourceTree = "<group>"; };
 		1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect_Cell_Dubstep.mp3; sourceTree = "<group>"; };
+		2CF2CA321A2C12AF0068B186 /* Minion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minion2.h; sourceTree = "<group>"; };
+		2CF2CA331A2C12AF0068B186 /* Minion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minion2.m; sourceTree = "<group>"; };
+		2CF2CA351A2C1F540068B186 /* minion2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = minion2.atlas; sourceTree = "<group>"; };
 		C905E89B1A2BE78C00B0D8AA /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -417,6 +422,7 @@
 		C93F59581A17EC7A00C06817 /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				2CF2CA351A2C1F540068B186 /* minion2.atlas */,
 				C93F59591A17EC7A00C06817 /* buu.atlas */,
 				C93F595A1A17EC7A00C06817 /* cell.atlas */,
 				C93F595B1A17EC7A00C06817 /* minions.atlas */,
@@ -455,6 +461,8 @@
 				C9A838251A183F5200EF5EE5 /* Minion.m */,
 				C9A8382F1A1862A500EF5EE5 /* Cell.h */,
 				C9A838301A1862A500EF5EE5 /* Cell.m */,
+				2CF2CA321A2C12AF0068B186 /* Minion2.h */,
+				2CF2CA331A2C12AF0068B186 /* Minion2.m */,
 			);
 			name = enemies;
 			sourceTree = "<group>";
@@ -626,6 +634,7 @@
 				C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */,
 				1108ADFB1A264C7D00CC4127 /* meleehit1.wav in Resources */,
 				1108ADFE1A264C7D00CC4127 /* meleemiss2.wav in Resources */,
+				2CF2CA361A2C1F540068B186 /* minion2.atlas in Resources */,
 				1108ADDA1A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 in Resources */,
 				1108ADE91A264C7D00CC4127 /* basicbeam_fire.wav in Resources */,
 				1108ADEC1A264C7D00CC4127 /* descend.wav in Resources */,
@@ -686,6 +695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF2CA341A2C12AF0068B186 /* Minion2.m in Sources */,
 				C942095E1A16AA3300D0979F /* EnemyBlast.m in Sources */,
 				C9A8382B1A185FD500EF5EE5 /* BaseObject.m in Sources */,
 				C942095B1A16AA0D00D0979F /* SafeObstacle.m in Sources */,
