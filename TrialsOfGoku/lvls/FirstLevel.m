@@ -267,10 +267,12 @@
     
     // obstacle collisions
     [self handleObstacleCollisions:contact];
+    
+    // goku collisions
+    [self handleGokuCollision:contact];
   
 }
-- (void) setupMusic
-{
+- (void) setupMusic{
     NSString *musicPath = [[NSBundle mainBundle]
                            pathForResource:@"RockTheDragon" ofType:@"mp3"];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
@@ -279,8 +281,8 @@
     self.backgroundMusicPlayer.volume = .5;
     [self.backgroundMusicPlayer play];
 }
--(void)killFirstLevel
-{
+
+-(void)killFirstLevel{
     if(self.minion1 != nil){
         [self.minion1 removeFromParent];
         self.minion1 = nil;

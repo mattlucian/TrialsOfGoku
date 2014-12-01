@@ -15,5 +15,5 @@
 
 -(Minion*)setUpMinionWithName:(NSString*)name;
 -(NSArray *)getAnimationFrames:(NSString*)minionAnimationKey;
-
+-(BOOL)checkEligibilityForAttackWith:(Goku*)goku;
 @end

@@ -63,6 +63,7 @@
 		1108AE0E1A264C7D00CC4127 /* teleport00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1108ADD81A264C7D00CC4127 /* teleport00.wav */; };
 		1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */; };
 		1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */; };
+		C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C905E89B1A2BE78C00B0D8AA /* menu_button.png */; };
 		C90F045619F8A51C00DF49CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045519F8A51C00DF49CA /* main.m */; };
 		C90F045919F8A51C00DF49CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F045819F8A51C00DF49CA /* AppDelegate.m */; };
 		C90F046119F8A51C00DF49CA /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F046019F8A51C00DF49CA /* GameViewController.m */; };
@@ -84,7 +85,6 @@
 		C942095E1A16AA3300D0979F /* EnemyBlast.m in Sources */ = {isa = PBXBuildFile; fileRef = C942095D1A16AA3300D0979F /* EnemyBlast.m */; };
 		C94A091F1A15B94000720E8C /* Buu.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A091E1A15B94000720E8C /* Buu.m */; };
 		C9A6CCDC1A21A11700764048 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCD81A21A11700764048 /* Button.png */; };
-		C9A6CCDD1A21A11700764048 /* Game_Over.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCD91A21A11700764048 /* Game_Over.png */; };
 		C9A6CCDE1A21A11700764048 /* Goku_splash_sketch_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */; };
 		C9A6CCDF1A21A11700764048 /* Goku_splash_sketch.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCDB1A21A11700764048 /* Goku_splash_sketch.png */; };
 		C9A838261A183F5200EF5EE5 /* Minion.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A838251A183F5200EF5EE5 /* Minion.m */; };
@@ -164,6 +164,7 @@
 		1108ADD81A264C7D00CC4127 /* teleport00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport00.wav; sourceTree = "<group>"; };
 		1108AE0F1A264D4C00CC4127 /* buu_dub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buu_dub.mp3; sourceTree = "<group>"; };
 		1108AE111A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect_Cell_Dubstep.mp3; sourceTree = "<group>"; };
+		C905E89B1A2BE78C00B0D8AA /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		C90F045019F8A51C00DF49CA /* TrialsOfGoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrialsOfGoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90F045419F8A51C00DF49CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90F045519F8A51C00DF49CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -196,7 +197,6 @@
 		C94A091D1A15B94000720E8C /* Buu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buu.h; path = objs/Buu.h; sourceTree = "<group>"; };
 		C94A091E1A15B94000720E8C /* Buu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Buu.m; path = objs/Buu.m; sourceTree = "<group>"; };
 		C9A6CCD81A21A11700764048 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
-		C9A6CCD91A21A11700764048 /* Game_Over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Game_Over.png; sourceTree = "<group>"; };
 		C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goku_splash_sketch_phone.png; sourceTree = "<group>"; };
 		C9A6CCDB1A21A11700764048 /* Goku_splash_sketch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goku_splash_sketch.png; sourceTree = "<group>"; };
 		C9A838231A1823E200EF5EE5 /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
@@ -382,9 +382,9 @@
 		C90F047E19F8A53700DF49CA /* img */ = {
 			isa = PBXGroup;
 			children = (
+				C905E89B1A2BE78C00B0D8AA /* menu_button.png */,
 				C9ADA31F1A2788560034A4DF /* obstacles.atlas */,
 				C9A6CCD81A21A11700764048 /* Button.png */,
-				C9A6CCD91A21A11700764048 /* Game_Over.png */,
 				C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */,
 				C9A6CCDB1A21A11700764048 /* Goku_splash_sketch.png */,
 				C93F59581A17EC7A00C06817 /* enemies */,
@@ -604,7 +604,6 @@
 				1108ADE31A264C7D00CC4127 /* RockTheDragon.mp3 in Resources */,
 				1108AE091A264C7D00CC4127 /* swoophit.wav in Resources */,
 				1108ADE41A264C7D00CC4127 /* vegeta_attack_theme.mp3 in Resources */,
-				C9A6CCDD1A21A11700764048 /* Game_Over.png in Resources */,
 				1108ADF71A264C7D00CC4127 /* mase_charge.wav in Resources */,
 				1108AE011A264C7D00CC4127 /* prepunch1.wav in Resources */,
 				1108ADFF1A264C7D00CC4127 /* meleemiss3.wav in Resources */,
@@ -624,6 +623,7 @@
 				C93F59611A17EC7A00C06817 /* buu.atlas in Resources */,
 				1108AE101A264D4C00CC4127 /* buu_dub.mp3 in Resources */,
 				C9A6CCDE1A21A11700764048 /* Goku_splash_sketch_phone.png in Resources */,
+				C905E89C1A2BE78C00B0D8AA /* menu_button.png in Resources */,
 				1108ADFB1A264C7D00CC4127 /* meleehit1.wav in Resources */,
 				1108ADFE1A264C7D00CC4127 /* meleemiss2.wav in Resources */,
 				1108ADDA1A264C7D00CC4127 /* Dragon Ball Z Dubstep BY DJ L copy.mp3 in Resources */,

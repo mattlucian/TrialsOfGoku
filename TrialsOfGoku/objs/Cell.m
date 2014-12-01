@@ -7,6 +7,7 @@
 //
 
 #import "Cell.h"
+#import "Goku.h"
 
 @implementation Cell
 
@@ -18,6 +19,15 @@
         self.isActivated = false;
     }
     return self;
+}
+
+-(void)checkEligibilityForAttackWith:(Goku *)goku
+{
+    if((abs(goku.position.x - self.position.x) < 10) && (abs(goku.position.y - self.position.y)<20)){
+        goku.isAttacking = YES;
+        [goku animateAttack];
+        [self handleCollisionWithGoku:goku attackTypeIsPowerBall:NO];
+    }
 }
 
 

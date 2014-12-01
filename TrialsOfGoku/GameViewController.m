@@ -41,10 +41,18 @@
     
     // Create and configure the scene.
     GameScene * scene = [GameScene sceneWithSize:skView.bounds.size];
+    scene.delegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
+}
+- (void)mySceneDidFinish:(GameScene *)myScene {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+    // logic for dismissing the view controller
 }
 
 - (BOOL)shouldAutorotate
