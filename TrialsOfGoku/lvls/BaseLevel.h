@@ -36,6 +36,8 @@
 @property (nonatomic) Minion* minion5;
 @property (nonatomic) Minion* minion6;
 
+@property (nonatomic) BaseObject* finalBoss;
+
 @property (nonatomic) SKSpriteNode* background1;
 @property (nonatomic) SKSpriteNode* background2;
 @property (nonatomic) BOOL bgIsMoving;
@@ -47,5 +49,9 @@
 -(void)moveObstacles;
 -(void)handleObstacleCollisions:(SKPhysicsContact *) contact;
 -(void)handleCollisionEnd:(SKPhysicsContact *) contact;
+-(void)handleGokuCollision:(SKPhysicsContact *) contact;
+-(void)pauseAnimations;
+-(void)unpauseAnimations;
+
 
 @end
