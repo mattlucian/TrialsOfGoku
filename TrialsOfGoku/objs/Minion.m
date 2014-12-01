@@ -10,7 +10,9 @@
 #import "Goku.h"
 
 @implementation Minion
-
+{
+    NSTimer* hitTimer;
+}
 
 #pragma mark Initialization
 - (instancetype)init
@@ -61,6 +63,16 @@
     return (NSArray*)workingArrayOfFrames;
 }
 
+-(BOOL)checkEligibilityForAttackWith:(Goku *)goku
+{
+    if(!self.isDead){
+        if((abs(goku.position.x - self.position.x) < 100) && (abs(goku.position.y - self.position.y)<40)){
+            [self handleCollisionWithGoku:goku attackTypeIsPowerBall:NO];
+            return YES;
+        }
+    }
+    return NO;
+}
 
 -(Minion*)setUpMinionWithName:(NSString *)name
 {

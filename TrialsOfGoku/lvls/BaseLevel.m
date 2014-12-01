@@ -112,6 +112,7 @@
         self.goku.jumpCount++;
         self.goku.fallingLock = NO;
         self.goku.velocity = CGPointMake(self.goku.velocity.x,self.goku.velocity.y+8);
+        self.goku.performingAnAction = YES;
         if(direction > 0){
             if(self.goku.transformationLevel == 0)
                 currentFrames = [self.goku getAnimationFrames:@"goku_norm_jump_right"];
@@ -214,49 +215,160 @@
 
 -(void)handleCollisionEnd:(SKPhysicsContact *)contact
 {
-    if(self.obstacle1 != nil){
-        if(self.obstacle1.isActivated){
-            NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
-            if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
-                self.goku.obstacleRightLock = NO;
-                self.goku.obstacleLeftLock = NO;
-                self.goku.isCollidingWithObstacle = NO;
-                self.goku.fallingLock = NO;
-                self.goku.jumpCount++;
-            }
-        }
+    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+    if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
+        self.goku.obstacleRightLock = NO;
+        self.goku.obstacleLeftLock = NO;
+        self.goku.isCollidingWithObstacle = NO;
+        self.goku.fallingLock = NO;
+        self.goku.jumpCount++;
     }
     
 }
 -(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
-    if(self.obstacle1 != nil){
-        if(self.obstacle1.isActivated){
-            NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
-            if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
-                if(!self.goku.isCollidingWithObstacle){
-                    float difference = contact.bodyA.node.position.x - contact.bodyB.node.position.x;
-                    if([contact.bodyA.node.name isEqualToString:@"goku"]){
-                        // node A == Goku
-                        if(difference > 40 )
-                            self.goku.obstacleLeftLock = YES;
-                        
-                        else if(difference < 40)
-                            self.goku.obstacleRightLock = YES;
-                    }else{
-                        if(difference > 40 )
-                            self.goku.obstacleRightLock = YES;
-                        else if(difference < 40)
-                            self.goku.obstacleLeftLock = YES;
-                        
-                    }
-                    if(abs(contact.bodyA.node.position.y - contact.bodyB.node.position.y) > 30)
-                        self.goku.fallingLock = YES;
-                    self.goku.isCollidingWithObstacle = YES;
-                    [self.goku.delegate moveBackground:NO inRelationTo:self.goku];
-                }
+    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+    if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
+        if(!self.goku.isCollidingWithObstacle){
+            float difference = contact.bodyA.node.position.x - contact.bodyB.node.position.x;
+            if([contact.bodyA.node.name isEqualToString:@"goku"]){
+                // node A == Goku
+                if(difference > 40 )
+                    self.goku.obstacleLeftLock = YES;
+                
+                else if(difference < 40)
+                    self.goku.obstacleRightLock = YES;
+            }else{
+                if(difference > 40 )
+                    self.goku.obstacleRightLock = YES;
+                else if(difference < 40)
+                    self.goku.obstacleLeftLock = YES;
+                
             }
+            if(abs(contact.bodyA.node.position.y - contact.bodyB.node.position.y) > 30)
+                self.goku.fallingLock = YES;
+            self.goku.isCollidingWithObstacle = YES;
+            [self.goku.delegate moveBackground:NO inRelationTo:self.goku];
         }
     }
+}
+
+-(void)unpauseAnimations{
+    
+    if(!self.goku.isDead){
+        [self.goku removeActionForKey:@"paused_key"];
+    }
+    
+    if(self.minion1 != nil){
+        [self.minion1 runAction:[SKAction unhide]];
+        [self.minion1.healthBar runAction:[SKAction unhide]];
+    }
+    if(self.minion2 != nil){
+        [self.minion2 runAction:[SKAction unhide]];
+        [self.minion2.healthBar runAction:[SKAction unhide]];
+        
+    }
+    if(self.minion3 != nil){
+        [self.minion3 runAction:[SKAction unhide]];
+        [self.minion3.healthBar runAction:[SKAction unhide]];
+    }
+    if(self.minion4 != nil){
+        [self.minion4 runAction:[SKAction unhide]];
+        [self.minion4.healthBar runAction:[SKAction unhide]];
+    }
+    if(self.minion5 != nil){
+        [self.minion5 runAction:[SKAction unhide]];
+        [self.minion5.healthBar runAction:[SKAction unhide]];
+    }
+    if(self.minion6 != nil){
+        [self.minion6 runAction:[SKAction unhide]];
+        [self.minion6.healthBar runAction:[SKAction unhide]];
+    }
+    if(self.finalBoss != nil){
+        [self.finalBoss runAction:[SKAction unhide]];
+        [self.finalBoss.healthBar runAction:[SKAction unhide]];
+    }
+}
+
+-(void)pauseAnimations{
+    if(!self.goku.isDead){
+        switch (self.goku.transformationLevel) {
+            case 0:
+                [self.goku runAnimation:[self.goku getAnimationFrames:@"goku_norm_stance_right"] atFrequency:1 withKey:@"paused_key"];
+                break;
+                
+            case 1:
+                [self.goku runAnimation:[self.goku getAnimationFrames:@"goku_ss1_stance_right"] atFrequency:1 withKey:@"paused_key"];
+                break;
+                
+            case 3:
+                [self.goku runAnimation:[self.goku getAnimationFrames:@"goku_ss3_stance_right"] atFrequency:1 withKey:@"paused_key"];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    if(self.minion1 != nil){
+        [self.minion1 runAction:[SKAction hide]];
+        [self.minion1.healthBar runAction:[SKAction hide]];
+    }
+    if(self.minion2 != nil){
+        [self.minion2 runAction:[SKAction hide]];
+        [self.minion2.healthBar runAction:[SKAction hide]];
+        
+    }
+    if(self.minion3 != nil){
+        [self.minion3 runAction:[SKAction hide]];
+        [self.minion3.healthBar runAction:[SKAction hide]];
+    }
+    if(self.minion4 != nil){
+        [self.minion4 runAction:[SKAction hide]];
+        [self.minion4.healthBar runAction:[SKAction hide]];
+    }
+    if(self.minion5 != nil){
+        [self.minion5 runAction:[SKAction hide]];
+        [self.minion5.healthBar runAction:[SKAction hide]];
+    }
+    if(self.minion6 != nil){
+        [self.minion6 runAction:[SKAction hide]];
+        [self.minion6.healthBar runAction:[SKAction hide]];
+    }
+    if(self.finalBoss != nil){
+        [self.finalBoss runAction:[SKAction hide]];
+        [self.finalBoss.healthBar runAction:[SKAction hide]];
+    }
+}
+
+
+-(void)handleGokuCollision:(SKPhysicsContact *) contact{
+    
+    if(!self.goku.isDead){
+        NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+        if ([nodeNames containsObject:@"minion1"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion1.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"minion2"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion2.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"minion3"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion3.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"minion4"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion4.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"minion5"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion5.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"minion6"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.minion6.isDead)
+                [self.goku handleHitByMinion:contact isBoss:NO];
+        }else if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.finalBoss.isDead)
+                [self.goku handleHitByMinion:contact isBoss:YES];
+        }
+    }
+    
 }
 
 @end

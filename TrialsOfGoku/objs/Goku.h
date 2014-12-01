@@ -28,6 +28,13 @@
 @property (nonatomic) BOOL obstacleRightLock;
 @property (nonatomic) BOOL obstacleLeftLock;
 @property (nonatomic) BOOL fallingLock;
+@property (nonatomic) BOOL isTransforming;
+@property (nonatomic) BOOL performingAnAction;
+@property (nonatomic) NSTimer* releaseTimer;
+@property (nonatomic) BOOL isAttacking;
+
+
+@property (nonatomic) NSTimer* transformTimer;
 
 
 @property (nonatomic) BOOL hasTransformed;
@@ -57,12 +64,18 @@
 -(BOOL)bothBallsAreNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
 -(void)spawnAndMoveBallsAlongScene:(SKScene*)scene;
+
+// goku
+-(void)animateStance;
 -(void)reachedTransformation:(NSTimer*)timer;
+-(void)handleHitByMinion:(SKPhysicsContact*)contact isBoss:(BOOL)isABoss;
+-(void)animateAttack;
 
 @end
 
 @protocol GokuDelegate <NSObject>
 -(void)moveBackground:(BOOL)isMoving inRelationTo:(Goku*)goku;
+-(void)pauseAnimations;
 @end
 
 
