@@ -85,7 +85,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg4-Y3-XdG">
                                 <rect key="frame" x="50" y="168" width="908" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">Controls:
+                                <mutableString key="text">Controls:
  - Jumping
   -- To jump tap above Goku.
   -- To double jump tap above twice.
@@ -98,10 +98,10 @@
    --- 0.5 sec shoots small powerball 
    --- 1.0 sec shoots medium powerball
    --- 1.5 sec shoots big powerball
-
-Objective:
+   ---power up transformation 
+tap-hold above Goku until transformation complete  Objective:
  - Survive and complete the level
- - Defeat the final bosses to progress  - Unlock Goku's Potential</string>
+ - Defeat the final bosses to progress  - Unlock Goku's Potential</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
