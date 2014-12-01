@@ -8,6 +8,7 @@
 
 #import "Minion.h"
 #import "Goku.h"
+#import "Minion2.h"
 
 @implementation Minion
 {

@@ -220,7 +220,7 @@
             [self.delegate mySceneDidFinish:self];
         }else if([node isEqual:firstLevel.minion1]){
             firstLevel.goku.isAttacking = YES;
-            if([firstLevel.minion1 checkEligibilityForAttackWith:firstLevel.goku])
+            if([(Minion*)firstLevel.minion1 checkEligibilityForAttackWith:firstLevel.goku])
             {
                 //firstLevel.minion1.velocity = CGPointMake(-3,0);
                 firstLevel.goku.performingAnAction = YES;
@@ -228,26 +228,26 @@
                 [firstLevel.goku animateAttack];
             }
         }else if([node isEqual:firstLevel.minion2]){
-            if([firstLevel.minion2 checkEligibilityForAttackWith:firstLevel.goku])
+            if([(Minion*)firstLevel.minion2 checkEligibilityForAttackWith:firstLevel.goku])
             {
                 //firstLevel.minion2.velocity = CGPointMake(-3,0);
                 firstLevel.goku.isAttacking = YES;
                 [firstLevel.goku animateAttack];
             }
         }else if([node isEqual:firstLevel.minion3]){
-            [firstLevel.minion3 checkEligibilityForAttackWith:firstLevel.goku];
+            [(Minion*)firstLevel.minion3 checkEligibilityForAttackWith:firstLevel.goku];
             firstLevel.goku.isAttacking = YES;
             [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion4]){
-            [firstLevel.minion4 checkEligibilityForAttackWith:firstLevel.goku];
+            [(Minion*)firstLevel.minion4 checkEligibilityForAttackWith:firstLevel.goku];
             firstLevel.goku.isAttacking = YES;
             [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion5]){
-            [firstLevel.minion5 checkEligibilityForAttackWith:firstLevel.goku];
+            [(Minion*)firstLevel.minion5 checkEligibilityForAttackWith:firstLevel.goku];
             firstLevel.goku.isAttacking = YES;
             [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion6]){
-            [firstLevel.minion6 checkEligibilityForAttackWith:firstLevel.goku];
+            [(Minion*)firstLevel.minion6 checkEligibilityForAttackWith:firstLevel.goku];
             firstLevel.goku.isAttacking = YES;
             [firstLevel.goku animateAttack];
         }else if ([node isEqual:firstLevel.finalBoss]){
