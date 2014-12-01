@@ -23,10 +23,13 @@ TrialsOfGoku TODO List:
 
 ~~Work with Marcus to create Poster Board~~
 
+~~change animations on goku depending on contact (when he hits the ground)~~
+
+~~Hand to hand combat~~
+
+~~Game pause screen, main menu / game over~~
+
   - Look into disappearing goku
-  - change animations on goku depending on contact (when he hits the ground)
-  - Hand to hand combat
-  - Game pause screen, main menu / game over
   - Code in Clouds
 
 
