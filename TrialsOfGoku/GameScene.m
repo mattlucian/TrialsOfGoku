@@ -52,6 +52,7 @@
         if(self.levelIndicator == 1){
             [firstLevel unpauseAnimations];
             [mainMenu removeFromParent];
+            [firstLevel.backgroundMusicPlayer play];
         }else{
             // second level unpause
         }
@@ -64,6 +65,7 @@
             mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
             
             [self addChild:mainMenu];
+            [firstLevel.backgroundMusicPlayer pause];
 
             
         }else{
@@ -234,14 +236,24 @@
             }
         }else if([node isEqual:firstLevel.minion3]){
             [firstLevel.minion3 checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion4]){
             [firstLevel.minion4 checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion5]){
             [firstLevel.minion5 checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
         }else if([node isEqual:firstLevel.minion6]){
             [firstLevel.minion6 checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
         }else if ([node isEqual:firstLevel.finalBoss]){
             [firstLevel.finalBoss checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
         }else{
             [firstLevel handleTapGestureWithLocation:location andDirection:direction];
         }

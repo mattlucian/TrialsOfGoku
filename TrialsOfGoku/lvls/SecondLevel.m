@@ -109,6 +109,12 @@
                 [scene addChild:self.minion1];
                 [scene addChild:self.minion1.healthBar];
             }
+            if(!self.obstacle1.isActivated){
+                self.obstacle1 = [[SafeObstacle alloc] init];
+                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(400, 60)];
+                [scene addChild:self.obstacle1];
+            }
+
             break;
             
         case 1:
@@ -128,16 +134,53 @@
                 [scene addChild:self.minion3];
                 [scene addChild:self.minion3.healthBar];
             }
+            if(!self.obstacle2.isActivated){
+                self.obstacle2 = [[SafeObstacle alloc] init];
+                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle2.xScale = -1;
+                [scene addChild:self.obstacle2];
+            }
+            if(!self.obstacle3.isActivated){
+                self.obstacle3 = [[SafeObstacle alloc] init];
+                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(1700, 60)];
+                [scene addChild:self.obstacle3];
+            }
+
+
 
             break;
             
         case 2:
+            
+            if(self.goku.leftLock)
+                self.goku.leftLock = NO;
             //minion4
             if(!self.minion4.isActivated){
                 self.minion4.isActivated = true;
                 [scene addChild:self.minion4];
                 [scene addChild:self.minion4.healthBar];
             }
+                if(!self.obstacle4.isActivated){
+                self.obstacle4 = [[SafeObstacle alloc] init];
+                self.obstacle4 = [self.obstacle4 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle4];
+            }
+            if(!self.obstacle5.isActivated){
+                self.obstacle5 = [[SafeObstacle alloc] init];
+                self.obstacle5 = [self.obstacle5 setUpObstacleAtPoint:CGPointMake(1400, 60)];
+                [scene addChild:self.obstacle5];
+            }
+            if(!self.obstacle6.isActivated){
+                self.obstacle6 = [[SafeObstacle alloc] init];
+                self.obstacle6 = [self.obstacle6 setUpObstacleAtPoint:CGPointMake(1700, 60)];
+                [scene addChild:self.obstacle6];
+            }
+            if(!self.obstacle7.isActivated){
+                self.obstacle7 = [[SafeObstacle alloc] init];
+                self.obstacle7 = [self.obstacle7 setUpObstacleAtPoint:CGPointMake(1800, 60)];
+                [scene addChild:self.obstacle7];
+            }
+
             
             break;
             
@@ -146,6 +189,16 @@
             if(self.goku.rightLock)
                 self.goku.rightLock = NO;
             
+            if(!self.obstacle8.isActivated){
+                self.obstacle8 = [[SafeObstacle alloc] init];
+                self.obstacle8 = [self.obstacle8 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle8];
+            }
+            if(!self.obstacle9.isActivated){
+                self.obstacle9 = [[SafeObstacle alloc] init];
+                self.obstacle9 = [self.obstacle9 setUpObstacleAtPoint:CGPointMake(1700, 60)];
+                [scene addChild:self.obstacle9];
+            }
             break;
             
             
@@ -161,6 +214,12 @@
                 if(self.goku.rightLock)
                     self.goku.rightLock = NO;
             }
+            if(!self.obstacle10.isActivated){
+                self.obstacle10= [[SafeObstacle alloc] init];
+                self.obstacle10 = [self.obstacle10 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                [scene addChild:self.obstacle10];
+            }
+            
             break;
             
             // very end of level, dont add anything here
