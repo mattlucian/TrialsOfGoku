@@ -53,31 +53,6 @@
 
 
 
--(void)moveObstacles
-{
-    if(self.obstacle1 != nil)
-        [self.obstacle1 moveInRelationTo:self.goku];
-    if(self.obstacle2 != nil)
-        [self.obstacle2 moveInRelationTo:self.goku];
-    if(self.obstacle3 != nil)
-        [self.obstacle3 moveInRelationTo:self.goku];
-    if(self.obstacle4 != nil)
-        [self.obstacle4 moveInRelationTo:self.goku];
-    if(self.obstacle5 != nil)
-        [self.obstacle5 moveInRelationTo:self.goku];
-    if(self.obstacle6 != nil)
-        [self.obstacle6 moveInRelationTo:self.goku];
-    if(self.obstacle6 != nil)
-        [self.obstacle7 moveInRelationTo:self.goku];
-    if(self.obstacle6 != nil)
-        [self.obstacle8 moveInRelationTo:self.goku];
-    if(self.obstacle6 != nil)
-        [self.obstacle9 moveInRelationTo:self.goku];
-    if(self.obstacle6 != nil)
-        [self.obstacle10 moveInRelationTo:self.goku];
-    
-}
-
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction
 {
     NSArray* currentFrames = nil;
@@ -221,64 +196,6 @@
     }
 }
 
--(void)handleCollisionEnd:(SKPhysicsContact *)contact
-{
-    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
-    if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
-        self.goku.obstacleRightLock = NO;
-        self.goku.obstacleLeftLock = NO;
-        self.goku.isCollidingWithObstacle = NO;
-        self.goku.fallingLock = NO;
-        self.goku.jumpCount++;
-    }
-    
-}
--(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
-    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
-    if ([nodeNames containsObject:@"rock"] && [nodeNames containsObject:@"goku"]) {
-        if(!self.goku.isCollidingWithObstacle){
-            NSLog(@"collision");
-            float difference = contact.bodyA.node.position.x - contact.bodyB.node.position.x;
-            if([contact.bodyA.node.name isEqualToString:@"goku"]){
-                if([contact.bodyB.node isEqual:self.obstacle1]){
-                    NSLog(@"obstacle 1");
-                }else if([contact.bodyB.node isEqual:self.obstacle2]){
-                    NSLog(@"obstacle 2");
-                }else if([contact.bodyB.node isEqual:self.obstacle3]){
-                    NSLog(@"obstacle 3");
-                }else if([contact.bodyB.node isEqual:self.obstacle4]){
-                    NSLog(@"obstacle 4");
-                }else if([contact.bodyB.node isEqual:self.obstacle5]){
-                    NSLog(@"obstacle 5");
-                }else if([contact.bodyB.node isEqual:self.obstacle6]){
-                    NSLog(@"obstacle 6");
-                }else if([contact.bodyB.node isEqual:self.obstacle7]){
-                    NSLog(@"obstacle 7");
-                }
-                // node A == Goku
-                if(difference > 40 )
-                    self.goku.obstacleLeftLock = YES;
-                
-                else if(difference < 40)
-                    self.goku.obstacleRightLock = YES;
-            }else{
-                if(difference > 40 )
-                    self.goku.obstacleRightLock = YES;
-                else if(difference < 40)
-                    self.goku.obstacleLeftLock = YES;
-                
-            }
-        
-            
-            NSLog(@"contactB %s \n",contact.bodyB.node.name.UTF8String);
-            NSLog(@"contactA %s \n",contact.bodyA.node.name.UTF8String);
-            if(abs(contact.bodyA.node.position.y - contact.bodyB.node.position.y) > 30)
-                self.goku.fallingLock = YES;
-            self.goku.isCollidingWithObstacle = YES;
-            [self.goku.delegate moveBackground:NO inRelationTo:self.goku];
-        }
-    }
-}
 
 -(void)unpauseAnimations{
     

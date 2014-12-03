@@ -15,7 +15,8 @@
 
 @property (nonatomic) BOOL isActivated;
 
--(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point;
+-(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point withName: (NSString*) name;
+
 -(void)moveInRelationTo:(Goku *)goku;
 
 @end

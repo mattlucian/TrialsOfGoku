@@ -33,7 +33,7 @@
         
         pauseButton = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"pause"] color:[[UIColor alloc] init] size:CGSizeMake(100, 100)];
         
-        self.levelIndicator = 1;
+        self.levelIndicator = 2;
         
         firstLevel = [[FirstLevel alloc] init];
                 

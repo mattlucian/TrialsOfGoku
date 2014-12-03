@@ -22,18 +22,6 @@
 @property (nonatomic) NSInteger currentLevelLocation;
 @property (nonatomic) NSInteger bossSpawnNumber;
 
-
-@property (nonatomic, strong) SafeObstacle* obstacle1;
-@property (nonatomic, strong) SafeObstacle* obstacle2;
-@property (nonatomic, strong) SafeObstacle* obstacle3;
-@property (nonatomic, strong) SafeObstacle* obstacle4;
-@property (nonatomic, strong) SafeObstacle* obstacle5;
-@property (nonatomic, strong) SafeObstacle* obstacle6;
-@property (nonatomic, strong) SafeObstacle* obstacle7;
-@property (nonatomic, strong) SafeObstacle* obstacle8;
-@property (nonatomic, strong) SafeObstacle* obstacle9;
-@property (nonatomic, strong) SafeObstacle* obstacle10;
-
 @property (nonatomic, strong) BaseObject* minion1;
 @property (nonatomic, strong) BaseObject* minion2;
 @property (nonatomic) BaseObject* minion3;
@@ -52,8 +40,8 @@
 -(void)handleMinionCollisions:(SKPhysicsContact *)contact;
 -(void)handleTapGestureWithLocation:(CGPoint)location andDirection:(NSInteger)direction;
 -(void)moveObstacles;
--(void)handleObstacleCollisions:(SKPhysicsContact *) contact;
--(void)handleCollisionEnd:(SKPhysicsContact *) contact;
+
+
 -(void)handleGokuCollision:(SKPhysicsContact *) contact;
 -(void)pauseAnimations;
 -(void)unpauseAnimations;

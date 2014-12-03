@@ -21,7 +21,7 @@
     return self;
 }
 
--(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point;
+-(SafeObstacle*)setUpObstacleAtPoint:(CGPoint)point withName: (NSString*) name;
 {
     SafeObstacle* temp = [SafeObstacle spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"rock1"] size:CGSizeMake(70, 100)];
     temp.isActivated = YES;
@@ -31,8 +31,9 @@
     temp.physicsBody.affectedByGravity = NO;
     temp.physicsBody.contactTestBitMask = ENEMY_CATEGORY | GOKU_CATEGORY | ENEMY_BLAST_CATEGORY | POWERBALL_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
-    temp.name = @"rock";
+    temp.name = name;
     temp.position = point;
+    
     return temp;
 
 }

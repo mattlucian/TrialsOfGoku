@@ -19,7 +19,11 @@
 
 @interface FirstLevel : BaseLevel
 
-
+@property (nonatomic, strong) SafeObstacle* obstacle1;
+@property (nonatomic, strong) SafeObstacle* obstacle2;
+@property (nonatomic, strong) SafeObstacle* obstacle3;
+@property (nonatomic, strong) SafeObstacle* obstacle4;
+@property (nonatomic, strong) SafeObstacle* obstacle5;
 @property (nonatomic, strong) Cell* finalBoss;
 @property (strong, nonatomic) AVAudioPlayer* backgroundMusicPlayer;
 
@@ -27,5 +31,8 @@
 -(void)setUpLevelForScene:(GameScene*)scene;
 -(void)runLevelFor:(GameScene*)scene;
 -(void)killFirstLevel;
+-(void)handleCollisionEnd:(SKPhysicsContact *)contact;
+-(void)handleObstacleCollisions:(SKPhysicsContact *) contact;
+-(void)moveObstacles;
 
 @end

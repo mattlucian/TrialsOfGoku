@@ -52,6 +52,7 @@
         self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
         [self.minion4 setUpHealthBar];
         self.beginningOfLevel = YES;
+        
     
         
         #pragma mark Set Up Cell
@@ -141,8 +142,9 @@
             }
             
             if(self.obstacle1 == nil){
+                self.obstacle1.isActivated= YES;
                 self.obstacle1 = [[SafeObstacle alloc] init];
-                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle1 = [self.obstacle1 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle1];
             }
             
@@ -155,7 +157,7 @@
             
             if(!self.obstacle2.isActivated){
                 self.obstacle2 = [[SafeObstacle alloc] init];
-                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle2];
             }
             break;
@@ -166,7 +168,7 @@
             
             if(!self.obstacle3.isActivated){
                 self.obstacle3 = [[SafeObstacle alloc] init];
-                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle3];
             }
             break;
@@ -180,12 +182,12 @@
             
             if(!self.obstacle4.isActivated){
                 self.obstacle4 = [[SafeObstacle alloc] init];
-                self.obstacle4 = [self.obstacle4 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle4 = [self.obstacle4 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle4];
             }
             if(!self.obstacle5.isActivated){
                 self.obstacle5 = [[SafeObstacle alloc] init];
-                self.obstacle5 = [self.obstacle5 setUpObstacleAtPoint:CGPointMake(1200, 60)];
+                self.obstacle5 = [self.obstacle5 setUpObstacleAtPoint:CGPointMake(1800, 60)withName:@"rock1"];
                 [scene addChild:self.obstacle5];
             }
 
@@ -268,8 +270,76 @@
     [self handleGokuCollision:contact];
   
 }
+-(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
+    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+    if ([nodeNames containsObject:@"rock1"] && [nodeNames containsObject:@"goku"]) {
+        if(!self.goku.isCollidingWithObstacle){
+            NSLog(@"collision");
+            float difference = contact.bodyA.node.position.x - contact.bodyB.node.position.x;
+            if([contact.bodyA.node.name isEqualToString:@"goku"]){
+                if([contact.bodyB.node isEqual:self.obstacle1]){
+                    NSLog(@"obstacle 1");
+                }else if([contact.bodyB.node isEqual:self.obstacle2]){
+                    NSLog(@"obstacle 2");
+                }else if([contact.bodyB.node isEqual:self.obstacle3]){
+                    NSLog(@"obstacle 3");
+                }else if([contact.bodyB.node isEqual:self.obstacle4]){
+                    NSLog(@"obstacle 4");
+                }else if([contact.bodyB.node isEqual:self.obstacle5]){
+                    NSLog(@"obstacle 5");
+                }
+                // node A == Goku
+                if(difference > 40 )
+                    self.goku.obstacleLeftLock = YES;
+                
+                else if(difference < 40)
+                    self.goku.obstacleRightLock = YES;
+            }else{
+                if(difference > 40 )
+                    self.goku.obstacleRightLock = YES;
+                else if(difference < 40)
+                    self.goku.obstacleLeftLock = YES;
+                
+            }
+            
+            
+            NSLog(@"contactB %s \n",contact.bodyB.node.name.UTF8String);
+            NSLog(@"contactA %s \n",contact.bodyA.node.name.UTF8String);
+            if(abs(contact.bodyA.node.position.y - contact.bodyB.node.position.y) > 30)
+                self.goku.fallingLock = YES;
+            self.goku.isCollidingWithObstacle = YES;
+            [self.goku.delegate moveBackground:NO inRelationTo:self.goku];
+        }
+    }
+}
 
--(void)setupMusic{
+-(void)handleCollisionEnd:(SKPhysicsContact *)contact
+{
+    NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+    if ([nodeNames containsObject:@"rock1"] && [nodeNames containsObject:@"goku"]) {
+        self.goku.obstacleRightLock = NO;
+        self.goku.obstacleLeftLock = NO;
+        self.goku.isCollidingWithObstacle = NO;
+        self.goku.fallingLock = NO;
+        self.goku.jumpCount++;
+    }
+    
+}
+-(void)moveObstacles
+{
+    if(self.obstacle1 != nil)
+        [self.obstacle1 moveInRelationTo:self.goku];
+    if(self.obstacle2 != nil)
+        [self.obstacle2 moveInRelationTo:self.goku];
+    if(self.obstacle3 != nil)
+        [self.obstacle3 moveInRelationTo:self.goku];
+    if(self.obstacle4 != nil)
+        [self.obstacle4 moveInRelationTo:self.goku];
+    if(self.obstacle5 != nil)
+        [self.obstacle5 moveInRelationTo:self.goku];
+}
+
+    -(void)setupMusic{
     NSString *musicPath = [[NSBundle mainBundle]
                            pathForResource:@"RockTheDragon" ofType:@"mp3"];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
