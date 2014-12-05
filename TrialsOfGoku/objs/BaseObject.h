@@ -39,7 +39,7 @@
 -(void)haltVelocity:(NSString*)axis;
 -(void)runAnimation:(NSArray*)animationFrames atFrequency:(float)frequency withKey:(NSString*)animationKey;
 -(void)runCountedAnimation:(NSArray*)animationFrames withCount:(int)myCount atFrequency:(float)frequency withKey:(NSString*)animationKey;
--(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving;
+-(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving withVelocity:(float)xVel;
 -(void)handleCollisionWithGoku:(Goku*)goku attackTypeIsPowerBall:(BOOL)isPowerBall;
 
 -(void)moveHealthBar;

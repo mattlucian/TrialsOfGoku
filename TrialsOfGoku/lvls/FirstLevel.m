@@ -27,9 +27,9 @@
         self.currentLevelLocation = 0;
         
         #pragma mark Set Up Background
-        self.background1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background1 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg2"] size:[[UIScreen mainScreen] bounds].size];
         self.background1.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds]) , CGRectGetMidY([[UIScreen mainScreen] bounds]));
-        self.background2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg1"] size:[[UIScreen mainScreen] bounds].size];
+        self.background2 = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bg2"] size:[[UIScreen mainScreen] bounds].size];
         self.background2.position = CGPointMake( CGRectGetMidX([[UIScreen mainScreen] bounds])+self.background2.frame.size.width , CGRectGetMidY([[UIScreen mainScreen] bounds]));
         
         #pragma mark Set Up Goku
@@ -42,18 +42,28 @@
         self.minion1 = [[Minion alloc] init];
         self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
         [self.minion1 setUpHealthBar];
-        self.minion2 = [[Minion alloc] init];
+        self.minion2 = [[Minion2 alloc] init];
         self.minion2 = [self.minion2 setUpMinionWithName:@"minion2"];
         [self.minion2 setUpHealthBar];
         self.minion3 = [[Minion alloc] init];
         self.minion3 = [self.minion3 setUpMinionWithName:@"minion3"];
         [self.minion3 setUpHealthBar];
-        self.minion4 = [[Minion alloc] init];
+        self.minion4 = [[Minion2 alloc] init];
         self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
         [self.minion4 setUpHealthBar];
+        self.minion5 = [[Minion alloc] init];
+        self.minion5 = [self.minion5 setUpMinionWithName:@"minion5"];
+        [self.minion5 setUpHealthBar];
+        self.minion6 = [[Minion2 alloc] init];
+        self.minion6 = [self.minion6 setUpMinionWithName:@"minion6"];
+        [self.minion6 setUpHealthBar];
+
+        
         self.beginningOfLevel = YES;
         
-    
+        self.realFinalBoss = [[Buu alloc] init];
+        self.realFinalBoss = [self.realFinalBoss setUpBuu];
+        [self.realFinalBoss setUpHealthBar];
         
         #pragma mark Set Up Cell
         self.finalBoss = [[Cell alloc] init];
@@ -196,13 +206,6 @@
 }
 
 -(void)activateMinions:(GameScene*)scene{
-    // minion 1
-    if (!self.minion1.isActivated) {
-        self.minion1.position = CGPointMake(self.goku.position.x + 1000, 60);
-        self.minion1.isActivated=true;
-        [scene addChild:self.minion1];
-        [scene addChild:self.minion1.healthBar];
-    }
     
     // minion 2
     if(!self.minion2.isActivated && self.minion1.isDead){
@@ -258,6 +261,15 @@
                     self.goku.leftLock = NO;
             }
             
+            // minion 1
+            if (!self.minion1.isActivated) {
+                self.minion1.position = CGPointMake(self.goku.position.x + 1000, 60);
+                self.minion1.isActivated=true;
+                [scene addChild:self.minion1];
+                [scene addChild:self.minion1.healthBar];
+            }
+            
+            
             if(self.obstacle1 == nil){
                 self.obstacle1.isActivated= YES;
                 self.obstacle1 = [[SafeObstacle alloc] init];
@@ -277,6 +289,18 @@
                 self.obstacle2 = [self.obstacle2 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle2];
             }
+            
+            // minion 2
+            if (!self.minion2.isActivated) {
+                self.minion2.position = CGPointMake(self.goku.position.x + 1000, 60);
+                self.minion2.isActivated=true;
+                [scene addChild:self.minion2];
+                [scene addChild:self.minion2.healthBar];
+            }
+            
+
+            
+            
             break;
             
         case 2:
@@ -288,6 +312,24 @@
                 self.obstacle3 = [self.obstacle3 setUpObstacleAtPoint:CGPointMake(1200, 60) withName:@"rock1"];
                 [scene addChild:self.obstacle3];
             }
+            
+            // minion 1
+            if (!self.minion3.isActivated) {
+                self.minion3.position = CGPointMake(self.goku.position.x + 1000, 60);
+                self.minion3.isActivated=true;
+                [scene addChild:self.minion3];
+                [scene addChild:self.minion3.healthBar];
+            }
+            
+            // minion 2
+            if (!self.minion4.isActivated) {
+                self.minion4.position = CGPointMake(self.goku.position.x + 1600, 60);
+                self.minion4.isActivated=true;
+                [scene addChild:self.minion4];
+                [scene addChild:self.minion4.healthBar];
+            }
+
+            
             break;
 
             
@@ -308,6 +350,23 @@
                 [scene addChild:self.obstacle5];
             }
 
+            
+            // minion 1
+            if (!self.minion5.isActivated) {
+                self.minion5.position = CGPointMake(self.goku.position.x + 1000, 60);
+                self.minion5.isActivated=true;
+                [scene addChild:self.minion5];
+                [scene addChild:self.minion5.healthBar];
+            }
+            
+            // minion 2
+            if (!self.minion6.isActivated) {
+                self.minion6.position = CGPointMake(self.goku.position.x + 1600, 60);
+                self.minion6.isActivated=true;
+                [scene addChild:self.minion6];
+                [scene addChild:self.minion6.healthBar];
+            }
+
             break;
             
             // end of level approaching
@@ -319,6 +378,7 @@
                     self.goku.rightLock = NO;
                 }
             }
+            
             break;
             
             // very end of level
@@ -335,32 +395,55 @@
 -(void)runLevelFor:(GameScene*)scene{
     
     // activates mininos
-    [self activateMinions:scene];
+  //  [self activateMinions:scene];
     
-    // boss is dead, move to level 2
-    if(self.finalBoss.isDead){
-        scene.levelIndicator = 2;
+    // minion 2
+    if (!self.finalBoss.isActivated && (self.minion1.isDead && self.minion2.isDead && self.minion3.isDead && self.minion4.isDead && self.minion5.isDead && self.minion6.isDead)) {
+        [self changeMusic];
+        self.finalBoss.position = CGPointMake(self.goku.position.x + 1200, 60);
+        self.finalBoss.isActivated=true;
+        [scene addChild:self.finalBoss];
+        [scene addChild:self.finalBoss.healthBar];
+    }
+
+    
+    if(self.finalBoss.isDead && !self.realFinalBoss.isActivated){
+        self.realFinalBoss.isActivated = YES;
+        self.realFinalBoss.position = CGPointMake(self.goku.position.x + 1200, 60);
+        [scene addChild:self.realFinalBoss];
+        [scene addChild:self.realFinalBoss.healthBar];
+
+        //scene.levelIndicator = 2;
     }
 
     // spawns obstacles at proper times
     [self spawnObstaclesAndCheckLevelBoundaries:scene];
     
     // if balls exist, spawn and move them
-    if(!self.bgIsMoving)
-        [self.goku spawnAndMoveBallsAlongScene:scene bgIsMoving:self.bgIsMoving];
+    [self.goku spawnAndMoveBallsAlongScene:scene bgIsMoving:self.bgIsMoving];
+    
     [self.goku moveGoku]; // also moves background
     
     // Only 4 minions
     if(self.minion1 != nil)
-        [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.0];
     if(self.minion2 != nil)
-        [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.2];
     if(self.minion3 != nil)
-        [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.3];
     if(self.minion4 != nil)
-        [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.7];
+
+    if(self.minion5 != nil)
+        [self.minion5 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.0];
+    if(self.minion6 != nil)
+        [self.minion6 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.2];
+    
     if(self.finalBoss != nil)
-        [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.5];
+    if(self.realFinalBoss != nil)
+        [self.realFinalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.5];
+
 }
 
 -(void)handleBossCollisions:(SKPhysicsContact *)contact{
@@ -369,10 +452,23 @@
         if(self.finalBoss.isActivated){
             if(!self.finalBoss.isDead){
                 NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
+                if ([nodeNames containsObject:@"cell"] && [nodeNames containsObject:@"ball1"]) {
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
+                }else if ([nodeNames containsObject:@"cell"] && [nodeNames containsObject:@"ball2"]) {
+                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
+                }
+            }
+        }
+    }
+    
+    if(self.realFinalBoss != nil) {
+        if(self.realFinalBoss.isActivated){
+            if(!self.realFinalBoss.isDead){
+                NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
                 if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball1"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
-                }else if ([nodeNames containsObject:@"boss"] && [nodeNames containsObject:@"ball2"]) {
-                    [self.finalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
+                    [self.realFinalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
+                }else if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"ball2"]) {
+                    [self.realFinalBoss handleCollisionWithGoku:self.goku attackTypeIsPowerBall:YES];
                 }
             }
         }
@@ -388,6 +484,7 @@
     [self handleGokuCollision:contact];
   
 }
+
 -(void)handleObstacleCollisions:(SKPhysicsContact *) contact{
     NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
     if ([nodeNames containsObject:@"rock1"] && [nodeNames containsObject:@"goku"]) {
@@ -431,8 +528,7 @@
     }
 }
 
--(void)handleCollisionEnd:(SKPhysicsContact *)contact
-{
+-(void)handleCollisionEnd:(SKPhysicsContact *)contact {
     NSArray* nodeNames = @[contact.bodyA.node.name, contact.bodyB.node.name];
     if ([nodeNames containsObject:@"rock1"] && [nodeNames containsObject:@"goku"]) {
         self.goku.obstacleRightLock = NO;
@@ -443,8 +539,8 @@
     }
     
 }
--(void)moveObstacles
-{
+
+-(void)moveObstacles{
     if(self.obstacle1 != nil)
         [self.obstacle1 moveInRelationTo:self.goku];
     if(self.obstacle2 != nil)
@@ -457,7 +553,7 @@
         [self.obstacle5 moveInRelationTo:self.goku];
 }
 
-    -(void)setupMusic{
+-(void)setupMusic{
     NSString *musicPath = [[NSBundle mainBundle]
                            pathForResource:@"RockTheDragon" ofType:@"mp3"];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
@@ -526,7 +622,6 @@
         self.backgroundMusicPlayer = nil;
     }
 }
-
 
 -(void)unpauseAnimations{
     
@@ -642,10 +737,30 @@
         }else if ([nodeNames containsObject:@"cell"] && [nodeNames containsObject:@"goku"]) {
             if(!self.finalBoss.isDead)
                 [self.goku handleHitByMinion:contact isBoss:YES];
+        }else if ([nodeNames containsObject:@"buu"] && [nodeNames containsObject:@"goku"]) {
+            if(!self.realFinalBoss.isDead)
+                [self.goku handleHitByMinion:contact isBoss:YES];
         }
+
     }
     
 }
+
+- (void) changeMusic
+{
+    
+    [self.backgroundMusicPlayer stop];
+    self.backgroundMusicPlayer = nil;
+    
+    NSString *musicPath = [[NSBundle mainBundle]
+                           pathForResource:@"buu_dub" ofType:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc]
+                                  initWithContentsOfURL:[NSURL fileURLWithPath:musicPath] error:NULL];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    self.backgroundMusicPlayer.volume = .2;
+    [self.backgroundMusicPlayer play];
+}
+
 
 
 @end

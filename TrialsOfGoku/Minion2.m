@@ -65,7 +65,7 @@
 
 -(BOOL)checkEligibilityForAttackWith:(Goku *)goku
 {
-    if(!self.isDead){
+    if(!self.isDead && self.isActivated){
         if((abs(goku.position.x - self.position.x) < 100) && (abs(goku.position.y - self.position.y)<40)){
             [self handleCollisionWithGoku:goku attackTypeIsPowerBall:NO];
             return YES;
@@ -91,9 +91,9 @@
     
     temp.name = name;
     
-    temp.health = 50;
-    temp.totalHealth = 50;
-    temp.attackPower = 5;
+    temp.health = 100;
+    temp.totalHealth = 100;
+    temp.attackPower = 10;
     
     temp.isDead = false;
     temp.lastDirection = @"right";

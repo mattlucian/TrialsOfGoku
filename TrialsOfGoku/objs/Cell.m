@@ -84,8 +84,8 @@
     temp.inputView.contentMode = UIViewContentModeCenter;
     temp.name = @"cell";
     temp.isDead = false;
-    temp.health = 100;
-    temp.totalHealth = 100;
+    temp.health = 200;
+    temp.totalHealth = 200;
     temp.attackPower = 10;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"cell";

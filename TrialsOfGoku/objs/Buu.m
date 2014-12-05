@@ -81,9 +81,9 @@
     temp.inputView.contentMode = UIViewContentModeCenter;
     temp.name = @"buu";
     temp.isDead = false;
-    temp.health = 100;
-    temp.totalHealth = 100;
-    temp.attackPower = 10;
+    temp.health = 300;
+    temp.totalHealth = 300;
+    temp.attackPower = 15;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"buu";
     temp.xScale = -1;

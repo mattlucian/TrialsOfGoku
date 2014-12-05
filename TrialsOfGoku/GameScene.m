@@ -9,12 +9,12 @@
 #import "GameScene.h"
 #import "Globals.h"
 #import "FirstLevel.h"
-#import "SecondLevel.h"
+//#import "SecondLevel.h"
 
 @implementation GameScene
 {
     FirstLevel* firstLevel;
-    SecondLevel* secondLevel;
+  //  SecondLevel* secondLevel;
     
     NSDate *start;          // start timer
     NSTimer *pressTimer;    // tracks how long user holds down tap
@@ -33,7 +33,7 @@
         
         pauseButton = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"pause"] color:[[UIColor alloc] init] size:CGSizeMake(100, 100)];
         
-        self.levelIndicator = 2;
+        self.levelIndicator = 1;
         
         firstLevel = [[FirstLevel alloc] init];
                 
@@ -94,18 +94,50 @@
                 
                 
                 
+            }else if(firstLevel.realFinalBoss.isDead){
+                [self handlePauseButtonPress];
+                
+                SKSpriteNode* gameWin = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"you_win"]];
+                gameWin.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+                [pauseButton removeFromParent];
+                
+                mainMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_button"] color:[[UIColor alloc] init] size:CGSizeMake(150,100)];
+                mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
+                
+                
+                [self addChild:gameWin];
+                [self addChild:mainMenu];
             }
+            
+            
             [firstLevel runLevelFor:self];
             
-        }else{
+        }/*else{
             if(firstLevel != nil){
                 [firstLevel killFirstLevel];
                 firstLevel = nil;
                 secondLevel = [[SecondLevel alloc] init];
                 [secondLevel setUpLevelForScene:self];
             }
+            if(secondLevel.goku.isDead && (secondLevel.goku.position.y <= 62 || secondLevel.goku.fallingLock )){
+                [self handlePauseButtonPress];
+                
+                SKSpriteNode* gameOver = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"game_over"]];
+                gameOver.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+                [pauseButton removeFromParent];
+                
+                mainMenu = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"menu_button"] color:[[UIColor alloc] init] size:CGSizeMake(150,100)];
+                mainMenu.position = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2-200);
+                
+                
+                [self addChild:gameOver];
+                [self addChild:mainMenu];
+                
+            }
+
+            
             [secondLevel runLevelFor:self];
-        }
+        }*/
     }
 }
 
@@ -123,6 +155,9 @@
                     
                     [firstLevel.goku transformToSuperSaiyan:[[NSNumber alloc] initWithInt:1]];
                     firstLevel.goku.performingAnAction = YES;
+                }else if(((abs(location.x - firstLevel.goku.position.x) < 30)&&(location.y > firstLevel.goku.position.y))&&(!firstLevel.goku.hasTransformedFinal)){
+                    [firstLevel.goku transformToSuperSaiyan:[[NSNumber alloc] initWithInt:3]];
+                    firstLevel.goku.performingAnAction = YES;
                 }else{
                     if([firstLevel.goku oneBallIsNil] && !firstLevel.goku.isTransforming){
                         pressTimer = [NSTimer scheduledTimerWithTimeInterval: .5
@@ -134,7 +169,7 @@
                     firstLevel.goku.performingAnAction = YES;
                 }
             }
-        }else{
+        }/*else{
             if(!secondLevel.goku.isDead){
                 if(((abs(location.x - secondLevel.goku.position.x) < 30)&&(location.y > secondLevel.goku.position.y))&&(!secondLevel.goku.hasTransformed)){
                     
@@ -151,7 +186,7 @@
                     secondLevel.goku.performingAnAction = YES;
                 }
             }
-        }
+        }*/
     }
 }
 
@@ -183,7 +218,7 @@
                 [firstLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }
         }
-    }else{
+    }/*else{
         if([secondLevel.goku oneBallIsNil]){
             secondLevel.goku.performingAnAction = YES;
             [secondLevel.goku haltVelocity:@"X"];
@@ -208,7 +243,7 @@
                 [secondLevel.goku runAnimation:currentFrames atFrequency:.2f withKey:@"goku_animation_key"];
             }
         }
-    }
+    }*/
     currentFrames = nil;
 }
 -(void)handleTapMovementAtLocation:(CGPoint)location inDirection:(NSInteger)direction{
@@ -258,11 +293,17 @@
             [firstLevel.finalBoss checkEligibilityForAttackWith:firstLevel.goku];
             firstLevel.goku.isAttacking = YES;
             [firstLevel.goku animateAttack];
+
+        }else if ([node isEqual:firstLevel.realFinalBoss]){
+            [firstLevel.realFinalBoss checkEligibilityForAttackWith:firstLevel.goku];
+            firstLevel.goku.isAttacking = YES;
+            [firstLevel.goku animateAttack];
+
         }else{
             [firstLevel handleTapGestureWithLocation:location andDirection:direction];
         }
         
-    }else{
+    }/*else{
         
         if([node isEqual:secondLevel.minion1]){
             secondLevel.goku.isAttacking = YES;
@@ -301,17 +342,17 @@
         }else{
             [secondLevel handleTapGestureWithLocation:location andDirection:direction];
         }
-    }
+    }*/
 }
 
 -(void)handleEnd:(NSTimer*)timer{
     if(self.levelIndicator == 1){
         if(![firstLevel.goku.releaseTimer isValid])
             firstLevel.goku.performingAnAction = NO;
-    }else{
+    }/*else{
         if(![secondLevel.goku.releaseTimer isValid])
             secondLevel.goku.performingAnAction = NO;
-    }
+    }*/
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -351,7 +392,7 @@
                     direction = -1;
                 }
             }
-        }else{
+        }/*else{
             if(!secondLevel.goku.isDead){
                 if([secondLevel.goku.transformTimer isValid]){
                     [secondLevel.goku.transformTimer invalidate];
@@ -364,7 +405,7 @@
                     direction = -1;
                 }
             }
-        }
+        }*/
 
         if(difference < .5){ // was a tap
             [self handleTapMovementAtLocation:location inDirection:direction];
@@ -375,21 +416,21 @@
                 if(!firstLevel.goku.isTransforming && !firstLevel.goku.isDead){
                     [firstLevel.goku setUpPowerBalls:difference onScene:self];
                 }
-            }else{
+            }/*else{
                 if(!secondLevel.goku.isTransforming && !secondLevel.goku.isDead){
                     [secondLevel.goku setUpPowerBalls:difference onScene:self];
                 }
-            }
+            }*/
         }
         
         
         if(self.levelIndicator == 1){
             if(firstLevel.goku.isTransforming)
                 firstLevel.goku.isTransforming = NO;
-        }else{
+        }/*else{
             if(secondLevel.goku.isTransforming)
                 secondLevel.goku.isTransforming = NO;
-        }
+        }*/
     }
 }
 
@@ -397,9 +438,9 @@
 {
     if(self.levelIndicator == 1){
         [firstLevel handleCollisionEnd:contact];
-    }else{
+    }/*else{
         [secondLevel handleCollisionEnd:contact];
-    }
+    }*/
 }
 
 #pragma mark Collision Detection
@@ -407,9 +448,9 @@
     
     if(self.levelIndicator == 1){
         [firstLevel handleBossCollisions:contact];
-    }else{
+    }/*else{
         [secondLevel handleBossCollisions:contact];
-    }
+    }*/
     
 }
 

@@ -310,15 +310,15 @@
     
     // Only 4 minions
     if(self.minion1 != nil)
-        [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion1 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.5];
     if(self.minion2 != nil)
-        [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion2 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:2.8];
     if(self.minion3 != nil)
-        [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion3 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.0];
     if(self.minion4 != nil)
-        [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.minion4 moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.3];
     if(self.finalBoss != nil)
-        [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving];
+        [self.finalBoss moveInRelationTo:self.goku andBackgroundFlag:self.bgIsMoving withVelocity:3.6];
 }
 
 -(void)handleBossCollisions:(SKPhysicsContact *)contact

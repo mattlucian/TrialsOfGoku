@@ -38,6 +38,7 @@
 
 
 @property (nonatomic) BOOL hasTransformed;
+@property (nonatomic) BOOL hasTransformedFinal;
 
 @property (nonatomic) NSInteger jumpCount; // double jumps
 

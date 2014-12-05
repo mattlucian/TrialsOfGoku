@@ -86,6 +86,7 @@
 		C942095B1A16AA0D00D0979F /* SafeObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = C942095A1A16AA0D00D0979F /* SafeObstacle.m */; };
 		C942095E1A16AA3300D0979F /* EnemyBlast.m in Sources */ = {isa = PBXBuildFile; fileRef = C942095D1A16AA3300D0979F /* EnemyBlast.m */; };
 		C94A091F1A15B94000720E8C /* Buu.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A091E1A15B94000720E8C /* Buu.m */; };
+		C976EC921A321C3400AA06F9 /* you_win.png in Resources */ = {isa = PBXBuildFile; fileRef = C976EC911A321C3400AA06F9 /* you_win.png */; };
 		C9A6CCDC1A21A11700764048 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCD81A21A11700764048 /* Button.png */; };
 		C9A6CCDE1A21A11700764048 /* Goku_splash_sketch_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */; };
 		C9A6CCDF1A21A11700764048 /* Goku_splash_sketch.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6CCDB1A21A11700764048 /* Goku_splash_sketch.png */; };
@@ -201,6 +202,7 @@
 		C942095D1A16AA3300D0979F /* EnemyBlast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyBlast.m; path = objs/EnemyBlast.m; sourceTree = "<group>"; };
 		C94A091D1A15B94000720E8C /* Buu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buu.h; path = objs/Buu.h; sourceTree = "<group>"; };
 		C94A091E1A15B94000720E8C /* Buu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Buu.m; path = objs/Buu.m; sourceTree = "<group>"; };
+		C976EC911A321C3400AA06F9 /* you_win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = you_win.png; sourceTree = "<group>"; };
 		C9A6CCD81A21A11700764048 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		C9A6CCDA1A21A11700764048 /* Goku_splash_sketch_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goku_splash_sketch_phone.png; sourceTree = "<group>"; };
 		C9A6CCDB1A21A11700764048 /* Goku_splash_sketch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goku_splash_sketch.png; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		C90F047E19F8A53700DF49CA /* img */ = {
 			isa = PBXGroup;
 			children = (
+				C976EC911A321C3400AA06F9 /* you_win.png */,
 				C905E89B1A2BE78C00B0D8AA /* menu_button.png */,
 				C9ADA31F1A2788560034A4DF /* obstacles.atlas */,
 				C9A6CCD81A21A11700764048 /* Button.png */,
@@ -663,6 +666,7 @@
 				1108ADE01A264C7D00CC4127 /* dragon_ball_z_theme2.mp3 in Resources */,
 				1108ADE21A264C7D00CC4127 /* perfect_cell_theme.mp3 in Resources */,
 				1108AE0B1A264C7D00CC4127 /* swordhit.wav in Resources */,
+				C976EC921A321C3400AA06F9 /* you_win.png in Resources */,
 				1108AE061A264C7D00CC4127 /* strongpunch.wav in Resources */,
 				1108AE121A264DC100CC4127 /* Perfect_Cell_Dubstep.mp3 in Resources */,
 				1108ADDD1A264C7D00CC4127 /* dragon_ball_opening.mp3 in Resources */,

@@ -27,7 +27,7 @@
 @property (nonatomic, strong) SafeObstacle* obstacle4;
 @property (nonatomic, strong) SafeObstacle* obstacle5;
 @property (nonatomic, strong) Cell* finalBoss;
-
+@property (nonatomic, strong) Buu* realFinalBoss;
 
 @property (nonatomic) SKSpriteNode* background1;
 @property (nonatomic) SKSpriteNode* background2;
@@ -35,11 +35,11 @@
 
 
 @property (nonatomic, strong) Minion* minion1;
-@property (nonatomic, strong) Minion* minion2;
+@property (nonatomic, strong) Minion2* minion2;
 @property (nonatomic) Minion* minion3;
-@property (nonatomic) Minion* minion4;
+@property (nonatomic) Minion2* minion4;
 @property (nonatomic) Minion* minion5;
-@property (nonatomic) Minion* minion6;
+@property (nonatomic) Minion2* minion6;
 
 
 @property (strong, nonatomic) AVAudioPlayer* backgroundMusicPlayer;

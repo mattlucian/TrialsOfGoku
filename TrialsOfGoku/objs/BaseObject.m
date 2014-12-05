@@ -71,7 +71,7 @@
 }
 
 
--(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving
+-(void)moveInRelationTo:(Goku*)goku andBackgroundFlag:(BOOL)bgIsMoving withVelocity:(float)xVel
 {
     if(self != nil){
         if(self.isActivated){
@@ -82,14 +82,14 @@
                 if(!self.isHit){
                     if(self.position.x > goku.position.x){ // minion to the right
                         if([self.lastDirection isEqualToString:@"right"]){
-                            self.velocity = CGPointMake(-2,self.velocity.y);
+                            self.velocity = CGPointMake(0-xVel,self.velocity.y);
                             self.xScale = -1;
                             self.lastDirection = @"left";
                         }
                     }else{ // buu to the left
                         if([self.lastDirection isEqualToString:@"left"]){
                             self.xScale = 1;
-                            self.velocity = CGPointMake(2,self.velocity.y);
+                            self.velocity = CGPointMake(xVel,self.velocity.y);
                             self.lastDirection = @"right";
                         }
                     }
