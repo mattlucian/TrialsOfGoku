@@ -40,22 +40,22 @@
         
         #pragma mark Set Up Minions
         self.minion1 = [[Minion alloc] init];
-        self.minion1 = [self.minion1 setUpMinionWithName:@"minion1"];
+        self.minion1 = [self.minion1 setUpMinionWithName:@"minion1" andHealth:60 andPower:5];
         [self.minion1 setUpHealthBar];
         self.minion2 = [[Minion2 alloc] init];
-        self.minion2 = [self.minion2 setUpMinionWithName:@"minion2"];
+        self.minion2 = [self.minion2 setUpMinionWithName:@"minion2" andHealth:80 andPower:7];
         [self.minion2 setUpHealthBar];
         self.minion3 = [[Minion alloc] init];
-        self.minion3 = [self.minion3 setUpMinionWithName:@"minion3"];
+        self.minion3 = [self.minion3 setUpMinionWithName:@"minion3" andHealth:100 andPower:9];
         [self.minion3 setUpHealthBar];
         self.minion4 = [[Minion2 alloc] init];
-        self.minion4 = [self.minion4 setUpMinionWithName:@"minion4"];
+        self.minion4 = [self.minion4 setUpMinionWithName:@"minion4" andHealth:120 andPower:11];
         [self.minion4 setUpHealthBar];
         self.minion5 = [[Minion alloc] init];
-        self.minion5 = [self.minion5 setUpMinionWithName:@"minion5"];
+        self.minion5 = [self.minion5 setUpMinionWithName:@"minion5" andHealth:140 andPower:13];
         [self.minion5 setUpHealthBar];
         self.minion6 = [[Minion2 alloc] init];
-        self.minion6 = [self.minion6 setUpMinionWithName:@"minion6"];
+        self.minion6 = [self.minion6 setUpMinionWithName:@"minion6" andHealth:160 andPower:15];
         [self.minion6 setUpHealthBar];
 
         
@@ -246,8 +246,10 @@
     switch (self.currentLevelLocation) {
             // very beginning of level
         case -1:
-            if(!self.goku.leftLock)
+            if(!self.goku.leftLock){
                 self.goku.leftLock = YES;
+                self.bgIsMoving = NO;
+            }
             break;
             
             // beginning of level approaching
@@ -383,8 +385,10 @@
             
             // very end of level
         case 5:
-            if(!self.goku.rightLock)
+            if(!self.goku.rightLock){
+                self.bgIsMoving = NO;
                 self.goku.rightLock = YES;
+            }
             break;
             
         default:
@@ -658,6 +662,10 @@
         [self.finalBoss runAction:[SKAction unhide]];
         [self.finalBoss.healthBar runAction:[SKAction unhide]];
     }
+    if(self.realFinalBoss != nil){
+        [self.realFinalBoss runAction:[SKAction unhide]];
+        [self.realFinalBoss.healthBar runAction:[SKAction unhide]];
+    }
 }
 
 -(void)pauseAnimations{
@@ -709,8 +717,11 @@
         [self.finalBoss runAction:[SKAction hide]];
         [self.finalBoss.healthBar runAction:[SKAction hide]];
     }
+    if(self.realFinalBoss != nil){
+        [self.realFinalBoss runAction:[SKAction hide]];
+        [self.realFinalBoss.healthBar runAction:[SKAction hide]];
+    }
 }
-
 
 -(void)handleGokuCollision:(SKPhysicsContact *) contact{
     
@@ -746,8 +757,7 @@
     
 }
 
-- (void) changeMusic
-{
+- (void) changeMusic{
     
     [self.backgroundMusicPlayer stop];
     self.backgroundMusicPlayer = nil;

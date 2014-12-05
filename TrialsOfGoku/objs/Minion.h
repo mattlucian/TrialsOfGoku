@@ -13,7 +13,7 @@
 @class Goku;
 @interface Minion : BaseObject
 
--(Minion*)setUpMinionWithName:(NSString*)name;
+-(Minion*)setUpMinionWithName:(NSString *)name andHealth:(NSInteger)health andPower:(NSInteger)power;
 -(NSArray *)getAnimationFrames:(NSString*)minionAnimationKey;
 -(BOOL)checkEligibilityForAttackWith:(Goku*)goku;
 @end

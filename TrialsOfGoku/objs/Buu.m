@@ -83,7 +83,7 @@
     temp.isDead = false;
     temp.health = 300;
     temp.totalHealth = 300;
-    temp.attackPower = 15;
+    temp.attackPower = 20;
     temp.lastDirection = @"right";
     temp.typeOfObject = @"buu";
     temp.xScale = -1;

@@ -75,7 +75,7 @@
     return NO;
 }
 
--(Minion*)setUpMinionWithName:(NSString *)name
+-(Minion*)setUpMinionWithName:(NSString *)name andHealth:(NSInteger)health andPower:(NSInteger)power
 {
     Minion* temp = [Minion spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"minion_walk_right_1"] size:CGSizeMake(80, 100)];
     NSArray *animation = [temp getAnimationFrames:@"minion_walk_right"];
@@ -92,9 +92,9 @@
 
     temp.name = name;
     
-    temp.health = 70;
-    temp.totalHealth = 70;
-    temp.attackPower = 5;
+    temp.health = health;
+    temp.totalHealth = health;
+    temp.attackPower = power;
     
     temp.isDead = false;
     temp.lastDirection = @"right";
