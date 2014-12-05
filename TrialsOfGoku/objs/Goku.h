@@ -63,7 +63,7 @@
 -(BOOL)oneBallIsNil;
 -(BOOL)bothBallsAreNil;
 -(void)setUpPowerBalls:(float)difference onScene:(SKScene*)scene;
--(void)spawnAndMoveBallsAlongScene:(SKScene*)scene;
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene bgIsMoving:(BOOL)yes;
 
 // goku
 -(void)animateStance;

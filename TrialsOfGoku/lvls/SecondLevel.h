@@ -17,18 +17,25 @@
 #import "GameScene.h"
 @import AVFoundation;
 
-@interface SecondLevel : BaseLevel
+@interface SecondLevel : BaseLevel <GokuDelegate>
+
+@property (nonatomic) NSInteger currentLevelLocation;
 
 @property (nonatomic, strong) Buu* finalBoss;
 @property (strong, nonatomic) AVAudioPlayer* backgroundMusicPlayer;
-@property (nonatomic, strong) SafeObstacle* obstacle6;
-@property (nonatomic, strong) SafeObstacle* obstacle7;
-@property (nonatomic, strong) SafeObstacle* obstacle8;
-@property (nonatomic, strong) SafeObstacle* obstacle9;
-@property (nonatomic, strong) SafeObstacle* obstacle10;
-@property (nonatomic, strong) SafeObstacle* obstacle11;
-@property (nonatomic, strong) SafeObstacle* obstacle12;
-@property (nonatomic, strong) SafeObstacle* obstacle13;
+
+@property (nonatomic) SKSpriteNode* background1;
+@property (nonatomic) SKSpriteNode* background2;
+@property (nonatomic) BOOL bgIsMoving;
+
+
+@property (nonatomic, strong) Minion2* minion1;
+@property (nonatomic, strong) Minion2* minion2;
+@property (nonatomic) Minion2* minion3;
+@property (nonatomic) Minion2* minion4;
+@property (nonatomic) Minion2* minion5;
+@property (nonatomic) Minion2* minion6;
+
 -(void)handleBossCollisions:(SKPhysicsContact *)contact;
 -(void)setUpLevelForScene:(GameScene*)scene;
 -(void)runLevelFor:(GameScene*)scene;

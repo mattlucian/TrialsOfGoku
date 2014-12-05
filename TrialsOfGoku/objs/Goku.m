@@ -26,21 +26,38 @@
 }
 
 
--(void)spawnAndMoveBallsAlongScene:(SKScene*)scene{
+-(void)spawnAndMoveBallsAlongScene:(SKScene*)scene bgIsMoving:(BOOL)bgIsMoving{
     // moves power balls if they are currently on screen.
     
     if(ball != nil){
-        ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
-        if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
-            [ball removeFromParent];
-            ball = nil; // set powerballs to nil when they go off the screen
+    
+        if(!bgIsMoving){
+            ball.position = CGPointMake(ball.position.x+ball.velocity.x, ball.position.y);
+            if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
+                [ball removeFromParent];
+                ball = nil; // set powerballs to nil when they go off the screen
+            }
+        }else{
+            ball.position = CGPointMake(ball.position.x+ball.velocity.x-self.velocity.x, ball.position.y);
+            if(((ball.position.x-40) > scene.view.bounds.size.width)||((ball.position.x + 40 ) < 0 )){
+                [ball removeFromParent];
+                ball = nil; // set powerballs to nil when they go off the screen
+            }
         }
     }
     if(ball2 != nil){
-        ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
-        if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
-            [ball2 removeFromParent];
-            ball2 = nil;
+        if(!bgIsMoving){
+            ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x, ball2.position.y);
+            if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
+                [ball2 removeFromParent];
+                ball2 = nil;
+            }
+        }else{
+            ball2.position = CGPointMake(ball2.position.x+ball2.velocity.x-self.velocity.x, ball2.position.y);
+            if(((ball2.position.x - 40 ) > scene.view.bounds.size.width)||((ball2.position.x + 40) < 0 )){
+                [ball2 removeFromParent];
+                ball2 = nil;
+            }
         }
     }
 }

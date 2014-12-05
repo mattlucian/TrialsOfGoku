@@ -82,7 +82,7 @@
     temp.physicsBody.contactTestBitMask = GOKU_CATEGORY | POWERBALL_CATEGORY;
     temp.physicsBody.collisionBitMask = 0;
     temp.inputView.contentMode = UIViewContentModeCenter;
-    temp.name = @"boss";
+    temp.name = @"cell";
     temp.isDead = false;
     temp.health = 100;
     temp.totalHealth = 100;
